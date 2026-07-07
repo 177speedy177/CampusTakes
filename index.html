@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Takes | Real students. Campus takes.</title>
+<meta name="description" content="Campus Takes connects research teams with verified university students for interviews, usability tests, and surveys. Fresh voices, not professional respondents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-deep:#0A1E3F; --navy-soft:#33507F;
+  --white:#FFFFFF; --off:#F7F8FA;
+  --text:#232B38; --muted:#5A6472; --line:#E4E7EC;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Inter","Segoe UI",sans-serif;
+  --wrap:1040px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+
+.btn{display:inline-block;font-weight:600;font-size:1rem;text-align:center;padding:14px 30px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);transition:background .2s ease,color .2s ease,border-color .2s ease}
+.btn-solid{background:var(--navy);color:var(--white)}
+.btn-solid:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.btn-outline{background:transparent;color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--white)}
+
+.site-header{border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:1.45rem;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.site-nav{display:flex;gap:32px}
+.site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease}
+.site-nav a:hover{color:var(--navy)}
+@media (max-width:640px){.site-nav{gap:20px}}
+
+.hero{padding:110px 0 88px;text-align:center}
+.hero h1{font-size:clamp(2.6rem,1.6rem + 4.6vw,4.2rem);max-width:16ch;margin-inline:auto}
+.hero-sub{max-width:52ch;margin:26px auto 0;font-size:1.15rem;color:var(--muted)}
+.fork{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:48px}
+.fork .btn{min-width:280px;padding:17px 32px}
+.fork-caption{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:14px}
+.fork-caption span{width:280px;font-size:.85rem;color:var(--muted)}
+@media (max-width:660px){
+  .hero{padding:72px 0 56px}
+  .fork .btn{width:100%;max-width:360px}
+  .fork-caption{display:none}
+}
+.hero-facts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 36px;margin-top:68px;padding-top:28px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.hero-facts b{color:var(--navy);font-weight:600}
+
+.paths{padding:88px 0;background:var(--off);border-top:1px solid var(--line)}
+.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.path h2{font-size:1.55rem;margin-bottom:12px}
+.path p{color:var(--muted);font-size:.98rem;margin-bottom:20px;max-width:44ch}
+.path .go{font-weight:600;font-size:.98rem;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--navy);padding-bottom:2px;transition:color .2s ease,border-color .2s ease}
+.path .go:hover{color:var(--navy-soft);border-color:var(--navy-soft)}
+@media (max-width:720px){.paths{padding:64px 0}.paths-grid{grid-template-columns:1fr;gap:40px}}
+
+.site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:var(--muted);transition:color .2s ease}
+.footer-links a:hover{color:var(--navy)}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:#8B93A0;max-width:72ch}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Campus Takes</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="research.html">For research teams</a>
+      <a href="students.html">For students</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Front door: brand plus a working fork. Each button goes to a
+     dedicated page, so neither audience scrolls past the other. -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Real students. Campus takes.</h1>
+    <p class="hero-sub">
+      Campus Takes connects research teams with verified university students who
+      are genuinely new to research, not the professional respondents who fill
+      generic panels.
+    </p>
+    <div class="fork">
+      <a class="btn btn-solid" href="research.html">I need research participants</a>
+      <a class="btn btn-outline" href="students.html">I'm a student</a>
+    </div>
+    <div class="fork-caption">
+      <span>For researchers and brands</span>
+      <span>Join the participant waitlist</span>
+    </div>
+    <div class="hero-facts">
+      <span>Enrollment verified via <b>.edu confirmation</b></span>
+      <span><b>95%+</b> show rate</span>
+      <span>Hard quotas filled in <b>~48 hours</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="paths">
+  <div class="wrap">
+    <div class="paths-grid">
+      <div class="path">
+        <h2>For research teams</h2>
+        <p>Screened, confirmed student participants for interviews, usability
+        tests, and surveys. No subscription, you pay per completed session.</p>
+        <a class="go" href="research.html">See how recruiting works</a>
+      </div>
+      <div class="path">
+        <h2>For students</h2>
+        <p>Share your honest opinions in paid research sessions. Most pay $40
+        to $75, take under an hour, and pay out within minutes of finishing.</p>
+        <a class="go" href="students.html">Join the waitlist</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="index.html">Campus Takes</a>
+      <ul class="footer-links">
+        <li><a href="research.html">For research teams</a></li>
+        <li><a href="students.html">For students</a></li>
+        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">
+      © 2026 Campus Takes. Campus Takes is an independent research panel of university
+      students. It is not affiliated with, sponsored by, or endorsed by any
+      university or educational institution.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Takes for students | Get paid for your honest take</title>
+<meta name="description" content="Join the Campus Takes waitlist: paid research sessions for university students. Most pay $40 to $75, take under an hour, and pay out within minutes of finishing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-deep:#0A1E3F; --navy-soft:#33507F;
+  --white:#FFFFFF; --off:#F7F8FA;
+  --text:#232B38; --muted:#5A6472; --line:#E4E7EC;
+  --line-dark:rgba(255,255,255,.22);
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Inter","Segoe UI",sans-serif;
+  --wrap:1040px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--navy)}
+h2{font-size:clamp(1.7rem,1.3rem + 1.8vw,2.4rem);margin-bottom:18px}
+h3{font-size:1.15rem;margin-bottom:8px}
+.kicker{display:block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+
+.site-header{border-bottom:1px solid var(--line);background:var(--white)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:1.45rem;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.site-nav{display:flex;gap:32px}
+.site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease}
+.site-nav a:hover{color:var(--navy)}
+.site-nav a[aria-current]{color:var(--navy)}
+@media (max-width:640px){.site-nav{gap:20px}}
+
+/* navy hero with the waitlist card beside it: signup above the fold */
+.hero{background:var(--navy);color:var(--white);padding:88px 0 96px}
+.hero .kicker{color:rgba(255,255,255,.6)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
+.hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
+.money{
+  margin-top:36px;padding-top:28px;border-top:1px solid var(--line-dark);
+  display:flex;gap:48px;flex-wrap:wrap;
+}
+.money b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,1.6rem + 1.8vw,2.8rem);color:var(--white);line-height:1.1}
+.money span{display:block;margin-top:6px;font-size:.9rem;color:rgba(255,255,255,.65);max-width:20ch}
+
+.waitlist-card{
+  background:var(--white);border-radius:8px;padding:36px 32px;color:var(--text);
+}
+.waitlist-card h2{font-size:1.5rem;margin-bottom:10px}
+.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px}
+.form-embed{margin-top:20px}
+.form-embed iframe{display:block;width:100%;border:none}
+.first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted)}
+.first-in-line b{color:var(--navy);font-weight:600}
+@media (max-width:860px){
+  .hero{padding:64px 0 72px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+}
+
+section{padding:96px 0}
+@media (max-width:640px){section{padding:64px 0}}
+section .kicker{color:var(--navy-soft)}
+.lede{color:var(--muted);max-width:56ch}
+
+.perks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px;margin-top:48px}
+.perk h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;color:var(--navy)}
+.perk p{color:var(--muted);font-size:.96rem;margin-top:6px}
+@media (max-width:700px){.perks-grid{grid-template-columns:1fr;gap:26px}}
+
+.how{background:var(--off);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+.step{border-top:2px solid var(--navy);padding-top:24px}
+.step-num{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--navy-soft);margin-bottom:10px}
+.step p{color:var(--muted);font-size:.96rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:32px}}
+
+.btn{display:inline-block;font-weight:600;font-size:1rem;text-align:center;padding:14px 30px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);background:var(--navy);color:var(--white);transition:background .2s ease,border-color .2s ease}
+.btn:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.bottom-cta{text-align:center;padding-bottom:110px}
+.bottom-cta h2{max-width:24ch;margin-inline:auto}
+.bottom-cta .lede{margin-inline:auto}
+.bottom-cta .btn{margin-top:30px;padding:16px 36px}
+
+.site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:var(--muted);transition:color .2s ease}
+.footer-links a:hover{color:var(--navy)}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:#8B93A0;max-width:72ch}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Campus Takes</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="research.html">For research teams</a>
+      <a href="students.html" aria-current="page">For students</a>
+    </nav>
+  </div>
+</header>
+
+<!-- QR codes and club blasts should point straight at this page. -->
+<section class="hero" id="waitlist">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">For university students</span>
+        <h1>Get paid for your honest take</h1>
+        <p class="hero-sub">
+          Companies pay to hear what students really think about their apps,
+          products, and ideas. No experience needed. Your opinion is the
+          qualification.
+        </p>
+        <div class="money">
+          <div><b>$40-$75</b><span>what most sessions pay</span></div>
+          <div><b>Under 1 hr</b><span>most take 20 to 60 minutes</span></div>
+          <div><b>Minutes</b><span>from finishing to getting paid</span></div>
+        </div>
+      </div>
+      <div class="waitlist-card">
+        <h2>Join the waitlist</h2>
+        <p>Spots open as studies come in, and we review every application.</p>
+        <!-- Tally form: Campus Takes waitlist -->
+        <div class="form-embed" id="typeform-students">
+          <iframe src="https://tally.so/embed/0Q5jKB?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Campus Takes waitlist signup"></iframe>
+        </div>
+        <p class="first-in-line"><b>Join now and you're first in line</b> when a
+        study fits you. We run studies year-round and reach out as matches come
+        up, so the waitlist is the first step rather than an instant gig.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">What it's like</span>
+    <h2>Easy, flexible, and actually worth your time</h2>
+    <div class="perks-grid">
+      <div class="perk">
+        <h3>Real money for real opinions</h3>
+        <p>Interviews, usability tests, and surveys. You talk, click through a
+        prototype, or answer questions. That's the whole job.</p>
+      </div>
+      <div class="perk">
+        <h3>Paid within minutes, not weeks</h3>
+        <p>Your payout lands right after the session ends. No invoices, no
+        30-day waits, no gift-card runaround.</p>
+      </div>
+      <div class="perk">
+        <h3>Fits around your classes</h3>
+        <p>Take the studies that fit your week and skip the ones that don't.
+        Nothing is required, ever.</p>
+      </div>
+      <div class="perk">
+        <h3>Remote by default</h3>
+        <p>Join from your laptop wherever you study. Some sessions are as
+        simple as a 30-minute video call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2>Three steps, no catch</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Step 1</div>
+        <h3>Join the waitlist</h3>
+        <p>Tell us a little about yourself and verify that you're currently
+        enrolled using your .edu email.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 2</div>
+        <h3>We match you to studies</h3>
+        <p>When a study fits your profile, we reach out with the details:
+        what it involves, how long it takes, and what it pays.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 3</div>
+        <h3>Share your take, get paid</h3>
+        <p>Do the session, speak your mind honestly, and your payout arrives
+        within minutes of finishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <div class="wrap">
+    <h2>Your opinion is worth something</h2>
+    <p class="lede">
+      It takes about two minutes to apply, and there's nothing to prepare.
+    </p>
+    <a class="btn" href="#waitlist">Join the waitlist</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="index.html">Campus Takes</a>
+      <ul class="footer-links">
+        <li><a href="research.html">For research teams</a></li>
+        <li><a href="students.html">For students</a></li>
+        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">
+      © 2026 Campus Takes. Campus Takes is an independent research panel of university
+      students. It is not affiliated with, sponsored by, or endorsed by any
+      university or educational institution.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

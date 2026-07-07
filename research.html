@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Takes for research teams | Verified student participants</title>
+<meta name="description" content="Recruit verified university students for interviews, usability tests, and surveys. A 95%+ show rate, hard quotas filled in about 48 hours, pay per completed session.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-deep:#0A1E3F; --navy-soft:#33507F;
+  --white:#FFFFFF; --off:#F7F8FA;
+  --text:#232B38; --muted:#5A6472; --line:#E4E7EC;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Inter","Segoe UI",sans-serif;
+  --wrap:1040px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:1.15;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,1.3rem + 1.8vw,2.4rem);margin-bottom:18px}
+h3{font-size:1.2rem;margin-bottom:8px}
+.lede{color:var(--muted);max-width:58ch}
+.kicker{display:block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-soft);margin-bottom:14px}
+
+.btn{display:inline-block;font-weight:600;font-size:1rem;text-align:center;padding:14px 30px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);transition:background .2s ease,color .2s ease,border-color .2s ease}
+.btn-solid{background:var(--navy);color:var(--white)}
+.btn-solid:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+
+.site-header{border-bottom:1px solid var(--line)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:1.45rem;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.site-nav{display:flex;gap:32px;align-items:center}
+.site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease}
+.site-nav a:hover{color:var(--navy)}
+.site-nav a[aria-current]{color:var(--navy)}
+@media (max-width:640px){.site-nav{gap:20px}}
+
+section{padding:96px 0}
+@media (max-width:640px){section{padding:64px 0}}
+
+.hero{padding:96px 0 72px}
+.hero h1{font-size:clamp(2.3rem,1.5rem + 3.6vw,3.6rem);max-width:20ch}
+.hero .lede{margin-top:22px;font-size:1.15rem}
+.hero-cta{margin-top:36px}
+.hero-cta .btn{padding:16px 32px}
+.risk-note{margin-top:16px;font-size:.9rem;color:var(--muted)}
+
+/* the two killer stats, said loudly */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+.stat b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(2.4rem,1.8rem + 2.4vw,3.4rem);color:var(--navy);line-height:1.05}
+.stat span{display:block;margin-top:8px;font-size:.95rem;color:var(--muted);max-width:26ch}
+@media (max-width:720px){.stats{grid-template-columns:1fr;gap:28px}}
+
+.points{background:var(--off);border-block:1px solid var(--line)}
+.points-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 48px;margin-top:48px}
+.point h3{font-family:var(--sans);font-weight:600;font-size:1.05rem;color:var(--navy)}
+.point p{color:var(--muted);font-size:.97rem;margin-top:6px}
+@media (max-width:700px){.points-grid{grid-template-columns:1fr;gap:28px}}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+.step{border-top:2px solid var(--navy);padding-top:24px}
+.step-num{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--navy-soft);margin-bottom:10px}
+.step p{color:var(--muted);font-size:.96rem}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:32px}}
+
+/* credibility: the method, not logos */
+.method{background:var(--navy);color:var(--white)}
+.method .kicker{color:rgba(255,255,255,.6)}
+.method h2{color:var(--white)}
+.method .lede{color:rgba(255,255,255,.78)}
+.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px;margin-top:48px}
+.method-item h3{font-family:var(--sans);font-size:1.02rem;color:var(--white)}
+.method-item p{color:rgba(255,255,255,.72);font-size:.95rem;margin-top:6px}
+@media (max-width:700px){.method-grid{grid-template-columns:1fr;gap:28px}}
+
+.cta h2{max-width:24ch}
+.cta .lede{margin-bottom:8px}
+.cta-actions{margin-top:36px}
+.form-embed{margin-top:24px;max-width:640px}
+.form-embed iframe{display:block;width:100%;border:none}
+
+.site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:var(--muted);transition:color .2s ease}
+.footer-links a:hover{color:var(--navy)}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:#8B93A0;max-width:72ch}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Campus Takes</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="research.html" aria-current="page">For research teams</a>
+      <a href="students.html">For students</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">For research teams</span>
+    <h1>Participants you can put on a calendar</h1>
+    <p class="lede">
+      Campus Takes recruits verified university students for interviews, usability
+      tests, and surveys. Screened against your criteria, confirmed for every
+      session, and genuinely new to research.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#request">Tell us about your study</a>
+      <p class="risk-note">No subscription, no retainer. You pay per completed session.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>95%+</b><span>show rate across confirmed sessions</span></div>
+      <div class="stat"><b>~48 hrs</b><span>to fill hard quotas, screener included</span></div>
+      <div class="stat"><b>.edu</b><span>enrollment confirmation for every panelist</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="points">
+  <div class="wrap">
+    <span class="kicker">Why Campus Takes</span>
+    <h2>Built for teams tired of professional respondents</h2>
+    <p class="lede">
+      Generic marketplaces are full of survey veterans who have learned exactly
+      what to say. Our panel is the opposite: real students giving real first
+      reactions.
+    </p>
+    <div class="points-grid">
+      <div class="point">
+        <h3>Verified, not self-reported</h3>
+        <p>Every panelist confirms current university enrollment through their
+        .edu address before joining a single study. No box-ticking, no impostors.</p>
+      </div>
+      <div class="point">
+        <h3>A show rate above 95%</h3>
+        <p>Double confirmations, reminders, and screened standbys mean your
+        sessions actually happen.</p>
+      </div>
+      <div class="point">
+        <h3>Hard quotas filled in about 48 hours</h3>
+        <p>Including the tricky ones. No week-long recruiting stalls between
+        research sprints.</p>
+      </div>
+      <div class="point">
+        <h3>Genuinely fresh perspectives</h3>
+        <p>We cap participation frequency, so you hear first impressions rather
+        than rehearsed answers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2>From screener to scheduled sessions</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Step 1</div>
+        <h3>Tell us who you need</h3>
+        <p>Share your quotas, screener, and format: moderated interviews,
+        unmoderated usability tests, or surveys. We confirm feasibility the
+        same day.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 2</div>
+        <h3>We recruit and verify</h3>
+        <p>We match enrollment-verified students to your criteria, screen them
+        against your questions, and confirm every slot.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 3</div>
+        <h3>You run the research</h3>
+        <p>Sessions land on your calendar and participants arrive briefed and
+        on time. If life happens, a screened standby steps in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Credibility section: sells the method. Replace with real client
+     logos and testimonials the day you have them. -->
+<section class="method">
+  <div class="wrap">
+    <span class="kicker">Quality, guaranteed by process</span>
+    <h2>How we keep the panel honest</h2>
+    <p class="lede">
+      We are a new panel, so we will not show you borrowed logos. Here is what
+      we will show you: the process that makes the numbers hold.
+    </p>
+    <div class="method-grid">
+      <div class="method-item">
+        <h3>Enrollment checks at the door</h3>
+        <p>Every applicant verifies a current .edu address before entering the
+        pool, and we re-check each academic year.</p>
+      </div>
+      <div class="method-item">
+        <h3>Pay per completed session</h3>
+        <p>If a participant no-shows and we cannot backfill the slot, you are
+        not charged for it. Our incentives match yours.</p>
+      </div>
+      <div class="method-item">
+        <h3>Participants paid within minutes</h3>
+        <p>Panelists receive payment right after finishing. Fast payment keeps
+        the panel engaged, responsive, and reliable.</p>
+      </div>
+      <div class="method-item">
+        <h3>Freshness caps</h3>
+        <p>We limit how often anyone participates, so your data comes from
+        first reactions, not survey-taking habits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="request">
+  <div class="wrap">
+    <span class="kicker">Get started</span>
+    <h2>Tell us about your study</h2>
+    <p class="lede">
+      Three quick questions: who you need, what format, and when. We reply
+      within one business day with feasibility, cost, and a recruiting plan.
+      Prefer to talk first? Say so in the form and we will set up a call.
+    </p>
+    <div class="cta-actions">
+      <a class="btn btn-solid" href="#typeform-clients">Request participants</a>
+      <!-- Tally form: "Looking for participants" (client intake) -->
+      <div class="form-embed" id="typeform-clients">
+        <iframe src="https://tally.so/embed/ODyBRY?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Request research participants"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="index.html">Campus Takes</a>
+      <ul class="footer-links">
+        <li><a href="research.html">For research teams</a></li>
+        <li><a href="students.html">For students</a></li>
+        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">
+      © 2026 Campus Takes. Campus Takes is an independent research panel of university
+      students. It is not affiliated with, sponsored by, or endorsed by any
+      university or educational institution.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
