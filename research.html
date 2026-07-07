@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Campus Takes for research teams | Verified student participants</title>
 <meta name="description" content="Recruit verified university students for interviews, usability tests, and surveys. A 95%+ show rate, hard quotas filled in about 48 hours, pay per completed session.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cmask id='m'%3E%3Crect width='48' height='48' fill='white'/%3E%3Ccircle cx='31' cy='27' r='15.5' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Cg fill='%2310254A' mask='url(%23m)'%3E%3Ccircle cx='17' cy='19' r='13'/%3E%3Cpath d='M9 27.5 5 41l13.5-9.5z'/%3E%3C/g%3E%3Cg fill='%2310254A'%3E%3Ccircle cx='31' cy='27' r='13'/%3E%3Cpath d='M31.5 38.5 42 46l-2.5-11.5z'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,14 +33,26 @@ h3{font-size:1.2rem;margin-bottom:8px}
 .btn-solid{background:var(--navy);color:var(--white)}
 .btn-solid:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
 
-.site-header{border-bottom:1px solid var(--line)}
-.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{display:block;flex:none}
+.brand-name{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--navy);letter-spacing:-.01em}
 .wordmark{font-family:var(--serif);font-weight:600;font-size:1.45rem;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
-.site-nav{display:flex;gap:32px;align-items:center}
+.site-nav{display:flex;gap:28px;align-items:center}
 .site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease}
 .site-nav a:hover{color:var(--navy)}
 .site-nav a[aria-current]{color:var(--navy)}
-@media (max-width:640px){.site-nav{gap:20px}}
+.nl-short{display:none}
+@media (max-width:640px){
+  .site-header .wrap{height:60px}
+  .brand{gap:8px}
+  .brand svg{width:24px;height:24px}
+  .brand-name{font-size:1.15rem}
+  .site-nav{gap:18px}
+  .nl-full{display:none}
+  .nl-short{display:inline}
+}
 
 section{padding:96px 0}
 @media (max-width:640px){section{padding:64px 0}}
@@ -97,10 +110,17 @@ section{padding:96px 0}
 
 <header class="site-header">
   <div class="wrap">
-    <a class="wordmark" href="index.html">Campus Takes</a>
+    <a class="brand" href="index.html" aria-label="Campus Takes home">
+      <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+        <defs><mask id="bubble-gap"><rect width="48" height="48" fill="#fff"/><circle cx="31" cy="27" r="15.5" fill="#000"/></mask></defs>
+        <g fill="#10254A" mask="url(#bubble-gap)"><circle cx="17" cy="19" r="13"/><path d="M9 27.5 5 41l13.5-9.5z"/></g>
+        <g fill="#10254A"><circle cx="31" cy="27" r="13"/><path d="M31.5 38.5 42 46l-2.5-11.5z"/></g>
+      </svg>
+      <span class="brand-name">Campus Takes</span>
+    </a>
     <nav class="site-nav" aria-label="Main">
-      <a href="research.html" aria-current="page">For research teams</a>
-      <a href="students.html">For students</a>
+      <a href="research.html" aria-current="page"><span class="nl-full">For research teams</span><span class="nl-short">Research</span></a>
+      <a href="students.html"><span class="nl-full">For students</span><span class="nl-short">Students</span></a>
     </nav>
   </div>
 </header>
@@ -108,11 +128,11 @@ section{padding:96px 0}
 <section class="hero">
   <div class="wrap">
     <span class="kicker">For research teams</span>
-    <h1>Participants you can put on a calendar</h1>
+    <h1>First reactions, not rehearsed answers</h1>
     <p class="lede">
       Campus Takes recruits verified university students for interviews, usability
       tests, and surveys. Screened against your criteria, confirmed for every
-      session, and genuinely new to research.
+      session, and fresh enough that nothing you hear is rehearsed.
     </p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="#request">Tell us about your study</a>
