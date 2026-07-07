@@ -56,12 +56,13 @@ h3{font-size:1.15rem;margin-bottom:8px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
 .hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
 .hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
-.money{
-  margin-top:36px;padding-top:28px;border-top:1px solid var(--line-dark);
-  display:flex;gap:48px;flex-wrap:wrap;
+.money{margin-top:36px;border-top:1px solid var(--line-dark)}
+.money .stat{
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--line-dark);
 }
-.money b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,1.6rem + 1.8vw,2.8rem);color:var(--white);line-height:1.1}
-.money span{display:block;margin-top:6px;font-size:.9rem;color:rgba(255,255,255,.65);max-width:20ch}
+.money dt{font-family:var(--serif);font-weight:600;font-size:clamp(1.55rem,1.3rem + 1vw,2rem);color:var(--white);line-height:1.1;white-space:nowrap}
+.money dd{font-size:.92rem;color:rgba(255,255,255,.7);text-align:right;max-width:26ch}
 
 .waitlist-card{
   background:var(--white);border-radius:8px;padding:36px 32px;color:var(--text);
@@ -140,11 +141,11 @@ section .kicker{color:var(--navy-soft)}
           products, and ideas. No experience needed. Your opinion is the
           qualification.
         </p>
-        <div class="money">
-          <div><b>$40-$75</b><span>what most sessions pay</span></div>
-          <div><b>Under 1 hr</b><span>most take 20 to 60 minutes</span></div>
-          <div><b>Minutes</b><span>from finishing to getting paid</span></div>
-        </div>
+        <dl class="money">
+          <div class="stat"><dt>$40&ndash;$75</dt><dd>Typical pay per session</dd></div>
+          <div class="stat"><dt>Under an hour</dt><dd>Most sessions run 20 to 60 minutes</dd></div>
+          <div class="stat"><dt>Paid in minutes</dt><dd>Your payout lands as soon as you finish</dd></div>
+        </dl>
       </div>
       <div class="waitlist-card">
         <h2>Join the waitlist</h2>
@@ -234,6 +235,7 @@ section .kicker{color:var(--navy-soft)}
       <ul class="footer-links">
         <li><a href="research.html">For research teams</a></li>
         <li><a href="students.html">For students</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
         <li><a href="mailto:hello@campustakes.com">Contact</a></li>
       </ul>
     </div>

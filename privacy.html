@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Campus Takes</title>
+<meta name="description" content="How Campus Takes collects, uses, shares, and protects the personal information of students and research clients.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -8 64 64'%3E%3Cdefs%3E%3Cmask id='m'%3E%3Crect width='48' height='48' fill='white'/%3E%3Ccircle cx='31' cy='27' r='15.5' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect x='-8' y='-8' width='64' height='64' rx='12' fill='white'/%3E%3Cg fill='%2310254A' mask='url(%23m)'%3E%3Ccircle cx='17' cy='19' r='13'/%3E%3Cpath d='M9 27.5 5 41l13.5-9.5z'/%3E%3C/g%3E%3Cg fill='%2310254A'%3E%3Ccircle cx='31' cy='27' r='13'/%3E%3Cpath d='M31.5 38.5 42 46l-2.5-11.5z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-deep:#0A1E3F; --navy-soft:#33507F;
+  --white:#FFFFFF; --off:#F7F8FA;
+  --text:#232B38; --muted:#5A6472; --line:#E4E7EC;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Inter","Segoe UI",sans-serif;
+  --wrap:1040px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:1.2;letter-spacing:-.01em}
+a{color:var(--navy-soft)}
+
+.site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:blur(8px)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{display:block;flex:none}
+.brand-name{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--navy);letter-spacing:-.01em}
+.site-nav{display:flex;gap:28px}
+.site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease}
+.site-nav a:hover{color:var(--navy)}
+.nl-short{display:none}
+@media (max-width:640px){
+  .site-header .wrap{height:60px}
+  .brand{gap:8px}
+  .brand svg{width:24px;height:24px}
+  .brand-name{font-size:1.15rem}
+  .site-nav{gap:18px}
+  .nl-full{display:none}
+  .nl-short{display:inline}
+}
+
+/* legal document layout */
+.legal{padding:64px 0 96px}
+.legal .wrap{max-width:760px}
+.legal h1{font-size:clamp(2rem,1.5rem + 2vw,2.8rem);margin-bottom:10px}
+.legal .updated{color:var(--muted);font-size:.95rem;margin-bottom:8px}
+.legal .intro{color:var(--muted);margin:24px 0 8px;font-size:1.05rem}
+.legal h2{font-size:1.35rem;margin:44px 0 14px;padding-top:8px}
+.legal h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;color:var(--navy);margin:24px 0 8px}
+.legal p{margin-bottom:14px;color:var(--text)}
+.legal ul{margin:0 0 16px 22px}
+.legal li{margin-bottom:8px}
+.legal strong{color:var(--navy)}
+.toc{background:var(--off);border:1px solid var(--line);border-radius:8px;padding:24px 28px;margin:32px 0}
+.toc h2{font-size:1.05rem;font-family:var(--sans);margin:0 0 12px}
+.toc ol{margin:0 0 0 20px;columns:2;column-gap:32px}
+.toc li{margin-bottom:6px;font-size:.95rem}
+.toc a{text-decoration:none}
+.toc a:hover{text-decoration:underline}
+@media (max-width:560px){.toc ol{columns:1}}
+.fill{background:#FFF4D6;color:#7A5A00;padding:1px 6px;border-radius:4px;font-weight:600;font-size:.95em;font-family:var(--sans)}
+.notice{border-left:3px solid var(--navy-soft);background:var(--off);padding:16px 20px;margin:24px 0;border-radius:0 6px 6px 0;font-size:.97rem;color:var(--muted)}
+
+.site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.wordmark{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.footer-links a{text-decoration:none;color:var(--muted);transition:color .2s ease}
+.footer-links a:hover{color:var(--navy)}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:#8B93A0;max-width:72ch}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Campus Takes home">
+      <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+        <defs><mask id="bubble-gap"><rect width="48" height="48" fill="#fff"/><circle cx="31" cy="27" r="15.5" fill="#000"/></mask></defs>
+        <g fill="#10254A" mask="url(#bubble-gap)"><circle cx="17" cy="19" r="13"/><path d="M9 27.5 5 41l13.5-9.5z"/></g>
+        <g fill="#10254A"><circle cx="31" cy="27" r="13"/><path d="M31.5 38.5 42 46l-2.5-11.5z"/></g>
+      </svg>
+      <span class="brand-name">Campus Takes</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="research.html"><span class="nl-full">For research teams</span><span class="nl-short">Research</span></a>
+      <a href="students.html"><span class="nl-full">For students</span><span class="nl-short">Students</span></a>
+    </nav>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: July 7, 2026</p>
+
+    <p class="intro">
+      This Privacy Policy explains how <strong>Campus Takes</strong>
+      (<span class="fill">[LEGAL ENTITY NAME, e.g. "Campus Takes LLC"]</span>, "Campus Takes,"
+      "we," "us," or "our") collects, uses, shares, and protects personal information. It applies
+      to two groups of people: <strong>students</strong> who join our participant panel, and
+      <strong>clients</strong> (researchers and brands) who request participants through us. It
+      also applies to anyone who visits <span class="fill">[campustakes.com]</span>.
+    </p>
+    <p>
+      By using our website, joining the panel, participating in a study, or requesting
+      participants, you agree to the collection and use of information as described here. If you do
+      not agree, please do not use our services.
+    </p>
+
+    <div class="toc">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#who">Who we are</a></li>
+        <li><a href="#collect">Information we collect</a></li>
+        <li><a href="#use">How we use information</a></li>
+        <li><a href="#share">How we share information</a></li>
+        <li><a href="#research">Research sessions &amp; recordings</a></li>
+        <li><a href="#payments">Payments &amp; tax information</a></li>
+        <li><a href="#legalbases">Legal bases (EEA/UK)</a></li>
+        <li><a href="#retention">Data retention</a></li>
+        <li><a href="#security">Data security</a></li>
+        <li><a href="#rights">Your privacy rights</a></li>
+        <li><a href="#california">California privacy notice</a></li>
+        <li><a href="#marketing">Marketing &amp; communications</a></li>
+        <li><a href="#age">Age requirement</a></li>
+        <li><a href="#intl">International transfers</a></li>
+        <li><a href="#cookies">Cookies &amp; analytics</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact us</a></li>
+      </ol>
+    </div>
+
+    <h2 id="who">1. Who we are</h2>
+    <p>
+      Campus Takes is an independent research panel that connects verified university students with
+      research teams for interviews, usability tests, and surveys. We are the
+      <strong>data controller</strong> for the personal information described in this policy, which
+      means we decide how and why it is processed. Our registered contact details are in the
+      <a href="#contact">Contact us</a> section.
+    </p>
+    <p>
+      Campus Takes is not affiliated with, sponsored by, or endorsed by any university or
+      educational institution.
+    </p>
+
+    <h2 id="collect">2. Information we collect</h2>
+
+    <h3>2.1 Information from students (participants)</h3>
+    <p>When you join the waitlist, verify enrollment, or take part in a study, we may collect:</p>
+    <ul>
+      <li><strong>Identity and contact details:</strong> first and last name, university email address (.edu), and phone number (if you provide it).</li>
+      <li><strong>Enrollment and eligibility information:</strong> your university, academic year, field of study, and confirmation that you are 18 or older and currently enrolled.</li>
+      <li><strong>Verification data:</strong> information used to confirm your .edu email address and enrollment status.</li>
+      <li><strong>Profile and screening data:</strong> responses to screening questions that help us match you to relevant studies.</li>
+      <li><strong>Participation data:</strong> which studies you are invited to, accept, decline, complete, or miss.</li>
+      <li><strong>Payment information:</strong> the details needed to pay you, processed through our payment provider (see <a href="#payments">Payments &amp; tax information</a>). For tax reporting, this may include your legal name and tax identification information.</li>
+      <li><strong>Study contributions:</strong> your responses, recordings, and other content you provide during a study (see <a href="#research">Research sessions &amp; recordings</a>).</li>
+      <li><strong>How you heard about us:</strong> the referral source you select when signing up.</li>
+    </ul>
+
+    <h3>2.2 Information from clients</h3>
+    <p>When you request participants or communicate with us as a client, we may collect:</p>
+    <ul>
+      <li><strong>Business contact details:</strong> your name, work email address, and company.</li>
+      <li><strong>Study requirements:</strong> the participant criteria, format, timeline, and other details you share about your research.</li>
+      <li><strong>Billing information:</strong> the information needed to invoice and collect payment for completed sessions.</li>
+      <li><strong>Correspondence:</strong> records of your communications with us, including any call notes.</li>
+    </ul>
+
+    <h3>2.3 Information we collect automatically</h3>
+    <p>
+      When you visit our website, we and our service providers may automatically collect limited
+      technical information such as your device type, browser, general location (derived from IP
+      address), pages viewed, and referring links. See <a href="#cookies">Cookies &amp; analytics</a>
+      for details.
+    </p>
+
+    <h2 id="use">3. How we use information</h2>
+    <p>We use personal information to:</p>
+    <ul>
+      <li>Operate the panel: verify eligibility, match students to studies, and schedule and run sessions.</li>
+      <li>Fulfill client requests: recruit, screen, and confirm participants for research studies.</li>
+      <li>Process payments to students and billing to clients, and meet related tax obligations.</li>
+      <li>Communicate with you about studies, invitations, scheduling, your account, and support requests.</li>
+      <li>Maintain quality and reliability, including confirming attendance and managing standbys.</li>
+      <li>Improve our services and understand how our website is used.</li>
+      <li>Protect against fraud, misuse, and security risks, and comply with legal obligations.</li>
+    </ul>
+
+    <h2 id="share">4. How we share information</h2>
+    <p>We do not sell your personal information. We share it only in the following circumstances:</p>
+    <ul>
+      <li>
+        <strong>With research clients.</strong> When you take part in a study, the client running
+        that study receives the information necessary to conduct and use the research — which may
+        include your first name, relevant screening details, your responses, and session recordings.
+        Clients are expected to use this information only for the research purpose and in line with
+        applicable law. <span class="fill">[Confirm exactly what participant data each client
+        receives, and require clients to sign terms limiting their use of it.]</span>
+      </li>
+      <li>
+        <strong>With service providers (processors)</strong> who perform functions on our behalf,
+        under contract, including:
+        <ul>
+          <li><strong>Form and data collection:</strong> Tally (waitlist and intake forms).</li>
+          <li><strong>Participant payments:</strong> <span class="fill">[Tremendous or your chosen payout provider]</span>.</li>
+          <li><strong>Website hosting:</strong> Vercel.</li>
+          <li><strong>Email and communications:</strong> <span class="fill">[Google Workspace and any email tool you use]</span>.</li>
+          <li><strong>Scheduling and video sessions:</strong> <span class="fill">[e.g. Cal.com, Calendly, Zoom, Google Meet, or your research platform]</span>.</li>
+          <li><strong>Analytics:</strong> <span class="fill">[e.g. Plausible, Fathom, or Google Analytics — or remove if none]</span>.</li>
+        </ul>
+      </li>
+      <li><strong>For legal reasons:</strong> to comply with law, respond to lawful requests, enforce our terms, or protect the rights, safety, and property of Campus Takes, our users, or others.</li>
+      <li><strong>In a business transfer:</strong> in connection with a merger, acquisition, financing, or sale of assets, information may be transferred as part of that transaction.</li>
+      <li><strong>With your consent:</strong> for any other purpose disclosed to you at the time.</li>
+    </ul>
+
+    <h2 id="research">5. Research sessions &amp; recordings</h2>
+    <p>
+      Some studies — particularly interviews and usability tests — may be
+      <strong>audio- or video-recorded</strong>, or may capture your screen or on-screen actions.
+      Before any session is recorded, we or the client will tell you and ask for your consent. You
+      may decline to be recorded, though some studies may not be able to proceed without it.
+    </p>
+    <p>
+      Recordings and study responses are shared with the client who commissioned the study and may
+      be reviewed, analyzed, and stored by them. <span class="fill">[If sessions are recorded,
+      confirm your recording-consent process and note that some U.S. states require all-party
+      consent to record — your consent flow must account for the participant's and client's
+      locations.]</span>
+    </p>
+
+    <h2 id="payments">6. Payments &amp; tax information</h2>
+    <p>
+      We pay student participants through a third-party payment provider. To send payment, that
+      provider collects the information necessary to complete the transaction (for example, the
+      email or account you choose to receive funds).
+    </p>
+    <p>
+      If your total incentives reach thresholds set by law, we may be required to collect tax
+      information (such as a Form W-9) and report payments to tax authorities (for example, issuing
+      a Form 1099 in the United States where payments to an individual reach the reporting threshold
+      in a calendar year). <span class="fill">[Confirm your tax-reporting process and thresholds
+      with an accountant.]</span>
+    </p>
+
+    <h2 id="legalbases">7. Legal bases for processing (EEA/UK)</h2>
+    <p>
+      If you are in the European Economic Area or the United Kingdom, we process your personal data
+      on the following legal bases: <strong>performance of a contract</strong> (to provide the
+      services you request); <strong>consent</strong> (for example, to record a session or send
+      marketing, which you may withdraw at any time); <strong>legitimate interests</strong> (to
+      operate, secure, and improve our services, where not overridden by your rights); and
+      <strong>legal obligation</strong> (for example, tax and record-keeping requirements).
+    </p>
+
+    <h2 id="retention">8. Data retention</h2>
+    <p>
+      We keep personal information only as long as needed for the purposes described in this policy,
+      including to run the panel, meet legal, tax, and accounting requirements, resolve disputes,
+      and enforce our agreements. When information is no longer needed, we delete or anonymize it.
+      Research recordings and responses are retained according to our agreement with the relevant
+      client. <span class="fill">[State your specific retention periods, e.g. how long inactive
+      waitlist entries and session recordings are kept.]</span>
+    </p>
+
+    <h2 id="security">9. Data security</h2>
+    <p>
+      We use reasonable administrative, technical, and organizational measures designed to protect
+      personal information against unauthorized access, loss, misuse, or alteration. No method of
+      transmission or storage is completely secure, however, and we cannot guarantee absolute
+      security. You are responsible for keeping your account credentials and .edu login secure.
+    </p>
+
+    <h2 id="rights">10. Your privacy rights</h2>
+    <p>
+      Depending on where you live, you may have some or all of the following rights regarding your
+      personal information:
+    </p>
+    <ul>
+      <li><strong>Access</strong> — request a copy of the personal information we hold about you.</li>
+      <li><strong>Correction</strong> — ask us to correct inaccurate or incomplete information.</li>
+      <li><strong>Deletion</strong> — ask us to delete your personal information, subject to legal exceptions.</li>
+      <li><strong>Objection or restriction</strong> — object to or ask us to limit certain processing.</li>
+      <li><strong>Portability</strong> — receive certain information in a portable format.</li>
+      <li><strong>Withdraw consent</strong> — where we rely on consent, withdraw it at any time.</li>
+    </ul>
+    <p>
+      To exercise any of these rights, contact us at
+      <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>. We will respond as required
+      by applicable law and may need to verify your identity first. You will not be discriminated
+      against for exercising your rights. If you are in the EEA or UK, you also have the right to
+      lodge a complaint with your local data protection authority.
+    </p>
+
+    <h2 id="california">11. California privacy notice</h2>
+    <p>
+      If you are a California resident, the California Consumer Privacy Act (as amended by the CPRA)
+      gives you rights to know what personal information we collect, to request access and deletion,
+      to correct inaccurate information, and to opt out of the "sale" or "sharing" of personal
+      information. <strong>We do not sell your personal information, and we do not share it for
+      cross-context behavioral advertising.</strong> The categories of information we collect and
+      the purposes for collection are described in the
+      <a href="#collect">Information we collect</a> and <a href="#use">How we use information</a>
+      sections. To exercise your California rights, contact us at
+      <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.
+      <span class="fill">[Confirm whether CCPA/CPRA applies to you based on your revenue and data
+      volume; the notice is included as good practice regardless.]</span>
+    </p>
+
+    <h2 id="marketing">12. Marketing &amp; communications</h2>
+    <p>
+      We may send you emails about studies, panel updates, and (for clients) our services. Study- and
+      account-related messages are part of the service and are not marketing. For any promotional
+      email, you can opt out using the unsubscribe link or by contacting us. We will still send you
+      non-promotional messages necessary to operate your participation or account.
+    </p>
+
+    <h2 id="age">13. Age requirement</h2>
+    <p>
+      Campus Takes is intended only for individuals who are <strong>18 years of age or older</strong>.
+      Our services and website are not directed to children, and we do not knowingly collect personal
+      information from anyone under 18. If we learn that we have collected information from a person
+      under 18, we will delete it. If you believe a minor has provided us information, contact us at
+      <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.
+    </p>
+
+    <h2 id="intl">14. International data transfers</h2>
+    <p>
+      We are based in the United States, and the service providers we use may process information in
+      the United States and other countries. If you access our services from outside the United
+      States, you understand your information may be transferred to, stored, and processed in
+      countries whose data protection laws may differ from those in your country. Where required, we
+      use appropriate safeguards for such transfers.
+    </p>
+
+    <h2 id="cookies">15. Cookies &amp; analytics</h2>
+    <p>
+      Our website uses only the cookies and similar technologies necessary to function and, where
+      enabled, to understand aggregate usage.
+      <span class="fill">[Describe your actual setup: name your analytics tool and whether it uses
+      cookies. If you use a privacy-friendly, cookieless analytics tool such as Plausible or Fathom,
+      say so; if you use Google Analytics or advertising cookies, you likely need a cookie-consent
+      banner. Remove this section's placeholder once finalized.]</span>
+      Embedded forms are provided by Tally and may set cookies necessary for the form to work.
+    </p>
+
+    <h2 id="changes">16. Changes to this policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. When we do, we will revise the "Last
+      updated" date above and, for material changes, provide a more prominent notice. Your continued
+      use of our services after an update means you accept the revised policy.
+    </p>
+
+    <h2 id="contact">17. Contact us</h2>
+    <p>
+      If you have questions, requests, or concerns about this policy or your personal information,
+      contact us at:
+    </p>
+    <p>
+      <strong>Campus Takes</strong><br>
+      Email: <a href="mailto:hello@campustakes.com">hello@campustakes.com</a><br>
+      <span class="fill">[Mailing address — a physical or registered business address is required for
+      several privacy laws (including CCPA). Add it here.]</span>
+    </p>
+
+    <div class="notice">
+      This page is provided for general informational purposes and is not legal advice. Campus Takes
+      should have this policy reviewed by a qualified attorney before launch and updated to reflect
+      its actual data practices, entity details, and the jurisdictions where it operates.
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="index.html">Campus Takes</a>
+      <ul class="footer-links">
+        <li><a href="research.html">For research teams</a></li>
+        <li><a href="students.html">For students</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+      </ul>
+    </div>
+    <p class="footer-legal">
+      © 2026 Campus Takes. Campus Takes is an independent research panel of university
+      students. It is not affiliated with, sponsored by, or endorsed by any
+      university or educational institution.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
