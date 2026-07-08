@@ -91,6 +91,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
 .path .go:hover{color:var(--navy-soft);border-color:var(--navy-soft)}
 @media (max-width:720px){.paths{padding:64px 0}.paths-grid{grid-template-columns:1fr;gap:40px}}
 
+.creed{padding:88px 0;text-align:center}
+.creed p{
+  font-family:var(--serif);font-weight:600;line-height:1.35;
+  font-size:clamp(1.35rem,1.1rem + 1.4vw,1.9rem);color:var(--navy);
+  max-width:26ch;margin-inline:auto;
+}
+@media (max-width:640px){.creed{padding:64px 0}}
+
 .site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
 .footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
@@ -120,8 +128,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
   <div class="wrap">
     <h1>Verified students. Honest takes.</h1>
     <p class="hero-sub">
-      Research teams get honest insight from verified university students, and
-      students get paid for giving them. Simple as that.
+      Research teams get honest insight from a small, hand-screened panel of
+      verified university students, and students get paid for giving it.
+      Simple as that.
     </p>
     <div class="fork">
       <a class="btn btn-solid" href="research.html">I need research participants</a>
@@ -144,7 +153,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
     <div class="paths-grid">
       <div class="path">
         <h2>For research teams</h2>
-        <p>Screened, confirmed student participants for interviews, usability
+        <p>Hand-picked, confirmed student participants for interviews, usability
         tests, and surveys. No subscription, you pay per completed session.</p>
         <a class="go" href="research.html">See how recruiting works</a>
       </div>
@@ -155,6 +164,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
         <a class="go" href="students.html">Join the waitlist</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="creed">
+  <div class="wrap">
+    <p>Big panels sell access to a crowd. Ours is small enough to know.</p>
   </div>
 </section>
 
