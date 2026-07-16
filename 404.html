@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found | Campus Takes</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-soft:#33507F;
+  --white:#FFFFFF; --muted:#5A6472; --line:#E4E7EC;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Instrument Sans","Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--sans);color:var(--navy);background:var(--white);
+  min-height:100dvh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:24px;-webkit-font-smoothing:antialiased;
+}
+img{margin-bottom:28px}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,1.4rem + 3vw,3rem);letter-spacing:-.02em}
+p{color:var(--muted);margin:14px 0 32px;max-width:44ch;line-height:1.6}
+.links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn{
+  display:inline-block;font-weight:600;font-size:.98rem;padding:13px 26px;
+  border-radius:6px;border:1px solid var(--navy);text-decoration:none;
+  transition:background .2s ease,color .2s ease;
+}
+.btn-solid{background:var(--navy);color:var(--white)}
+.btn-solid:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.btn-outline{color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:var(--white)}
+:where(a):focus-visible{outline:2px solid var(--navy-soft);outline-offset:3px}
+</style>
+</head>
+<body>
+  <img src="/logo.png" alt="" width="62" height="50">
+  <h1>This page doesn't exist</h1>
+  <p>The link may be old or mistyped. Everything we have lives on one of these two pages.</p>
+  <div class="links">
+    <a class="btn btn-solid" href="/research">For research teams</a>
+    <a class="btn btn-outline" href="/students">For students</a>
+  </div>
+</body>
+</html>
