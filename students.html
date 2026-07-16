@@ -69,7 +69,7 @@ h3{font-size:1.15rem;margin-bottom:8px}
 /* navy hero with the waitlist card beside it: signup above the fold */
 .hero{background:var(--navy);color:var(--white);padding:88px 0 96px}
 .hero .kicker{color:rgba(255,255,255,.6)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
 .hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
 .hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
 .money{margin-top:36px;border-top:1px solid var(--line-dark)}
@@ -82,13 +82,15 @@ h3{font-size:1.15rem;margin-bottom:8px}
 
 .waitlist-card{
   background:var(--white);border-radius:8px;padding:36px 32px;color:var(--text);
+  text-align:center;
 }
 .waitlist-card h2{font-size:1.5rem;margin-bottom:10px}
-.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px}
-.waitlist-card .honesty{font-size:.86rem;margin-top:8px;color:#7A8494}
+.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px;max-width:42ch;margin-inline:auto}
+.waitlist-card .honesty{font-size:.92rem;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--text)}
+.waitlist-card .honesty b{color:var(--navy);font-weight:600}
 .form-embed{margin-top:20px}
 .form-embed iframe{display:block;width:100%;border:none}
-.first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted)}
+.first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted);max-width:42ch;margin-inline:auto}
 .first-in-line b{color:var(--navy);font-weight:600}
 @media (max-width:860px){
   .hero{padding:64px 0 72px}
@@ -169,7 +171,7 @@ h1,h2{text-wrap:balance}
           qualification.
         </p>
         <dl class="money">
-          <div class="stat"><dt>$40&ndash;$75</dt><dd>Typical pay per session</dd></div>
+          <div class="stat"><dt>$40 to $75</dt><dd>Typical pay per session</dd></div>
           <div class="stat"><dt>Under an hour</dt><dd>Most sessions run 20 to 60 minutes</dd></div>
           <div class="stat"><dt>Paid in minutes</dt><dd>Your payout lands as soon as you finish</dd></div>
         </dl>
@@ -178,8 +180,8 @@ h1,h2{text-wrap:balance}
         <h2>Join the waitlist</h2>
         <p>Tell us a bit about yourself and we'll reach out when a study
         matches your profile.</p>
-        <p class="honesty">Please answer honestly. Screening accuracy is
-        crucial to matching you with research opportunities.</p>
+        <p class="honesty">Please <b>answer honestly</b>. Accurate answers
+        are what allow us to match you with the right opportunities.</p>
         <!-- Tally form: Campus Takes waitlist -->
         <div class="form-embed" id="typeform-students">
           <iframe src="https://tally.so/embed/0Q5jKB?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Campus Takes waitlist signup"></iframe>
