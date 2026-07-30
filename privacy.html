@@ -93,6 +93,27 @@ h1,h2{text-wrap:balance}
 :where(a,button):focus-visible{outline:2px solid var(--navy-soft);outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 6px 0;text-decoration:none;font-weight:600}
 .skip:focus{left:0}
+
+/* ---------- mobile spacing scale ---------- */
+@media (max-width:640px){
+  .legal{padding:44px 0 64px}
+  .legal h2{margin:34px 0 12px}
+  .toc{padding:20px;margin:26px 0}
+  .toc li{margin-bottom:2px}
+  .toc a{display:inline-block;padding-block:8px}
+  .site-footer{padding:44px 0 36px}
+  .footer-legal{margin-top:24px;padding-top:20px}
+}
+
+/* ---------- mobile tap targets ---------- */
+@media (max-width:640px){
+  .site-nav a{padding-block:9px}
+  .brand{min-height:44px}
+  .footer-links{gap:2px 24px}
+  .footer-links a{display:inline-block;padding-block:11px}
+  .path .go{display:inline-block;padding-block:6px}
+  .ev-n{font-size:.75rem}
+}
 </style>
 </head>
 <body>
@@ -118,12 +139,12 @@ h1,h2{text-wrap:balance}
     <p class="updated">Last updated: July 7, 2026</p>
 
     <p class="intro">
-      This Privacy Policy explains how <strong>Campus Takes</strong>
-      (<span class="fill">[LEGAL ENTITY NAME, e.g. "Campus Takes LLC"]</span>, "Campus Takes,"
+      This Privacy Policy explains how <strong>Campus Takes LLC</strong>
+      ("Campus Takes,"
       "we," "us," or "our") collects, uses, shares, and protects personal information. It applies
       to two groups of people: <strong>students</strong> who join our participant panel, and
       <strong>clients</strong> (researchers and brands) who request participants through us. It
-      also applies to anyone who visits <span class="fill">[campustakes.com]</span>.
+      also applies to anyone who visits <a href="https://campustakes.com">campustakes.com</a>.
     </p>
     <p>
       By using our website, joining the panel, participating in a study, or requesting
@@ -206,7 +227,7 @@ h1,h2{text-wrap:balance}
       <li>Fulfill client requests: recruit, screen, and confirm participants for research studies.</li>
       <li>Process payments to students and billing to clients, and meet related tax obligations.</li>
       <li>Communicate with you about studies, invitations, scheduling, your account, and support requests.</li>
-      <li>Maintain quality and reliability, including confirming attendance and managing standbys.</li>
+      <li>Maintain the quality of the panel, including confirming scheduled sessions and sending reminders.</li>
       <li>Improve our services and understand how our website is used.</li>
       <li>Protect against fraud, misuse, and security risks, and comply with legal obligations.</li>
     </ul>
@@ -219,19 +240,19 @@ h1,h2{text-wrap:balance}
         that study receives the information necessary to conduct and use the research — which may
         include your first name, relevant screening details, your responses, and session recordings.
         Clients are expected to use this information only for the research purpose and in line with
-        applicable law. <span class="fill">[Confirm exactly what participant data each client
-        receives, and require clients to sign terms limiting their use of it.]</span>
+        applicable law. Clients do not receive your contact details, your school email address, or
+        your payment information. Where a study is recorded, the recording is shared only with the
+        client running that study, and only after you have consented to being recorded.
       </li>
       <li>
         <strong>With service providers (processors)</strong> who perform functions on our behalf,
         under contract, including:
         <ul>
           <li><strong>Form and data collection:</strong> Tally (waitlist and intake forms).</li>
-          <li><strong>Participant payments:</strong> <span class="fill">[Tremendous or your chosen payout provider]</span>.</li>
+          <li><strong>Participant payments:</strong> Tremendous. A one-time earlier payment was sent by Venmo.</li>
           <li><strong>Website hosting:</strong> Vercel.</li>
-          <li><strong>Email and communications:</strong> <span class="fill">[Google Workspace and any email tool you use]</span>.</li>
-          <li><strong>Scheduling and video sessions:</strong> <span class="fill">[e.g. Cal.com, Calendly, Zoom, Google Meet, or your research platform]</span>.</li>
-          <li><strong>Analytics:</strong> <span class="fill">[e.g. Plausible, Fathom, or Google Analytics — or remove if none]</span>.</li>
+          <li><strong>Email:</strong> our contact address is <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.</li>
+          <li><strong>Scheduling and video sessions:</strong> the client running a study chooses the tool, most often Zoom or Google Meet. Their terms and privacy policy apply to that session.</li>
         </ul>
       </li>
       <li><strong>For legal reasons:</strong> to comply with law, respond to lawful requests, enforce our terms, or protect the rights, safety, and property of Campus Takes, our users, or others.</li>
@@ -248,10 +269,10 @@ h1,h2{text-wrap:balance}
     </p>
     <p>
       Recordings and study responses are shared with the client who commissioned the study and may
-      be reviewed, analyzed, and stored by them. <span class="fill">[If sessions are recorded,
-      confirm your recording-consent process and note that some U.S. states require all-party
-      consent to record — your consent flow must account for the participant's and client's
-      locations.]</span>
+      be reviewed, analyzed, and stored by them. Not every study is recorded. Whether a session is
+      recorded is decided by the client running it, and you are told before the session begins. We
+      ask for the recorded consent of everyone on the call before recording starts, so that a
+      session is only recorded when all participants have agreed.
     </p>
 
     <h2 id="payments">6. Payments &amp; tax information</h2>
@@ -264,8 +285,9 @@ h1,h2{text-wrap:balance}
       If your total incentives reach thresholds set by law, we may be required to collect tax
       information (such as a Form W-9) and report payments to tax authorities (for example, issuing
       a Form 1099 in the United States where payments to an individual reach the reporting threshold
-      in a calendar year). <span class="fill">[Confirm your tax-reporting process and thresholds
-      with an accountant.]</span>
+      in a calendar year). If we need tax information from you, we will ask for it before sending
+      any payment that would cross that threshold. You are responsible for reporting your own
+      income, and nothing here is tax advice.
     </p>
 
     <h2 id="legalbases">7. Legal bases for processing (EEA/UK)</h2>
@@ -284,8 +306,9 @@ h1,h2{text-wrap:balance}
       including to run the panel, meet legal, tax, and accounting requirements, resolve disputes,
       and enforce our agreements. When information is no longer needed, we delete or anonymize it.
       Research recordings and responses are retained according to our agreement with the relevant
-      client. <span class="fill">[State your specific retention periods, e.g. how long inactive
-      waitlist entries and session recordings are kept.]</span>
+      client. As a general rule, we keep panelist records for as long as you remain on the panel and
+      for up to 24 months after your last activity, and we keep payment and tax records for at least
+      7 years where law requires it. You can ask us to delete your information sooner at any time.
     </p>
 
     <h2 id="security">9. Data security</h2>
@@ -328,8 +351,8 @@ h1,h2{text-wrap:balance}
       <a href="#collect">Information we collect</a> and <a href="#use">How we use information</a>
       sections. To exercise your California rights, contact us at
       <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.
-      <span class="fill">[Confirm whether CCPA/CPRA applies to you based on your revenue and data
-      volume; the notice is included as good practice regardless.]</span>
+      We provide this notice as a matter of practice, whether or not the thresholds that make the
+      CCPA mandatory currently apply to us.
     </p>
 
     <h2 id="marketing">12. Marketing &amp; communications</h2>
@@ -360,13 +383,10 @@ h1,h2{text-wrap:balance}
 
     <h2 id="cookies">15. Cookies &amp; analytics</h2>
     <p>
-      Our website uses only the cookies and similar technologies necessary to function and, where
-      enabled, to understand aggregate usage.
-      <span class="fill">[Describe your actual setup: name your analytics tool and whether it uses
-      cookies. If you use a privacy-friendly, cookieless analytics tool such as Plausible or Fathom,
-      say so; if you use Google Analytics or advertising cookies, you likely need a cookie-consent
-      banner. Remove this section's placeholder once finalized.]</span>
-      Embedded forms are provided by Tally and may set cookies necessary for the form to work.
+      <strong>We do not use analytics or advertising cookies, and we do not track you across other
+      websites.</strong> Our own pages set no cookies. Embedded forms are provided by Tally and may
+      set cookies that are necessary for the form to work. If we add analytics later, we will update
+      this section first, and we will choose a tool that does not track individuals across sites.
     </p>
 
     <h2 id="changes">16. Changes to this policy</h2>
@@ -405,7 +425,7 @@ h1,h2{text-wrap:balance}
         <li><a href="students.html">For students</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
-        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+        <li><a href="mailto:hello@campustakes.com">hello@campustakes.com</a></li>
       </ul>
     </div>
     <p class="footer-legal">

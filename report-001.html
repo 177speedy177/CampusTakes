@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Report 001 | Campus Takes</title>
+<meta name="description" content="Campus Takes Panel Report 001: a quota of 20 completed responses filled in 24 hours, 65% of panelists new to paid research, median payout 18 hours. Fielded July 27 to 28, 2026. n=20.">
+<link rel="canonical" href="https://campustakes.com/report-001">
+<meta name="theme-color" content="#10254A">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/icon-512.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Campus Takes">
+<meta property="og:title" content="Panel Report 001: the panel, measured">
+<meta property="og:description" content="A quota of 20 completed responses filled in 24 hours. 65% of panelists had never been paid for research. Median payout 18 hours. n=20.">
+<meta property="og:url" content="https://campustakes.com/report-001">
+<meta property="og:image" content="https://campustakes.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://campustakes.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Site palette. Navy and white only, one lighter navy as the single accent. */
+    --navy-950:#0A1E3F;
+    --navy-900:#10254A;
+    --navy-800:#1B3563;
+    --navy-700:#24406F;
+    --blue-500:#33507F;
+    --blue-300:#9DAEC9;
+    --blue-150:#C9D3E3;
+    --tint:#F7F8FA;
+    --paper:#FFFFFF;
+    --ink:#232B38;
+    --muted:#5A6472;
+    --line:#E4E7EC;
+    --mono:'IBM Plex Mono', monospace;
+    --sans:'Instrument Sans', -apple-system, sans-serif;
+    --serif:'Source Serif 4', Georgia, serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
+  .mono{font-family:var(--mono);font-size:12px;letter-spacing:.02em;color:var(--muted);}
+
+  /* ---------- sticky site header ---------- */
+  .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);}
+  .site-header .bar{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 32px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand-logo{display:block;flex:none;height:30px;width:auto;}
+  .brand-name{font-family:var(--serif);font-weight:600;font-size:1.4rem;color:var(--navy-900);letter-spacing:-.01em;}
+  .site-nav{display:flex;gap:28px;align-items:center;}
+  .site-nav a{font-size:.95rem;font-weight:500;text-decoration:none;color:var(--muted);transition:color .2s ease;}
+  .site-nav a:hover{color:var(--navy-900);}
+  .nl-short{display:none;}
+  @media (max-width:860px){
+    .site-header .bar{height:60px;padding:0 20px;}
+    .brand{gap:8px;}
+    .brand-logo{height:24px;}
+    .brand-name{font-size:1.15rem;}
+    .site-nav{gap:16px;}
+    .nl-full{display:none;}
+    .nl-short{display:inline;}
+  }
+
+  /* ---------- cover ---------- */
+  .cover{background:var(--navy-900);color:#fff;padding:72px 0 80px;position:relative;overflow:hidden;}
+  .cover::after{content:"";position:absolute;inset:auto -120px -260px auto;width:560px;height:560px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.20);pointer-events:none;}
+  .cover::before{content:"";position:absolute;inset:auto -40px -340px auto;width:560px;height:560px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.11);pointer-events:none;}
+  .cover .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:12px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--blue-300);margin-bottom:38px;}
+  .cover .eyebrow .rule{flex:0 0 44px;height:1px;background:var(--blue-300);opacity:.5;}
+  .cover h1{font-family:var(--serif);font-size:clamp(44px,7vw,84px);font-weight:600;letter-spacing:-.025em;line-height:1.02;max-width:14ch;}
+  .cover p.lede{margin-top:26px;max-width:56ch;font-size:18px;font-weight:400;color:rgba(255,255,255,.78);line-height:1.6;}
+  .cover .meta{margin-top:44px;font-family:var(--mono);font-size:12.5px;color:var(--blue-300);
+    display:flex;flex-wrap:wrap;gap:10px 0;align-items:center;}
+  .cover .meta span{white-space:nowrap;}
+  .cover .meta .dot{margin:0 14px;opacity:.5;}
+
+  /* ---------- stat board ---------- */
+  .board{border-bottom:1px solid var(--line);}
+  .board .grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:44px 28px 40px;border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none;padding-left:0;}
+  .stat .num{font-family:var(--serif);font-size:clamp(40px,4.6vw,58px);font-weight:600;letter-spacing:-.03em;color:var(--navy-900);line-height:1;font-variant-numeric:tabular-nums;}
+  .stat .num small{font-size:.44em;font-weight:700;letter-spacing:0;color:var(--blue-500);margin-left:2px;}
+  .stat .label{margin-top:12px;font-size:15px;font-weight:600;color:var(--ink);line-height:1.35;}
+  .stat .src{margin-top:10px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.55;}
+
+  /* ---------- panel strip ---------- */
+  .strip{background:var(--tint);border-bottom:1px solid var(--line);}
+  .strip .row{display:flex;flex-wrap:wrap;gap:10px 44px;padding:22px 0;align-items:baseline;}
+  .strip b{font-weight:700;color:var(--navy-900);font-size:15px;}
+  .strip span{font-size:14px;color:var(--muted);}
+
+  /* ---------- sections ---------- */
+  section.block{padding:76px 0 8px;}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-500);margin-bottom:14px;}
+  h2{font-family:var(--serif);font-size:clamp(28px,3.4vw,40px);font-weight:600;letter-spacing:-.02em;color:var(--navy-900);line-height:1.1;max-width:22ch;}
+  .intro{margin-top:16px;max-width:62ch;font-size:16.5px;color:var(--ink);}
+
+  .finding{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px;align-items:start;
+    padding:52px 0;border-bottom:1px solid var(--line);}
+  .finding:last-of-type{border-bottom:none;}
+  .finding h3{font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:-.01em;color:var(--navy-900);line-height:1.25;}
+  .finding .big{font-family:var(--serif);font-size:clamp(46px,5vw,64px);font-weight:600;letter-spacing:-.03em;color:var(--navy-900);line-height:1;margin:16px 0 14px;font-variant-numeric:tabular-nums;}
+  .finding p{font-size:15.5px;color:var(--ink);max-width:46ch;}
+  .finding .src{margin-top:16px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.6;}
+
+  /* dot grid: one square per completed response */
+  .dots{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:330px;}
+  .dots i{display:block;aspect-ratio:1/1;border-radius:5px;background:var(--blue-150);}
+  .dots i.d1{background:var(--navy-900);}
+  .dots i.d2{background:var(--blue-500);}
+  .dots i.d3{background:var(--blue-150);}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;}
+  .legend span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);}
+  .legend i{width:12px;height:12px;border-radius:3px;display:inline-block;flex:none;}
+
+  /* segmented bar */
+  /* Counts lead, percentages follow. At n=20 one respondent is five points,
+     so the count is the honest headline and the percentage is context. */
+  .seg{display:flex;height:66px;border-radius:8px;overflow:hidden;max-width:520px;}
+  .seg div{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;color:#fff;min-width:0;padding:0 4px;}
+  .seg b{font-family:var(--serif);font-weight:600;font-size:21px;line-height:1;font-variant-numeric:tabular-nums;}
+  .seg em{font-style:normal;font-family:var(--mono);font-size:11px;opacity:.72;}
+  .seg .s1{background:var(--navy-900);}
+  .seg .s2{background:var(--blue-500);}
+  .seg .s3{background:var(--blue-300);color:var(--navy-900);}
+  .seg .s3 em{opacity:.85;}
+
+  /* horizontal bar chart */
+  .bars{max-width:540px;display:grid;gap:16px;}
+  .bar{display:grid;grid-template-columns:1fr;gap:6px;}
+  .bar .top{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;}
+  .bar .top b{font-weight:600;color:var(--ink);}
+  .bar .top span{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .bar .track{height:14px;border-radius:7px;background:var(--tint);overflow:hidden;}
+  .bar .fill{height:100%;border-radius:7px;background:var(--blue-500);}
+  .bar.lead .fill{background:var(--navy-900);}
+
+  /* ---------- floating back button ---------- */
+  .back-float{position:fixed;left:24px;bottom:24px;z-index:60;
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--navy-900);color:#fff;text-decoration:none;
+    font-size:14px;font-weight:600;padding:12px 20px 12px 16px;border-radius:999px;
+    box-shadow:0 8px 26px -8px rgba(10,30,63,.55);
+    transition:opacity .25s ease,transform .25s ease,visibility .25s,background .2s ease;}
+  /* Visible by default so it still works without JS. JS only hides it at the top. */
+  .back-float.at-top{opacity:0;visibility:hidden;transform:translateY(10px);}
+  .back-float:hover{background:var(--blue-500);}
+  .back-float svg{flex:none;}
+  @media (max-width:600px){
+    .back-float{left:16px;bottom:16px;padding:11px 17px 11px 14px;font-size:13.5px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .back-float{transition:opacity .01s linear,visibility .01s linear;transform:none;}
+  }
+
+  /* ---------- quotes ---------- */
+  .quotes{background:var(--navy-900);color:#fff;padding:80px 0;margin-top:72px;}
+  .quotes .kicker{color:var(--blue-300);}
+  .quotes h2{color:#fff;}
+  .quotes .intro{color:rgba(255,255,255,.78);}
+  .qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;}
+  .q{background:var(--navy-800);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:28px 26px 24px;display:flex;flex-direction:column;gap:18px;}
+  .q .mark{font-size:34px;line-height:.5;color:var(--blue-300);font-weight:800;}
+  .q p{font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.88);flex:1;}
+  .q .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-300);}
+  .quotes .consent{margin-top:26px;font-family:var(--mono);font-size:12px;color:var(--blue-300);}
+
+  /* ---------- methodology + footer ---------- */
+  .method{padding:72px 0 64px;border-bottom:1px solid var(--line);}
+  .method h2{font-size:22px;}
+  .method p{margin-top:16px;max-width:74ch;font-family:var(--mono);font-size:13px;line-height:1.85;color:var(--muted);}
+  footer{padding:40px 0 48px;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .foot-links{display:flex;gap:24px;flex-wrap:wrap;list-style:none;font-size:14px;}
+  .foot-links a{color:var(--muted);text-decoration:none;transition:color .2s ease;}
+  .foot-links a:hover{color:var(--navy-900);}
+  .foot-legal{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--muted);max-width:74ch;line-height:1.7;}
+
+  @media (max-width:880px){
+    .board .grid{grid-template-columns:repeat(2,1fr);}
+    .stat{padding:34px 22px 30px;}
+    .stat:nth-child(odd){border-left:none;padding-left:0;}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line);}
+    .finding{grid-template-columns:1fr;gap:30px;}
+    .qgrid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .stat,.finding,.q{animation:rise .5s ease both;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+
+  /* ---------- mobile spacing scale ---------- */
+  @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .cover{padding:52px 0 56px;}
+    .cover .eyebrow{margin-bottom:26px;}
+    .cover p.lede{margin-top:20px;font-size:16.5px;}
+    .cover .meta{margin-top:28px;}
+    .stat{padding:26px 16px 24px;}
+    .strip .row{padding:18px 0;gap:8px 24px;}
+    section.block{padding:52px 0 8px;}
+    .finding{padding:34px 0;gap:24px;}
+    .quotes{padding:56px 0;margin-top:48px;}
+    .qgrid{margin-top:30px;gap:16px;}
+    .q{padding:22px 20px 20px;}
+    .method{padding:52px 0 48px;}
+    .method p{margin-top:12px;}
+    footer{padding:32px 0 40px;}
+    .foot-legal{margin-top:22px;padding-top:18px;}
+  }
+
+  /* ---------- mobile tap targets and legibility ---------- */
+  @media (max-width:640px){
+    .site-nav a{padding-block:9px;}
+    .brand{min-height:44px;}
+    .foot-links{gap:2px 22px;}
+    .foot-links a{display:inline-block;padding-block:11px;}
+    .stat .src,.finding .src{font-size:12px;}
+    .kicker,.q .tag,.consent,.seg em{font-size:12px;}
+    .method p{font-size:12.5px;line-height:1.8;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="Campus Takes home">
+      <img class="brand-logo" src="/logo.png" alt="" width="37" height="30">
+      <span class="brand-name">Campus Takes</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/research"><span class="nl-full">For research teams</span><span class="nl-short">Research</span></a>
+      <a href="/students"><span class="nl-full">For students</span><span class="nl-short">Students</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= COVER ======================= -->
+<header class="cover">
+  <div class="wrap">
+    <div class="eyebrow"><span>Campus Takes</span><span class="rule"></span><span>Panel report 001 &middot; July 2026</span></div>
+    <h1>The panel, measured.</h1>
+    <p class="lede">In July we opened a paid study to the panel, capped it at 20 completed responses, and recorded what happened next: how fast the quota filled, how fast panelists were paid, and what they told us. These are the numbers, with the study behind them.</p>
+    <div class="meta">
+      <span>Fielded July 27 to 28, 2026</span><span class="dot">&middot;</span>
+      <span>Quota of 20 completed responses</span><span class="dot">&middot;</span>
+      <span>Filled in 24 hours</span>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= STAT BOARD ======================= -->
+<div class="board">
+  <div class="wrap">
+    <div class="grid">
+      <div class="stat">
+        <div class="num">24<small>hrs</small></div>
+        <div class="label">Quota filled</div>
+        <div class="src">All 20 completed responses were in within 24 hours of the invite going out</div>
+      </div>
+      <div class="stat">
+        <div class="num">20<small>min</small></div>
+        <div class="label">Half the quota filled</div>
+        <div class="src">10 of the 20 completed responses arrived within 20 minutes of the invite going out</div>
+      </div>
+      <div class="stat">
+        <div class="num">18<small>hrs</small></div>
+        <div class="label">Median payout speed</div>
+        <div class="src">Median across the 10 payouts issued through July 28, from completed response to payment sent</div>
+      </div>
+      <div class="stat">
+        <div class="num">100<small>%</small></div>
+        <div class="label">Enrollment verified</div>
+        <div class="src">Every panelist signs up with a verified school email and every response ties back to one panelist</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= PANEL STRIP ======================= -->
+<div class="strip">
+  <div class="wrap">
+    <div class="row">
+      <div><b>1</b> <span>verified panelist record behind every response</span></div>
+      <div><b>2</b> <span>studies per panelist per month, max</span></div>
+      <div><b>90</b> <span>day cooldown between studies in the same category</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= FINDINGS ======================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">What the study showed</div>
+    <h2>Four numbers researchers ask about, answered by the panel itself.</h2>
+    <p class="intro">Each chart below is built from the 20 completed responses. One square, one panelist. Counts are printed next to every percentage.</p>
+
+    <!-- finding 1 -->
+    <div class="finding">
+      <div>
+        <h3>Most of this group was new to paid research</h3>
+        <div class="big">65%</div>
+        <p>Close to two in three panelists had never been paid to share an opinion before this study. For most of this panel, a Campus Takes study is their first paid research experience.</p>
+        <div class="src">Never: 13 &middot; Once or twice: 5 &middot; A few times: 2 &middot; n=20</div>
+      </div>
+      <div>
+        <div class="dots" role="img" aria-label="20 squares, one per response: 13 never paid for research, 5 once or twice, 2 a few times">
+          <i class="d1"></i><i class="d1"></i><i class="d1"></i><i class="d1"></i><i class="d1"></i>
+          <i class="d1"></i><i class="d1"></i><i class="d1"></i><i class="d1"></i><i class="d1"></i>
+          <i class="d1"></i><i class="d1"></i><i class="d1"></i><i class="d2"></i><i class="d2"></i>
+          <i class="d2"></i><i class="d2"></i><i class="d2"></i><i class="d3"></i><i class="d3"></i>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--navy-900)"></i>Never paid for research</span>
+          <span><i style="background:var(--blue-500)"></i>Once or twice</span>
+          <span><i style="background:var(--blue-150)"></i>A few times</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- finding 2 -->
+    <div class="finding">
+      <div>
+        <h3>Three in four will go on camera</h3>
+        <div class="big">75%</div>
+        <p>20 percent say yes outright and another 55 percent say yes as long as the recording stays private. Interviews and moderated usability sessions are on the table, not just surveys.</p>
+        <div class="src">Yes: 4 &middot; Yes, if the recording stays private: 11 &middot; No: 5 &middot; n=20</div>
+      </div>
+      <div>
+        <div class="seg" role="img" aria-label="Of 20 respondents: 4 yes, 11 yes if the recording stays private, 5 no">
+          <div class="s1" style="flex:4"><b>4</b><em>20%</em></div>
+          <div class="s2" style="flex:11"><b>11</b><em>55%</em></div>
+          <div class="s3" style="flex:5"><b>5</b><em>25%</em></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--navy-900)"></i>Yes</span>
+          <span><i style="background:var(--blue-500)"></i>Yes, if the recording stays private</span>
+          <span><i style="background:var(--blue-300)"></i>No</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- finding 3 -->
+    <div class="finding">
+      <div>
+        <h3>Short notice works</h3>
+        <div class="big">85%</div>
+        <p>Better than four in five respondents said they can join a study within two days of hearing about it, and 30 percent said the same day. This is self-reported availability, not an observed response to a scheduled session.</p>
+        <div class="src">Same day: 6 &middot; 1 to 2 days: 11 &middot; 3 to 5 days: 3 &middot; n=20</div>
+      </div>
+      <div>
+        <div class="seg" role="img" aria-label="Of 20 respondents: 6 same day, 11 within one to two days, 3 within three to five days">
+          <div class="s1" style="flex:6"><b>6</b><em>30%</em></div>
+          <div class="s2" style="flex:11"><b>11</b><em>55%</em></div>
+          <div class="s3" style="flex:3"><b>3</b><em>15%</em></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--navy-900)"></i>Same day</span>
+          <span><i style="background:var(--blue-500)"></i>1 to 2 days</span>
+          <span><i style="background:var(--blue-300)"></i>3 to 5 days</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- finding 4 -->
+    <div class="finding">
+      <div>
+        <h3>Why students quit surveys elsewhere</h3>
+        <div class="big">1 in 3</div>
+        <p>Asked why they abandon surveys in general, the top answer was that the survey felt like a scam. The question was about surveys anywhere, not about this study, and it does not establish that any verification step changed how these respondents answered.</p>
+        <div class="src">Most common reason for abandoning a survey, any source &middot; n=20</div>
+      </div>
+      <div>
+        <div class="bars">
+          <div class="bar lead">
+            <div class="top"><b>It feels like a scam</b><span>7 &middot; 35%</span></div>
+            <div class="track"><div class="fill" style="width:100%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="top"><b>It runs too long</b><span>5 &middot; 25%</span></div>
+            <div class="track"><div class="fill" style="width:71%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="top"><b>Repetitive questions</b><span>3 &middot; 15%</span></div>
+            <div class="track"><div class="fill" style="width:43%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="top"><b>Asks for too much personal information</b><span>2 &middot; 10%</span></div>
+            <div class="track"><div class="fill" style="width:29%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="top"><b>Unclear questions</b><span>1 &middot; 5%</span></div>
+            <div class="track"><div class="fill" style="width:14%"></div></div>
+          </div>
+          <div class="bar">
+            <div class="top"><b>They usually finish</b><span>2 &middot; 10%</span></div>
+            <div class="track"><div class="fill" style="width:29%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================= QUOTES ======================= -->
+<section class="quotes">
+  <div class="wrap">
+    <div class="kicker">Open answers</div>
+    <h2>In their own words</h2>
+    <p class="intro">One prompt asked panelists about the last app they deleted and why. Answers came back specific and usable, the kind of open-end a team can build on.</p>
+    <div class="qgrid">
+      <div class="q">
+        <div class="mark">&ldquo;</div>
+        <p>I deleted TikTok because it became a distraction during the school year.</p>
+        <div class="tag">Verified panelist &middot; Study 001</div>
+      </div>
+      <div class="q">
+        <div class="mark">&ldquo;</div>
+        <p>I deleted Canva from my phone. I deleted it because I use it much more on my laptop than I did on my phone.</p>
+        <div class="tag">Verified panelist &middot; Study 001</div>
+      </div>
+      <div class="q">
+        <div class="mark">&ldquo;</div>
+        <p>I deleted Peacock because I stopped watching movies from there as I wasn&rsquo;t satisfied.</p>
+        <div class="tag">Verified panelist &middot; Study 001</div>
+      </div>
+    </div>
+    <div class="consent">Published with each panelist&rsquo;s written consent.</div>
+  </div>
+</section>
+
+<!-- ======================= METHODOLOGY ======================= -->
+<section class="method">
+  <div class="wrap">
+    <h2>Methodology</h2>
+    <p>Single-wave survey fielded July 27 to 28, 2026. The study was capped at 20 completed responses. Fielding opened when invitations went out and closed when the quota filled, 24 hours later. Panelists verify enrollment with a school email address at signup, and each response links to one verified panelist record. Percentages are shares of the 20 completed responses and may not sum to 100 due to rounding. Payout timing is the median of the 10 payouts issued through July 28, 2026. Panelists are capped at two studies per month with a 90-day cooldown between studies in the same category. Open answers are published with written consent.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <a class="brand" href="/" aria-label="Campus Takes home">
+        <img class="brand-logo" src="/logo.png" alt="" width="37" height="30">
+        <span class="brand-name">Campus Takes</span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="/research">For research teams</a></li>
+        <li><a href="/students">For students</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="mailto:hello@campustakes.com">hello@campustakes.com</a></li>
+      </ul>
+    </div>
+    <p class="foot-legal">
+      &copy; 2026 Campus Takes. Campus Takes is an independent research panel of
+      college students. It is not affiliated with, sponsored by, or endorsed by any
+      university or educational institution.
+    </p>
+  </div>
+</footer>
+
+<a class="back-float" id="backFloat" href="/">
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M14 8H3M7.5 3.5 3 8l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Back to Campus Takes
+</a>
+
+<script>
+(function(){
+  var b = document.getElementById('backFloat');
+  function update(){ b.classList.toggle('at-top', window.scrollY <= 320); }
+  update();
+  window.addEventListener('scroll', update, {passive:true});
+})();
+</script>
+
+</body>
+</html>

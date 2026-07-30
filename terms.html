@@ -93,6 +93,27 @@ h1,h2{text-wrap:balance}
 :where(a,button):focus-visible{outline:2px solid var(--navy-soft);outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 6px 0;text-decoration:none;font-weight:600}
 .skip:focus{left:0}
+
+/* ---------- mobile spacing scale ---------- */
+@media (max-width:640px){
+  .legal{padding:44px 0 64px}
+  .legal h2{margin:34px 0 12px}
+  .toc{padding:20px;margin:26px 0}
+  .toc li{margin-bottom:2px}
+  .toc a{display:inline-block;padding-block:8px}
+  .site-footer{padding:44px 0 36px}
+  .footer-legal{margin-top:24px;padding-top:20px}
+}
+
+/* ---------- mobile tap targets ---------- */
+@media (max-width:640px){
+  .site-nav a{padding-block:9px}
+  .brand{min-height:44px}
+  .footer-links{gap:2px 24px}
+  .footer-links a{display:inline-block;padding-block:11px}
+  .path .go{display:inline-block;padding-block:6px}
+  .ev-n{font-size:.75rem}
+}
 </style>
 </head>
 <body>
@@ -119,10 +140,10 @@ h1,h2{text-wrap:balance}
 
     <p class="intro">
       These Terms of Service ("Terms") are a binding agreement between you and
-      <strong>Campus Takes</strong>
-      (<span class="fill">[LEGAL ENTITY NAME, e.g. "Campus Takes LLC"]</span>, "Campus Takes,"
+      <strong>Campus Takes LLC</strong>
+      ("Campus Takes,"
       "we," "us," or "our"). They govern your access to and use of our website
-      <span class="fill">[campustakes.com]</span> and our services, whether you use them as a
+      <a href="https://campustakes.com">campustakes.com</a> and our services, whether you use them as a
       <strong>student</strong> joining our participant panel or as a <strong>client</strong>
       requesting research participants.
     </p>
@@ -220,8 +241,13 @@ h1,h2{text-wrap:balance}
     <p>
       You are responsible for any taxes on incentives you receive. Where required by law, we may
       collect tax information and report payments to tax authorities (for example, issuing a Form
-      1099 where U.S. reporting thresholds are met). <span class="fill">[Confirm payment timing,
-      what counts as "satisfactory completion," and your no-show / cancellation policy.]</span>
+      1099 where U.S. reporting thresholds are met).
+    </p>
+    <p>
+      A study counts as satisfactorily completed when you attend the full session, or finish the
+      full survey, and answer in good faith. We aim to send payment within one business day of a
+      completed session. If you cannot attend a session you accepted, tell us as early as you can.
+      Repeatedly accepting sessions and not attending is grounds for removal from the panel.
     </p>
 
     <h3>4.5 Recording and confidentiality</h3>
@@ -245,9 +271,10 @@ h1,h2{text-wrap:balance}
     <p>
       Fees are as quoted for each engagement. Unless otherwise agreed in writing, you pay per
       completed session, with no subscription or retainer.
-      <span class="fill">[Confirm your billing terms: invoice timing, payment due dates, accepted
-      methods, and any cancellation or rescheduling fees.]</span> Fees are non-refundable except as
-      required by law or as expressly agreed.
+      We invoice after the study is delivered, and invoices are payable within 30 days. If you
+      cancel or reschedule a confirmed session with less than 24 hours' notice, we may charge for
+      that session, because the participant has already been committed and compensated. Fees are
+      non-refundable except as required by law or as expressly agreed.
     </p>
 
     <h3>5.3 Use of participant information</h3>
@@ -310,8 +337,9 @@ h1,h2{text-wrap:balance}
       EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
       PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE
       UNINTERRUPTED, ERROR-FREE, OR SECURE, THAT ANY STUDIES OR PARTICIPANTS WILL BE AVAILABLE, OR
-      THAT ANY STATISTICS OR ESTIMATES (SUCH AS TYPICAL SHOW RATES OR TIMELINES) WILL BE ACHIEVED IN
-      YOUR CASE. ANY SUCH FIGURES ARE ESTIMATES, NOT GUARANTEES.
+      THAT ANY FIGURE WE PUBLISH (INCLUDING PANEL SURVEY RESULTS, FILL TIMES, AND PAYOUT TIMING)
+      WILL BE REPRODUCED IN YOUR CASE. PUBLISHED FIGURES DESCRIBE PAST MEASURED RESULTS FOR A
+      STATED SAMPLE. THEY ARE NOT PREDICTIONS, PROJECTIONS, OR GUARANTEES.
     </p>
 
     <h2 id="liability">11. Limitation of liability</h2>
@@ -320,7 +348,7 @@ h1,h2{text-wrap:balance}
       WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES,
       OR ANY LOSS OF PROFITS, DATA, OR GOODWILL, ARISING FROM OR RELATED TO YOUR USE OF THE SERVICES.
       OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SERVICES WILL NOT EXCEED THE GREATER OF
-      <span class="fill">[e.g. THE AMOUNT YOU PAID OR WERE PAID BY US IN THE PRIOR THREE MONTHS]</span>
+      THE TOTAL AMOUNT YOU PAID TO US, OR WERE PAID BY US, IN THE THREE MONTHS BEFORE THE CLAIM
       OR ONE HUNDRED U.S. DOLLARS ($100). SOME JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS, SO
       SOME OF THE ABOVE MAY NOT APPLY TO YOU.
     </p>
@@ -346,10 +374,9 @@ h1,h2{text-wrap:balance}
     <p>
       These Terms are governed by the laws of the State of
       <span class="fill">[GOVERNING-LAW STATE]</span>, without regard to its conflict-of-laws rules.
-      <span class="fill">[Choose one and we will finalize the clause: (a) disputes are resolved in
-      the state and federal courts located in [COUNTY, STATE], or (b) disputes are resolved by
-      binding individual arbitration and you and Campus Takes waive class actions. Arbitration and
-      class-action-waiver clauses have specific legal requirements — confirm with an attorney.]</span>
+      You and Campus Takes agree that any dispute arising out of or relating to these Terms or the
+      services will be brought exclusively in the state or federal courts located in that state, and
+      each party consents to the personal jurisdiction of those courts.
     </p>
 
     <h2 id="general">15. General</h2>
@@ -392,7 +419,7 @@ h1,h2{text-wrap:balance}
         <li><a href="students.html">For students</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
-        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+        <li><a href="mailto:hello@campustakes.com">hello@campustakes.com</a></li>
       </ul>
     </div>
     <p class="footer-legal">

@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Campus Takes | Verified Students for Paid Research Studies</title>
-<meta name="description" content="Campus Takes connects research teams with verified university students for paid interviews, usability tests, and surveys. Fresh voices, not professional respondents.">
+<meta name="description" content="Campus Takes recruits verified college students for paid interviews, usability tests, and surveys. In Study 001 a quota of 20 filled in 24 hours, and 13 of the 20 had never been paid for research.">
 <link rel="canonical" href="https://campustakes.com/">
 <meta name="theme-color" content="#10254A">
 <link rel="apple-touch-icon" href="/icon-512.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Campus Takes">
 <meta property="og:title" content="Campus Takes | Verified students. Honest takes.">
-<meta property="og:description" content="Research teams get honest insight from verified university students, and students get paid for giving them.">
+<meta property="og:description" content="A hand-screened panel of verified college students. Study 001: a quota of 20 filled in 24 hours, 13 of 20 new to paid research. n=20.">
 <meta property="og:url" content="https://campustakes.com/">
 <meta property="og:image" content="https://campustakes.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Campus Takes: verified students, honest takes.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Campus Takes | Verified students. Honest takes.">
-<meta name="twitter:description" content="Research teams get honest insight from verified university students, and students get paid for giving them.">
+<meta name="twitter:description" content="A hand-screened panel of verified college students. Study 001: a quota of 20 filled in 24 hours, 13 of 20 new to paid research. n=20.">
 <meta name="twitter:image" content="https://campustakes.com/og-image.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Campus Takes","url":"https://campustakes.com","logo":"https://campustakes.com/icon-512.png","description":"Campus Takes connects research teams with verified university students for paid interviews, usability tests, and surveys.","email":"hello@campustakes.com"}
@@ -82,8 +82,25 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
   .fork .btn{width:100%;max-width:360px}
   .fork-caption{display:none}
 }
-.hero-facts{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 36px;margin-top:68px;padding-top:28px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
-.hero-facts b{color:var(--navy);font-weight:600}
+.evidence{margin-top:72px;padding-top:44px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(3,1fr);text-align:left}
+.evidence > div{padding-inline:34px;border-left:1px solid var(--line)}
+.evidence > div:first-child{border-left:0;padding-left:0}
+.evidence > div:last-child{padding-right:0}
+.ev-num{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,1.7rem + 1.6vw,2.9rem);color:var(--navy);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ev-num small{font-size:.4em;font-weight:600;letter-spacing:0;color:var(--navy-soft);margin-left:4px}
+.ev-label{margin-top:13px;font-size:1rem;font-weight:600;color:var(--text)}
+.ev-src{margin-top:9px;font-size:.86rem;color:var(--muted);line-height:1.6;max-width:30ch}
+.ev-n{display:inline-block;margin-top:12px;font-size:.72rem;font-weight:600;letter-spacing:.09em;
+  color:var(--navy-soft);background:var(--off);border-radius:4px;padding:3px 8px;font-variant-numeric:tabular-nums}
+.evidence-note{margin-top:34px;font-size:.9rem;color:var(--muted)}
+.evidence-note a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .2s ease}
+.evidence-note a:hover{border-color:var(--navy)}
+@media (max-width:760px){
+  .evidence{grid-template-columns:1fr;gap:34px;max-width:24rem;margin-inline:auto}
+  .evidence > div{padding-inline:0;border-left:0;padding-bottom:34px;border-bottom:1px solid var(--line)}
+  .evidence > div:last-child{padding-bottom:0;border-bottom:0}
+}
 
 .paths{padding:88px 0;background:var(--off);border-top:1px solid var(--line)}
 .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
@@ -113,7 +130,31 @@ h1,h2{text-wrap:balance}
 :where(a,button):focus-visible{outline:2px solid var(--navy-soft);outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 6px 0;text-decoration:none;font-weight:600}
 .skip:focus{left:0}
-.hero-facts b{font-variant-numeric:tabular-nums}
+
+/* ---------- mobile spacing scale ---------- */
+@media (max-width:640px){
+  .hero{padding:56px 0 48px}
+  .hero-sub{margin-top:20px;font-size:1.08rem}
+  .fork{margin-top:32px;gap:12px}
+  .evidence{margin-top:44px;padding-top:32px;gap:26px}
+  .evidence > div{padding-bottom:26px}
+  .evidence-note{margin-top:24px}
+  .paths{padding:56px 0}
+  .paths-grid{gap:32px}
+  .creed{padding:56px 0}
+  .site-footer{padding:44px 0 36px}
+  .footer-legal{margin-top:24px;padding-top:20px}
+}
+
+/* ---------- mobile tap targets ---------- */
+@media (max-width:640px){
+  .site-nav a{padding-block:9px}
+  .brand{min-height:44px}
+  .footer-links{gap:2px 24px}
+  .footer-links a{display:inline-block;padding-block:11px}
+  .path .go{display:inline-block;padding-block:6px}
+  .ev-n{font-size:.75rem}
+}
 </style>
 </head>
 <body>
@@ -151,11 +192,30 @@ h1,h2{text-wrap:balance}
       <span>For researchers and brands</span>
       <span>Join the participant waitlist</span>
     </div>
-    <div class="hero-facts">
-      <span>Enrollment verified via <b>.edu confirmation</b></span>
-      <span><b>95%+</b> show rate</span>
-      <span>Hard quotas filled in <b>~48 hours</b></span>
+    <div class="evidence">
+      <div>
+        <div class="ev-num">24<small>hrs</small></div>
+        <div class="ev-label">A quota of 20 filled</div>
+        <p class="ev-src">10 of the 20 arrived in the first 20 minutes.</p>
+        <span class="ev-n">n=20</span>
+      </div>
+      <div>
+        <div class="ev-num">65<small>%</small></div>
+        <div class="ev-label">New to paid research</div>
+        <p class="ev-src">Never paid: 13 &middot; Once or twice: 5 &middot; A few times: 2</p>
+        <span class="ev-n">n=20</span>
+      </div>
+      <div>
+        <div class="ev-num">100<small>%</small></div>
+        <div class="ev-label">Enrollment verified</div>
+        <p class="ev-src">Every panelist signs up with a verified school email.</p>
+        <span class="ev-n">All panelists</span>
+      </div>
     </div>
+    <p class="evidence-note">
+      Every number here comes from <a href="report-001.html">Panel Report 001</a>,
+      fielded July 27 to 28, 2026.
+    </p>
   </div>
 </section>
 
@@ -170,8 +230,8 @@ h1,h2{text-wrap:balance}
       </div>
       <div class="path">
         <h2>For students</h2>
-        <p>Share your honest opinions in paid research sessions. Most pay $40
-        to $75, take under an hour, and pay out within minutes of finishing.</p>
+        <p>Share your honest opinions in paid research studies. Most pay $40
+        to $75 and take under an hour. Median payout so far is 18 hours.</p>
         <a class="go" href="students.html">Join the waitlist</a>
       </div>
     </div>
@@ -182,8 +242,8 @@ h1,h2{text-wrap:balance}
   <div class="wrap">
     <h2>Small on purpose</h2>
     <p>Every application is reviewed by a person, and every panelist is verified
-    before their first study. We keep the panel small so we can stand behind
-    every session we book.</p>
+    before their first study. We keep the panel small enough to screen it by
+    hand, and we publish what we measure.</p>
   </div>
 </section>
 
@@ -196,7 +256,7 @@ h1,h2{text-wrap:balance}
         <li><a href="students.html">For students</a></li>
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
-        <li><a href="mailto:hello@campustakes.com">Contact</a></li>
+        <li><a href="mailto:hello@campustakes.com">hello@campustakes.com</a></li>
       </ul>
     </div>
     <p class="footer-legal">
