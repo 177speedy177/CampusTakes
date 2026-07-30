@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Campus Takes | Verified Students for Paid Research Studies</title>
-<meta name="description" content="Campus Takes recruits verified college students for paid interviews, usability tests, and surveys. In Study 001 a quota of 20 filled in 24 hours, and 13 of the 20 had never been paid for research.">
+<meta name="description" content="Campus Takes recruits verified college students for paid interviews, usability tests, and surveys. In our first panel study a quota of 20 filled in 24 hours, and 13 of the 20 had never been paid for research.">
 <link rel="canonical" href="https://campustakes.com/">
 <meta name="theme-color" content="#10254A">
 <link rel="apple-touch-icon" href="/icon-512.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Campus Takes">
 <meta property="og:title" content="Campus Takes | Verified students. Honest takes.">
-<meta property="og:description" content="A hand-screened panel of verified college students. Study 001: a quota of 20 filled in 24 hours, 13 of 20 new to paid research. n=20.">
+<meta property="og:description" content="A hand-screened panel of verified college students. Our first panel study filled a quota of 20 in 24 hours, and 13 of the 20 had never been paid for research.">
 <meta property="og:url" content="https://campustakes.com/">
 <meta property="og:image" content="https://campustakes.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Campus Takes: verified students, honest takes.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Campus Takes | Verified students. Honest takes.">
-<meta name="twitter:description" content="A hand-screened panel of verified college students. Study 001: a quota of 20 filled in 24 hours, 13 of 20 new to paid research. n=20.">
+<meta name="twitter:description" content="A hand-screened panel of verified college students. Our first panel study filled a quota of 20 in 24 hours, and 13 of the 20 had never been paid for research.">
 <meta name="twitter:image" content="https://campustakes.com/og-image.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Campus Takes","url":"https://campustakes.com","logo":"https://campustakes.com/icon-512.png","description":"Campus Takes connects research teams with verified university students for paid interviews, usability tests, and surveys.","email":"hello@campustakes.com"}
@@ -97,9 +97,16 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
 .evidence-note a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .2s ease}
 .evidence-note a:hover{border-color:var(--navy)}
 @media (max-width:760px){
-  .evidence{grid-template-columns:1fr;gap:34px;max-width:24rem;margin-inline:auto}
-  .evidence > div{padding-inline:0;border-left:0;padding-bottom:34px;border-bottom:1px solid var(--line)}
-  .evidence > div:last-child{padding-bottom:0;border-bottom:0}
+  .evidence{padding-top:34px}
+  .evidence > div{padding-inline:16px}
+  .ev-num{font-size:1.75rem}
+  .ev-label{margin-top:9px;font-size:.82rem;line-height:1.35}
+}
+@media (max-width:420px){
+  .evidence > div{padding-inline:10px}
+  .ev-num{font-size:1.5rem}
+  .ev-num small{font-size:.38em;margin-left:2px}
+  .ev-label{font-size:.76rem}
 }
 
 .paths{padding:88px 0;background:var(--off);border-top:1px solid var(--line)}
@@ -120,7 +127,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
 .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
 .footer-links a{text-decoration:none;color:var(--muted);transition:color .2s ease}
 .footer-links a:hover{color:var(--navy)}
-.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:#8B93A0;max-width:72ch}
+.footer-legal{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted);max-width:72ch}
 
 /* ---------- polish ---------- */
 h1{letter-spacing:-.022em}
@@ -136,8 +143,7 @@ h1,h2{text-wrap:balance}
   .hero{padding:56px 0 48px}
   .hero-sub{margin-top:20px;font-size:1.08rem}
   .fork{margin-top:32px;gap:12px}
-  .evidence{margin-top:44px;padding-top:32px;gap:26px}
-  .evidence > div{padding-bottom:26px}
+  .evidence{margin-top:44px}
   .evidence-note{margin-top:24px}
   .paths{padding:56px 0}
   .paths-grid{gap:32px}
@@ -153,7 +159,6 @@ h1,h2{text-wrap:balance}
   .footer-links{gap:2px 24px}
   .footer-links a{display:inline-block;padding-block:11px}
   .path .go{display:inline-block;padding-block:6px}
-  .ev-n{font-size:.75rem}
 }
 </style>
 </head>
@@ -176,7 +181,8 @@ h1,h2{text-wrap:balance}
 
 <!-- Front door: brand plus a working fork. Each button goes to a
      dedicated page, so neither audience scrolls past the other. -->
-<section class="hero" id="main">
+<main id="main">
+<section class="hero">
   <div class="wrap">
     <h1>Verified students Honest takes</h1>
     <p class="hero-sub">
@@ -196,25 +202,19 @@ h1,h2{text-wrap:balance}
       <div>
         <div class="ev-num">24<small>hrs</small></div>
         <div class="ev-label">A quota of 20 filled</div>
-        <p class="ev-src">10 of the 20 arrived in the first 20 minutes.</p>
-        <span class="ev-n">n=20</span>
       </div>
       <div>
         <div class="ev-num">65<small>%</small></div>
         <div class="ev-label">New to paid research</div>
-        <p class="ev-src">Never paid: 13 &middot; Once or twice: 5 &middot; A few times: 2</p>
-        <span class="ev-n">n=20</span>
       </div>
       <div>
         <div class="ev-num">100<small>%</small></div>
         <div class="ev-label">Enrollment verified</div>
-        <p class="ev-src">Every panelist signs up with a verified school email.</p>
-        <span class="ev-n">All panelists</span>
       </div>
     </div>
     <p class="evidence-note">
-      Every number here comes from <a href="report-001.html">Panel Report 001</a>,
-      fielded July 27 to 28, 2026.
+      Measured in <a href="panel-report.html">Panel Report</a>, a study of 20 completed
+      responses fielded July 27 to 28, 2026. Full counts and method are in the report.
     </p>
   </div>
 </section>
@@ -230,8 +230,8 @@ h1,h2{text-wrap:balance}
       </div>
       <div class="path">
         <h2>For students</h2>
-        <p>Share your honest opinions in paid research studies. Most pay $40
-        to $75 and take under an hour. Median payout so far is 18 hours.</p>
+        <p>Share your honest opinions in paid research studies. Most studies pay
+        $40 to $75 and take under an hour. Median payout so far is 18 hours.</p>
         <a class="go" href="students.html">Join the waitlist</a>
       </div>
     </div>
@@ -246,6 +246,8 @@ h1,h2{text-wrap:balance}
     hand, and we publish what we measure.</p>
   </div>
 </section>
+
+</main>
 
 <footer class="site-footer">
   <div class="wrap">
