@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Campus Takes | Brand Sheet</title>
+<link rel="icon" type="image/png" href="campustakes-canva-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10254A; --navy-deep:#0A1E3F; --navy-soft:#33507F;
+  --white:#FFFFFF; --off:#F7F8FA;
+  --text:#232B38; --muted:#5A6472; --line:#E4E7EC;
+  --serif:"Source Serif 4",Georgia,serif;
+  --sans:"Instrument Sans","Segoe UI",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--text);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin-inline:auto;padding-inline:32px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);letter-spacing:-.015em;line-height:1.15}
+
+.cover{background:var(--navy);color:#fff;padding:64px 0 56px}
+.cover .brandline{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.cover .brandline img{height:38px;width:auto;display:block}
+.cover .brandline span{font-family:var(--serif);font-weight:600;font-size:1.5rem}
+.cover h1{color:#fff;font-size:clamp(2.2rem,1.6rem+2.6vw,3.2rem)}
+.cover p{margin-top:14px;max-width:56ch;color:rgba(255,255,255,.78)}
+
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.kicker{display:block;font-size:.78rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--navy-soft);margin-bottom:10px}
+h2{font-size:1.6rem;margin-bottom:8px}
+.lede{color:var(--muted);max-width:64ch;margin-bottom:28px}
+h3{font-family:var(--sans);font-size:.95rem;font-weight:700;color:var(--navy);margin:26px 0 12px;
+   letter-spacing:.02em;text-transform:uppercase}
+
+/* swatches */
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+.sw{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sw .chip{height:78px}
+.sw .meta{padding:11px 13px}
+.sw .hex{font-family:var(--serif);font-weight:600;font-size:1.02rem;color:var(--navy);letter-spacing:.01em}
+.sw .nm{font-size:.8rem;font-weight:600;color:var(--text);margin-top:2px}
+.sw .use{font-size:.76rem;color:var(--muted);margin-top:4px;line-height:1.5}
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:.92rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy-soft)}
+td code{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:.98em}
+
+/* logos */
+.logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.lg{border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.lg .stage{height:120px;display:grid;place-items:center;padding:20px}
+.lg .stage.light{background:var(--off)}
+.lg .stage.dark{background:var(--navy)}
+.lg .stage img{max-width:100%;max-height:100%;display:block}
+.lg .cap{padding:11px 13px;border-top:1px solid var(--line)}
+.lg .cap b{display:block;font-size:.82rem;color:var(--navy)}
+.lg .cap span{font-size:.76rem;color:var(--muted)}
+
+/* specimens */
+.spec{border:1px solid var(--line);border-radius:8px;padding:22px 24px;margin-bottom:14px}
+.spec .lbl{font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy-soft);margin-bottom:12px}
+.spec .serif{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:2.1rem;line-height:1.1;letter-spacing:-.02em}
+.spec .sans{font-size:1.02rem;color:var(--text)}
+.spec .row{font-size:.82rem;color:var(--muted);margin-top:12px}
+
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rules ul{list-style:none}
+.rules li{padding-left:22px;position:relative;margin-bottom:9px;font-size:.94rem}
+.rules li::before{position:absolute;left:0;font-weight:700}
+.do li::before{content:"✓";color:var(--navy)}
+.dont li::before{content:"✕";color:#9A3B3B}
+@media (max-width:640px){.rules{grid-template-columns:1fr}}
+
+.callout{background:var(--off);border-left:3px solid var(--navy-soft);border-radius:0 8px 8px 0;padding:18px 22px;margin-top:22px;font-size:.94rem;color:var(--muted)}
+.callout b{color:var(--navy)}
+
+footer{padding:40px 0 56px;font-size:.86rem;color:var(--muted)}
+@media print{
+  .cover{background:var(--navy) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sw .chip,.lg .stage{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="brandline">
+      <img src="campustakes-lockup-white.png" alt="Campus Takes">
+    </div>
+    <h1>Brand Sheet</h1>
+    <p>Every color, font, and logo file, with the exact values to type into a Canva
+    Brand Kit. All values are taken from the live site, so anything you build in
+    Canva will match campustakes.com.</p>
+  </div>
+</header>
+
+<!-- ================= CANVA MAPPING ================= -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Start here</span>
+    <h2>Canva Brand Kit, field by field</h2>
+    <p class="lede">Canva asks for these in order. Here is what goes in each box.</p>
+    <table>
+      <tr><th style="width:26%">Canva field</th><th>What to enter</th></tr>
+      <tr><td><b>Name</b></td><td>Campus Takes</td></tr>
+      <tr><td><b>Icon</b></td><td>Upload <code>campustakes-canva-icon.png</code>. It is built for the 40&times;40 slot, so the mark still reads at that size.</td></tr>
+      <tr><td><b>Banner: main color</b></td><td><code>#10254A</code></td></tr>
+      <tr><td><b>Banner: secondary color</b></td><td><code>#33507F</code></td></tr>
+      <tr><td><b>Logos</b></td><td>Upload all six logo files listed below. Set the navy lockup as the default.</td></tr>
+      <tr><td><b>Colors</b></td><td>Create a palette named "Campus Takes" with the eight core hexes below.</td></tr>
+      <tr><td><b>Heading font</b></td><td>Source Serif 4, SemiBold (600)</td></tr>
+      <tr><td><b>Subheading font</b></td><td>Instrument Sans, SemiBold (600)</td></tr>
+      <tr><td><b>Body font</b></td><td>Instrument Sans, Regular (400)</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= COLOR ================= -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Color</span>
+    <h2>Navy and white. No third color.</h2>
+    <p class="lede">There is no accent hue in this system. When something needs to
+    stand out, use a lighter shade of the same navy. Adding a contrasting color is
+    the fastest way to make something look off-brand.</p>
+
+    <h3>Core palette</h3>
+    <div class="sw-grid">
+      <div class="sw"><div class="chip" style="background:#10254A"></div>
+        <div class="meta"><div class="hex">#10254A</div><div class="nm">Navy</div>
+        <div class="use">The brand color. Logo, headings, buttons, dark sections.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line)"></div>
+        <div class="meta"><div class="hex">#FFFFFF</div><div class="nm">White</div>
+        <div class="use">Page background, and text on navy.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#33507F"></div>
+        <div class="meta"><div class="hex">#33507F</div><div class="nm">Navy Soft</div>
+        <div class="use">The only accent. Links, hovers, small labels.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#0A1E3F"></div>
+        <div class="meta"><div class="hex">#0A1E3F</div><div class="nm">Navy Deep</div>
+        <div class="use">Rare. Shadows and the darkest tints.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F8FA;border-bottom:1px solid var(--line)"></div>
+        <div class="meta"><div class="hex">#F7F8FA</div><div class="nm">Off White</div>
+        <div class="use">Alternating sections, panels, chips.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#232B38"></div>
+        <div class="meta"><div class="hex">#232B38</div><div class="nm">Text</div>
+        <div class="use">Body copy. Warmer than navy, easier to read at length.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5A6472"></div>
+        <div class="meta"><div class="hex">#5A6472</div><div class="nm">Muted</div>
+        <div class="use">Secondary text, captions, footers.</div></div></div>
+      <div class="sw"><div class="chip" style="background:#E4E7EC"></div>
+        <div class="meta"><div class="hex">#E4E7EC</div><div class="nm">Line</div>
+        <div class="use">Hairline rules, borders, dividers.</div></div></div>
+    </div>
+
+    <h3>Chart shades</h3>
+    <p class="lede" style="margin-bottom:16px">For data in the Panel Report. Three tiers,
+    darkest to lightest, plus one for empty states. Never introduce a new hue for a chart.</p>
+    <div class="sw-grid">
+      <div class="sw"><div class="chip" style="background:#10254A"></div>
+        <div class="meta"><div class="hex">#10254A</div><div class="nm">Tier 1</div></div></div>
+      <div class="sw"><div class="chip" style="background:#33507F"></div>
+        <div class="meta"><div class="hex">#33507F</div><div class="nm">Tier 2</div></div></div>
+      <div class="sw"><div class="chip" style="background:#9DAEC9"></div>
+        <div class="meta"><div class="hex">#9DAEC9</div><div class="nm">Tier 3</div></div></div>
+      <div class="sw"><div class="chip" style="background:#C9D3E3"></div>
+        <div class="meta"><div class="hex">#C9D3E3</div><div class="nm">Empty</div></div></div>
+    </div>
+
+    <div class="callout">
+      <b>Copy-paste list:</b>
+      #10254A &nbsp; #FFFFFF &nbsp; #33507F &nbsp; #0A1E3F &nbsp; #F7F8FA &nbsp; #232B38 &nbsp; #5A6472 &nbsp; #E4E7EC
+    </div>
+  </div>
+</section>
+
+<!-- ================= TYPE ================= -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Typography</span>
+    <h2>Two fonts, both free on Google Fonts</h2>
+    <p class="lede">Canva has both. Search the name in the font picker. If one is
+    missing, download the TTF and use Brand Kit &rarr; Fonts &rarr; Upload a font.</p>
+
+    <div class="spec">
+      <div class="lbl">Heading font &middot; Source Serif 4 &middot; SemiBold 600</div>
+      <div class="serif">Verified students. Honest takes.</div>
+      <div class="row">Headlines, the logo wordmark, and large figures. Set letter
+      spacing to about &minus;20 in Canva on big headings.</div>
+    </div>
+
+    <div class="spec">
+      <div class="lbl">Body font &middot; Instrument Sans &middot; 400 / 500 / 600 / 700</div>
+      <div class="sans">Campus Takes recruits college students for interviews, usability
+      tests, and surveys, hand-screened against the criteria you set. Our first panel
+      study is published in full, so you can check the numbers before you talk to us.</div>
+      <div class="row">Body copy, buttons, navigation, labels, captions.</div>
+    </div>
+
+    <h3>Type scale</h3>
+    <table>
+      <tr><th>Role</th><th style="width:22%">Font</th><th style="width:16%">Size</th><th style="width:16%">Weight</th></tr>
+      <tr><td>Page headline (H1)</td><td>Source Serif 4</td><td>42&ndash;67px</td><td>600</td></tr>
+      <tr><td>Section heading (H2)</td><td>Source Serif 4</td><td>27&ndash;38px</td><td>600</td></tr>
+      <tr><td>Big figure / stat</td><td>Source Serif 4</td><td>34&ndash;54px</td><td>600</td></tr>
+      <tr><td>Card heading (H3)</td><td>Instrument Sans</td><td>17px</td><td>600</td></tr>
+      <tr><td>Body</td><td>Instrument Sans</td><td>17px</td><td>400</td></tr>
+      <tr><td>Small print / caption</td><td>Instrument Sans</td><td>13&ndash;15px</td><td>400</td></tr>
+      <tr><td>Eyebrow / kicker</td><td>Instrument Sans</td><td>12.5px, uppercase, +9% tracking</td><td>600</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= LOGO ================= -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Logo</span>
+    <h2>Six files, and when to use each</h2>
+    <p class="lede">All transparent PNGs except the square icons. Sized for print and
+    large format.</p>
+
+    <div class="logo-grid">
+      <div class="lg"><div class="stage light"><img src="campustakes-lockup-navy.png" alt="Navy lockup"></div>
+        <div class="cap"><b>lockup-navy.png</b><span>Default logo. Light backgrounds.</span></div></div>
+      <div class="lg"><div class="stage dark"><img src="campustakes-lockup-white.png" alt="White lockup"></div>
+        <div class="cap"><b>lockup-white.png</b><span>Navy or dark backgrounds, and photos.</span></div></div>
+      <div class="lg"><div class="stage light"><img src="campustakes-mark-navy.png" alt="Navy mark" style="max-height:78px"></div>
+        <div class="cap"><b>mark-navy.png</b><span>Mark alone. Tight spaces, watermarks.</span></div></div>
+      <div class="lg"><div class="stage dark"><img src="campustakes-mark-white.png" alt="White mark" style="max-height:78px"></div>
+        <div class="cap"><b>mark-white.png</b><span>Mark alone, on dark.</span></div></div>
+      <div class="lg"><div class="stage light"><img src="campustakes-canva-icon.png" alt="Canva icon" style="max-height:88px"></div>
+        <div class="cap"><b>canva-icon.png</b><span>Canva Brand Kit icon. Built for 40&times;40.</span></div></div>
+      <div class="lg"><div class="stage light"><img src="campustakes-icon-white.png" alt="White icon" style="max-height:88px"></div>
+        <div class="cap"><b>icon-white.png</b><span>Profile picture on dark platforms.</span></div></div>
+    </div>
+
+    <h3>Rules</h3>
+    <div class="rules">
+      <div class="do"><ul>
+        <li>Keep clear space of at least one bubble height on every side.</li>
+        <li>Lock the aspect ratio when resizing. The mark is 1.23 : 1.</li>
+        <li>Use the white version on anything dark, including photos.</li>
+        <li>Below about 120px wide, drop the wordmark and use the mark alone.</li>
+      </ul></div>
+      <div class="dont"><ul>
+        <li>Do not stretch, squash, or rotate it.</li>
+        <li>Do not add a shadow, glow, outline, or gradient.</li>
+        <li>Do not recolor it to anything but navy or white.</li>
+        <li>Do not rebuild the wordmark in another font.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VOICE ================= -->
+<section>
+  <div class="wrap">
+    <span class="kicker">Voice</span>
+    <h2>How Campus Takes writes</h2>
+    <table>
+      <tr><th style="width:32%">Rule</th><th>Why</th></tr>
+      <tr><td><b>Plain-spoken</b></td><td>Say the thing. No "elevate," "seamless," "unleash," or "game-changing."</td></tr>
+      <tr><td><b>Numbers carry the argument</b></td><td>Cite the count next to the percentage. At small samples, a percentage alone overstates precision.</td></tr>
+      <tr><td><b>Claim only what happened</b></td><td>Describe what we do. Do not promise how well it works until it has worked.</td></tr>
+      <tr><td><b>No em dashes</b></td><td>Use a comma, a colon, or a full stop.</td></tr>
+      <tr><td><b>No borrowed credibility</b></td><td>No client logos, testimonials, or case studies until they are real and permitted.</td></tr>
+      <tr><td><b>No institution counts</b></td><td>Never state a number of campuses, colleges, or schools. Say "a US-based research panel of college students."</td></tr>
+    </table>
+
+    <h3>Fixed wording</h3>
+    <table>
+      <tr><td style="width:32%"><b>Brand name</b></td><td>Campus Takes (two words, both capitalized)</td></tr>
+      <tr><td><b>Legal entity</b></td><td>Campus Takes LLC</td></tr>
+      <tr><td><b>Tagline</b></td><td>Verified students. Honest takes.</td></tr>
+      <tr><td><b>Contact</b></td><td>hello@campustakes.com</td></tr>
+      <tr><td><b>Website</b></td><td>campustakes.com</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Campus Takes brand sheet. Generated from the live site.
+    Open <code>BRAND.md</code> in the same folder for a plain-text version.
+  </div>
+</footer>
+
+</body>
+</html>

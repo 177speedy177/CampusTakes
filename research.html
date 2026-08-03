@@ -89,6 +89,11 @@ section{padding:96px 0}
 .stats-note{margin-top:30px;font-size:.9rem;color:var(--muted)}
 .stats-note a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .2s ease}
 .stats-note a:hover{border-color:var(--navy)}
+/* report links: navy on light, white on the navy band. never browser blue. */
+.points .lede a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .2s ease}
+.points .lede a:hover{border-bottom-color:var(--navy)}
+.method-item a{color:var(--white);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px;transition:border-color .2s ease}
+.method-item a:hover{border-bottom-color:var(--white)}
 @media (max-width:720px){
   .stats{gap:0}
   .stats .stat{padding-inline:16px}

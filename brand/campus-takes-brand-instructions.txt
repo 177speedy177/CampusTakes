@@ -1,0 +1,223 @@
+CAMPUS TAKES - BRAND INSTRUCTIONS
+Reference document for AI-assisted design. Follow these rules exactly.
+
+====================================================================
+1. WHAT CAMPUS TAKES IS
+====================================================================
+
+Campus Takes recruits verified college students to take part in paid
+market and UX research: interviews, usability tests, and surveys.
+Research teams and brands pay to reach screened student participants.
+Students get paid for giving honest opinions.
+
+Brand name: Campus Takes (two words, both capitalized)
+Tagline: Verified students. Honest takes.
+Website: campustakes.com
+Contact: hello@campustakes.com
+
+Two audiences. A design usually speaks to one or the other:
+  a) Research teams and brands. Tone: credible, precise, calm.
+  b) College students. Tone: warm, direct, plain. Money is the hook.
+
+Do NOT add "LLC", "Inc", or any legal suffix to designs.
+Do NOT reference or imply any specific university, college, or school.
+Do NOT use university names, logos, mascots, or school colors.
+
+====================================================================
+2. COLOR - NAVY AND WHITE ONLY
+====================================================================
+
+This brand uses navy and white. There is NO third color.
+No orange, no coral, no amber, no purple, no green, no gradient.
+When something must stand out, use a LIGHTER SHADE OF THE SAME NAVY.
+Introducing any contrasting hue is off-brand.
+
+CORE PALETTE
+
+  #10254A  Navy        The brand color. Logo, headings, buttons, dark
+                       sections. Use for anything that must feel like
+                       the brand.
+  #FFFFFF  White       Page background. Also text placed on navy.
+  #33507F  Navy Soft   The ONLY accent. Links, hovers, small labels,
+                       secondary figures.
+  #0A1E3F  Navy Deep   Rare. Shadows and the darkest tints only.
+  #F7F8FA  Off White   Alternating section backgrounds, panels, chips.
+  #232B38  Text        Body copy. Warmer than navy and easier to read
+                       at length. Use for paragraphs, not headings.
+  #5A6472  Muted       Secondary text, captions, footers.
+  #E4E7EC  Line        Hairline rules, borders, dividers, table lines.
+
+DATA AND CHART SHADES, darkest to lightest
+
+  #10254A  Tier 1, the largest or most important segment
+  #33507F  Tier 2
+  #9DAEC9  Tier 3
+  #C9D3E3  Empty, inactive, or remainder
+
+COLOR RULES
+
+  - Default page: white background, #232B38 text, #10254A headings.
+  - For a dark section: #10254A background with #FFFFFF text.
+  - Never place #10254A text on a dark background.
+  - Never use pure black (#000000). Navy replaces black everywhere.
+  - Do not set body copy in #5A6472 or lighter. It fails contrast.
+
+====================================================================
+3. TYPOGRAPHY - TWO FONTS ONLY
+====================================================================
+
+HEADING FONT: Source Serif 4, SemiBold, weight 600
+  Use for headlines, section titles, the logo wordmark, and large
+  numbers or statistics. On large headings tighten letter spacing to
+  about -2 percent. In Canva, letter spacing around -20.
+
+BODY FONT: Instrument Sans, weights 400, 500, 600, 700
+  Use for body copy, buttons, navigation, labels, and captions.
+
+Both fonts are free on Google Fonts and available in Canva.
+Do not substitute other fonts. Do not add a third font.
+Never use a monospace font.
+Never use Inter, Roboto, Arial, Montserrat, Poppins, or any default
+system font.
+
+TYPE SCALE
+
+  Page headline (H1)     Source Serif 4    42-67 px   weight 600
+  Section heading (H2)   Source Serif 4    27-38 px   weight 600
+  Large figure or stat   Source Serif 4    34-54 px   weight 600
+  Card heading (H3)      Instrument Sans   17 px      weight 600
+  Body copy              Instrument Sans   17 px      weight 400
+  Caption, small print   Instrument Sans   13-15 px   weight 400
+  Eyebrow or kicker      Instrument Sans   12.5 px    weight 600
+                         uppercase, letter spacing +9 percent
+
+====================================================================
+4. LOGO
+====================================================================
+
+The logo is two overlapping speech bubbles with a curved gap between
+them, paired with the wordmark "Campus Takes" in Source Serif 4.
+
+FILES AND WHEN TO USE THEM
+
+  campustakes-lockup-navy.png    Default logo. Light backgrounds.
+  campustakes-lockup-white.png   Navy, dark, or photo backgrounds.
+  campustakes-mark-navy.png      Mark only. Tight spaces, watermarks.
+  campustakes-mark-white.png     Mark only, on dark backgrounds.
+  campustakes-canva-icon.png     Square navy icon. Brand Kit icon slot,
+                                 social profile pictures, avatars.
+  campustakes-icon-white.png     Square white icon, for dark platforms.
+
+LOGO RULES
+
+  - Clear space: leave at least the height of one speech bubble on all
+    four sides. Never crowd it.
+  - The mark aspect ratio is 1.23 to 1. Always lock the ratio.
+  - Minimum size: below roughly 120 px wide, drop the wordmark and use
+    the mark alone.
+  - Use the white logo on anything dark, including photographs.
+
+NEVER
+
+  - Stretch, squash, skew, or rotate the logo.
+  - Add a drop shadow, glow, outline, bevel, or gradient.
+  - Recolor it to anything other than navy or white.
+  - Place the navy logo on a dark background.
+  - Rebuild or retype the wordmark in a different font.
+  - Put the logo inside a badge or shape that is not one of the files.
+
+====================================================================
+5. LAYOUT AND DESIGN
+====================================================================
+
+The look is minimal, editorial, and calm. It should read like a
+well-designed professional company, not a generated landing page.
+
+DO
+
+  - Use generous white space. Let the design breathe.
+  - Use hairline rules, #E4E7EC at 1 px, to divide content.
+  - Align text left in dense or data-heavy blocks so it is scannable.
+  - Pair a large number in Source Serif 4 with a short label beneath it.
+  - Alternate white and #F7F8FA sections for rhythm, with occasional
+    full navy sections for contrast.
+  - Keep paragraph width to roughly 60 to 70 characters.
+
+NEVER
+
+  - Gradients of any kind, including navy to blue.
+  - Decorative drop shadows, glows, or neon effects.
+  - Dot grids, mesh patterns, blobs, waves, or abstract 3D shapes.
+  - Stock photos of diverse teams or staged office scenes.
+  - Emoji used as icons.
+  - Rounded pill badges saying "New" or "Beta".
+  - Heavy borders. Rules should be 1 px hairlines.
+
+====================================================================
+6. VOICE AND COPYWRITING
+====================================================================
+
+Warm, confident, plain-spoken. Credible to a research director,
+approachable to a twenty year old.
+
+WRITING RULES
+
+  - Say the thing plainly. Short sentences.
+  - Never use these words: elevate, seamless, unleash, next-gen,
+    game-changing, revolutionary, cutting-edge, delve, tapestry,
+    supercharge, effortless.
+  - Never use em dashes. Use a comma, a colon, or a full stop.
+  - Use sentence case for headings, not Title Case.
+  - Avoid exclamation marks. In student-facing copy, at most one.
+  - Write in active voice.
+
+NUMBERS
+
+  - When citing a statistic, give the count next to the percentage.
+    Correct: "13 of 20 respondents", or "65 percent, 13 of 20".
+    Wrong: "65 percent" with no denominator anywhere.
+  - Small samples must state the sample size.
+
+====================================================================
+7. CLAIMS THAT MAY NOT BE MADE
+====================================================================
+
+These are hard prohibitions. Do not write any of them, in any wording,
+even if they sound plausible or persuasive.
+
+  - Any show rate or no-show rate figure. No client session has been
+    run, so no such number exists.
+  - "95 percent" of anything.
+  - "Guaranteed", or any promise about an outcome.
+  - "Hard quotas filled" as a general or repeated capability.
+  - Payouts described as instant, immediate, or within minutes.
+  - Any count of colleges, universities, campuses, schools, or
+    institutions. Not fifteen, not any number, and not phrases such as
+    "campuses across the country".
+  - Client names, client logos, testimonials, reviews, or case studies.
+    There are none. Never invent or imply them.
+  - Claims about the quality of interviews or usability sessions.
+  - Statements that a named attribute such as language, ethnicity,
+    income, major, or heritage is a searchable field on a participant
+    record.
+  - Broad claims about competitors presented as fact.
+
+WHAT MAY BE SAID
+
+  - A quota of 20 completed responses filled in 24 hours, and 10 of the
+    20 arrived within the first 20 minutes.
+  - 13 of 20 respondents had never been paid for research before.
+  - 15 of 20 respondents will go on camera.
+  - 17 of 20 can join a study within two days.
+  - Median payout was 18 hours, across 10 payouts.
+  - Every panelist verifies enrollment with a school email at signup.
+  - Participants are screened by hand against the criteria the client
+    sets for their study.
+  - Panelists are capped at two studies per month, with a 90 day
+    cooldown inside a category.
+  - One flat price per completed session, incentive included.
+
+GOVERNING PRINCIPLE
+
+  You may describe what Campus Takes does.
+  You may not claim how well it works until it has worked.

@@ -1,5 +1,9 @@
 .vercel
 outreach/
+
+# Snapshots of outreach/ live here and carry the same lead names, email
+# addresses, sent bodies and replies. Ignoring outreach/ alone does not cover them.
+backups/
 .env
 *.env
 .env.*

@@ -68,9 +68,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
   .nl-short{display:inline}
 }
 
-.hero{position:relative;padding:110px 0 88px;overflow:hidden;text-align:center}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(16,37,74,.07) 1px,transparent 1.5px);background-size:24px 24px;mask-image:linear-gradient(to bottom,#000 15%,transparent 70%);-webkit-mask-image:linear-gradient(to bottom,#000 15%,transparent 70%)}
-.hero .wrap{position:relative}
+.hero{padding:110px 0 88px;text-align:center}
 .hero h1{font-size:clamp(2.6rem,1.6rem + 4.6vw,4.2rem);max-width:16ch;margin-inline:auto}
 .hero-sub{max-width:52ch;margin:26px auto 0;font-size:1.15rem;color:var(--muted)}
 .fork{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:48px}
@@ -90,9 +88,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
 .ev-num{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,1.7rem + 1.6vw,2.9rem);color:var(--navy);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .ev-num small{font-size:.4em;font-weight:600;letter-spacing:0;color:var(--navy-soft);margin-left:4px}
 .ev-label{margin-top:13px;font-size:1rem;font-weight:600;color:var(--text)}
-.ev-src{margin-top:9px;font-size:.86rem;color:var(--muted);line-height:1.6;max-width:30ch}
-.ev-n{display:inline-block;margin-top:12px;font-size:.72rem;font-weight:600;letter-spacing:.09em;
-  color:var(--navy-soft);background:var(--off);border-radius:4px;padding:3px 8px;font-variant-numeric:tabular-nums}
 .evidence-note{margin-top:34px;font-size:.9rem;color:var(--muted)}
 .evidence-note a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;transition:border-color .2s ease}
 .evidence-note a:hover{border-color:var(--navy)}
@@ -117,7 +112,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--navy);line-height:
 .path .go:hover{color:var(--navy-soft);border-color:var(--navy-soft)}
 @media (max-width:720px){.paths{padding:64px 0}.paths-grid{grid-template-columns:1fr;gap:40px}}
 
-.creed{padding:96px 0;text-align:center;background:var(--navy) radial-gradient(120% 100% at 85% 0%,rgba(255,255,255,.06),transparent 55%)}
+.creed{padding:96px 0;text-align:center;background:var(--navy)}
 .creed h2{color:var(--white);margin-bottom:14px}
 .creed p{color:rgba(255,255,255,.78);max-width:54ch;margin-inline:auto;font-size:1.08rem}
 @media (max-width:640px){.creed{padding:64px 0}}
