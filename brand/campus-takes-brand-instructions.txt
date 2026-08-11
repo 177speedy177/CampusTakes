@@ -201,6 +201,11 @@ even if they sound plausible or persuasive.
     income, major, or heritage is a searchable field on a participant
     record.
   - Broad claims about competitors presented as fact.
+  - "Hand-screened", "screened by hand", or any wording implying a person
+    screens respondents by voice. In market research, "screening" a
+    respondent means a recruiter interviews them, usually by phone.
+    Campus Takes does NOT phone screen. Say "hand-picked" or "invited by
+    hand" for the selection step, and "online screener" for the form.
 
 WHAT MAY BE SAID
 
@@ -211,8 +216,9 @@ WHAT MAY BE SAID
   - 17 of 20 can join a study within two days.
   - Median payout was 18 hours, across 10 payouts.
   - Every panelist verifies enrollment with a school email at signup.
-  - Participants are screened by hand against the criteria the client
-    sets for their study.
+  - Panelists are picked by hand against the criteria the client sets,
+    and an online screener goes out with the invite. The correct term for
+    the whole process is "closed invite with an online screener".
   - Panelists are capped at two studies per month, with a 90 day
     cooldown inside a category.
   - One flat price per completed session, incentive included.
