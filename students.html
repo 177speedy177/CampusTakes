@@ -66,38 +66,37 @@ h3{font-size:1.15rem;margin-bottom:8px}
   .nl-short{display:inline}
 }
 
-/* Hero: compact and centered. The application is a full form, so it gets its
-   own full-width section below rather than being squeezed into a sidebar card. */
-.hero{background:var(--navy);color:var(--white);padding:84px 0 72px;text-align:center}
+/* navy hero with the waitlist card beside it: signup above the fold */
+.hero{background:var(--navy);color:var(--white);padding:88px 0 96px}
 .hero .kicker{color:rgba(255,255,255,.6)}
-.hero h1{color:var(--white);font-size:clamp(2.4rem,1.5rem + 4vw,3.7rem);max-width:15ch;margin-inline:auto}
-.hero-sub{margin:20px auto 0;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:48ch}
-.hero-cta{margin-top:34px}
-.btn-light{background:var(--white);color:var(--navy);border-color:var(--white)}
-.btn-light:hover{background:rgba(255,255,255,.86);border-color:rgba(255,255,255,.86);color:var(--navy)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
+.hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
+.money{margin-top:36px;border-top:1px solid var(--line-dark)}
+.money .stat{
+  display:flex;align-items:baseline;justify-content:space-between;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--line-dark);
+}
+.money dt{font-family:var(--serif);font-weight:600;font-size:clamp(1.55rem,1.3rem + 1vw,2rem);color:var(--white);line-height:1.1;white-space:nowrap}
+.money dd{font-size:.92rem;color:rgba(255,255,255,.7);text-align:right;max-width:26ch}
 
-.money{margin-top:58px;padding-top:40px;border-top:1px solid var(--line-dark);
-  display:grid;grid-template-columns:repeat(3,1fr);text-align:left}
-.money .stat{padding-inline:32px;border-left:1px solid var(--line-dark)}
-.money .stat:first-child{border-left:0;padding-left:0}
-.money .stat:last-child{padding-right:0}
-.money dt{font-family:var(--serif);font-weight:600;font-size:clamp(1.45rem,1.15rem + 1vw,2rem);
-  color:var(--white);line-height:1.1;font-variant-numeric:tabular-nums}
-.money dd{margin-top:9px;font-size:.9rem;color:rgba(255,255,255,.68);line-height:1.5}
-
-/* Application */
-.apply{padding:88px 0 96px}
-.apply .head{text-align:center;max-width:54ch;margin:0 auto 36px}
-.apply h2{margin-bottom:10px}
-.time-note{font-size:.94rem;color:var(--muted)}
-.honesty{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);
-  font-size:.95rem;color:var(--text)}
-.honesty b{color:var(--navy);font-weight:600}
-.form-panel{max-width:880px;margin-inline:auto;background:var(--off);
-  border:1px solid var(--line);border-radius:10px;padding:14px}
-.form-panel iframe{display:block;width:100%;border:none;border-radius:6px;background:var(--white)}
-.first-in-line{max-width:54ch;margin:28px auto 0;text-align:center;font-size:.9rem;color:var(--muted)}
+.waitlist-card{
+  background:var(--white);border-radius:8px;padding:36px 32px;color:var(--text);
+  text-align:center;
+}
+.waitlist-card h2{font-size:1.5rem;margin-bottom:6px}
+.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px;max-width:42ch;margin-inline:auto}
+.waitlist-card p b{color:var(--navy);font-weight:600}
+.waitlist-card .honesty{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.time-note{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+.form-embed{margin-top:20px;background:var(--off);border-radius:8px;padding:8px}
+.form-embed iframe{display:block;width:100%;border:none;border-radius:4px}
+.first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted);max-width:42ch;margin-inline:auto}
 .first-in-line b{color:var(--navy);font-weight:600}
+@media (max-width:860px){
+  .hero{padding:64px 0 72px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+}
 
 section{padding:96px 0}
 @media (max-width:640px){section{padding:64px 0}}
@@ -139,20 +138,18 @@ h1,h2{text-wrap:balance}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 6px 0;text-decoration:none;font-weight:600}
 .skip:focus{left:0}
 .hero{background-image:radial-gradient(130% 100% at 85% 0%,rgba(255,255,255,.06),transparent 55%)}
+.waitlist-card{box-shadow:0 30px 60px -30px rgba(3,10,26,.55)}
 .money dt{font-variant-numeric:tabular-nums}
 
 /* ---------- mobile spacing scale ---------- */
 @media (max-width:640px){
   section{padding:56px 0}
-  .hero{padding:56px 0 52px}
+  .hero{padding:52px 0 56px}
+  .hero-grid{gap:32px}
   .hero-sub{margin-top:16px;font-size:1.06rem}
-  .hero-cta{margin-top:26px}
-  .money{margin-top:40px;padding-top:30px}
-  .money .stat{padding-inline:14px}
-  .money dd{font-size:.78rem;margin-top:6px}
-  .apply{padding:56px 0 64px}
-  .apply .head{margin-bottom:26px}
-  .form-panel{padding:8px;border-radius:8px}
+  .money{margin-top:26px}
+  .money .stat{padding:16px 0}
+  .waitlist-card{padding:26px 20px}
   .perks-grid{margin-top:32px}
   .steps{margin-top:36px}
   .bottom-cta{padding-bottom:64px}
@@ -174,7 +171,7 @@ h1,h2{text-wrap:balance}
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#waitlist">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
@@ -191,48 +188,43 @@ h1,h2{text-wrap:balance}
 
 <!-- QR codes and club blasts should point straight at this page. -->
 <main id="main">
-<section class="hero">
+<section class="hero" id="waitlist">
   <div class="wrap">
-    <span class="kicker">For university students</span>
-    <h1>Got takes? Get paid</h1>
-    <p class="hero-sub">
-      Companies pay to hear what students really think about their apps,
-      products, and ideas. No experience needed. Your opinion is the
-      qualification.
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-light" href="#apply">Apply to the panel</a>
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">For university students</span>
+        <h1>Got takes? Get paid</h1>
+        <p class="hero-sub">
+          Companies pay to hear what students really think about their apps,
+          products, and ideas. No experience needed. Your opinion is the
+          qualification.
+        </p>
+        <dl class="money">
+          <div class="stat"><dt>$40 to $75</dt><dd>What we pay for most studies</dd></div>
+          <div class="stat"><dt>Under an hour</dt><dd>Most sessions run 20 to 60 minutes</dd></div>
+          <div class="stat"><dt>Paid in about a day</dt><dd>Median payout so far is 18 hours after you finish</dd></div>
+        </dl>
+      </div>
+      <div class="waitlist-card">
+        <h2>Join the waitlist</h2>
+        <p class="time-note">Takes less than a minute to fill out</p>
+        <p class="honesty">Please <b>answer honestly</b>! Accurate answers
+        are what match you with the right studies.</p>
+        <!-- JotForm: Campus Takes Student Panel Application -->
+        <div class="form-embed" id="waitlist-form">
+          <iframe
+            id="JotFormIFrame-262445061796059"
+            title="Campus Takes Student Panel Application"
+            src="https://form.jotform.com/262445061796059"
+            allow="geolocation; microphone; camera; fullscreen"
+            frameborder="0" scrolling="auto" loading="lazy"
+            style="min-width:100%;max-width:100%;height:600px;border:none;"></iframe>
+        </div>
+        <p class="first-in-line"><b>Join now and you're first in line</b> when a
+        study fits you. We reach out as matches come up, so the waitlist is the
+        first step rather than an instant gig.</p>
+      </div>
     </div>
-    <dl class="money">
-      <div class="stat"><dt>$40 to $75</dt><dd>What most studies pay</dd></div>
-      <div class="stat"><dt>Under an hour</dt><dd>Most take 20 to 60 minutes</dd></div>
-      <div class="stat"><dt>About a day</dt><dd>18 hour median payout</dd></div>
-    </dl>
-  </div>
-</section>
-
-<section class="apply" id="apply">
-  <div class="wrap">
-    <div class="head">
-      <span class="kicker">Application</span>
-      <h2>Join the panel</h2>
-      <p class="time-note">A few questions about you and where you study.</p>
-      <p class="honesty">Please <b>answer honestly</b>! Accurate answers
-      are what match you with the right studies.</p>
-    </div>
-    <!-- JotForm: Campus Takes Student Panel Application -->
-    <div class="form-panel" id="waitlist-form">
-      <iframe
-        id="JotFormIFrame-262445061796059"
-        title="Campus Takes Student Panel Application"
-        src="https://form.jotform.com/262445061796059"
-        allow="geolocation; microphone; camera; fullscreen"
-        frameborder="0" scrolling="auto" loading="lazy"
-        style="min-width:100%;max-width:100%;height:1800px;border:none;"></iframe>
-    </div>
-    <p class="first-in-line"><b>Join now and you are first in line</b> when a
-    study fits you. We reach out as matches come up, so applying is the first
-    step rather than an instant gig.</p>
   </div>
 </section>
 
@@ -298,7 +290,7 @@ h1,h2{text-wrap:balance}
     <p class="lede">
       It takes about two minutes to apply, and there's nothing to prepare.
     </p>
-    <a class="btn" href="#apply">Join the waitlist</a>
+    <a class="btn" href="#waitlist">Join the waitlist</a>
   </div>
 </section>
 
@@ -323,7 +315,6 @@ h1,h2{text-wrap:balance}
     </p>
   </div>
 </footer>
-
 <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
 <script>
   window.jotformEmbedHandler(
