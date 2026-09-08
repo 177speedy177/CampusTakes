@@ -13,7 +13,7 @@ const validApplication = {
   lastName: "Student",
   schoolEmail: "jo@psu.edu",
   mobilePhone: "(814) 555-0123",
-  university: "Penn State",
+  university: "Pennsylvania State University",
   otherInstitution: "",
   campusCity: "University Park",
   academicLevel: "Sophomore",

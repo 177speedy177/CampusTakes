@@ -11,6 +11,7 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const emailInput = $("#school-email");
   const phoneInput = $("#mobile-phone");
+  const universityInput = $("#university");
   const submitButton = $("#application-submit");
   const formAlert = $("#form-alert");
   const otherInstitution = $("#other-institution-wrap");
@@ -157,12 +158,86 @@
     if (state.sms.token && normalizePhone(phoneInput.value) !== state.sms.contact) invalidate("sms");
   });
 
-  $("#university").addEventListener("change", (event) => {
-    const show = event.target.value === "Other US college or university";
+  const universitySuggestions = $("#university-suggestions");
+  const universityOptions = $$("#university-options option").map((option) => option.value || option.textContent.trim());
+  let activeUniversitySuggestion = -1;
+
+  function closeUniversitySuggestions() {
+    universitySuggestions.hidden = true;
+    universityInput.setAttribute("aria-expanded", "false");
+    activeUniversitySuggestion = -1;
+  }
+
+  function syncOtherInstitution() {
+    const show = universityInput.value === "Other US college or university";
     otherInstitution.hidden = !show;
     $("#other-institution").required = show;
     if (!show) $("#other-institution").value = "";
+  }
+
+  function chooseUniversity(value) {
+    universityInput.value = value;
+    closeUniversitySuggestions();
+    syncOtherInstitution();
+    universityInput.focus();
+  }
+
+  function renderUniversitySuggestions() {
+    const query = universityInput.value.trim().toLowerCase();
+    universitySuggestions.replaceChildren();
+    if (!query) return closeUniversitySuggestions();
+
+    const matches = universityOptions
+      .filter((school) => school.toLowerCase().includes(query))
+      .sort((a, b) => Number(!a.toLowerCase().startsWith(query)) - Number(!b.toLowerCase().startsWith(query)))
+      .slice(0, 8);
+    if (!matches.length) return closeUniversitySuggestions();
+
+    matches.forEach((school) => {
+      const option = document.createElement("button");
+      option.type = "button";
+      option.className = "suggestion-option";
+      option.setAttribute("role", "option");
+      option.textContent = school;
+      option.addEventListener("mousedown", (event) => event.preventDefault());
+      option.addEventListener("click", () => chooseUniversity(school));
+      universitySuggestions.append(option);
+    });
+    universitySuggestions.hidden = false;
+    universityInput.setAttribute("aria-expanded", "true");
+    activeUniversitySuggestion = -1;
+  }
+
+  function moveUniversitySuggestion(direction) {
+    const options = $$(".suggestion-option", universitySuggestions);
+    if (!options.length) return;
+    activeUniversitySuggestion = (activeUniversitySuggestion + direction + options.length) % options.length;
+    options.forEach((option, index) => option.classList.toggle("active", index === activeUniversitySuggestion));
+    options[activeUniversitySuggestion].scrollIntoView({ block: "nearest" });
+  }
+
+  universityInput.addEventListener("input", () => {
+    syncOtherInstitution();
+    renderUniversitySuggestions();
   });
+  universityInput.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (universitySuggestions.hidden) renderUniversitySuggestions();
+      moveUniversitySuggestion(1);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      moveUniversitySuggestion(-1);
+    } else if (event.key === "Enter" && activeUniversitySuggestion >= 0) {
+      event.preventDefault();
+      chooseUniversity($$(".suggestion-option", universitySuggestions)[activeUniversitySuggestion].textContent);
+    } else if (event.key === "Escape") {
+      closeUniversitySuggestions();
+    }
+  });
+  universityInput.addEventListener("blur", closeUniversitySuggestions);
+  universityInput.addEventListener("change", syncOtherInstitution);
+  syncOtherInstitution();
 
   const acquisitionPrompts = {
     "Student organization or club": "What organization or club?",
