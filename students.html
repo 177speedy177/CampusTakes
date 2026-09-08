@@ -84,11 +84,12 @@ h3{font-size:1.15rem;margin-bottom:8px}
   background:var(--off);border:1px solid var(--line);border-radius:8px;padding:38px 38px 42px;color:var(--text);
   text-align:left;
 }
-.waitlist-card h2{font-size:1.5rem;margin-bottom:6px;text-align:center}
+.waitlist-card h2{font-size:clamp(1.85rem,1.5rem + 1vw,2.15rem);margin-bottom:10px;text-align:center}
 .waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px;max-width:46ch;margin-inline:auto;text-align:center}
 .waitlist-card p b{color:var(--navy);font-weight:600}
-.waitlist-card .honesty{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-.time-note{font-size:.88rem;color:var(--muted);margin-bottom:14px}
+.waitlist-card .honesty{margin-top:0;padding-top:14px;border-top:1px solid var(--line)}
+.waitlist-card .intro{margin-bottom:18px}
+.time-note{font-size:.88rem;color:var(--muted);margin-bottom:8px}
 .application-form{
   height:620px;margin-top:30px;padding-right:14px;overflow-y:auto;overflow-x:hidden;
   overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#9BA8BA transparent;
@@ -275,7 +276,7 @@ h1,h2{text-wrap:balance}
       <div class="waitlist-card">
         <h2>Join the waitlist</h2>
         <p class="time-note">Takes about two minutes</p>
-        <p>Tell us a bit about yourself. We'll reach out when a study matches your profile.</p>
+        <p class="intro">Tell us a bit about yourself. We'll reach out when a study matches your profile.</p>
         <p class="honesty">Please <b>answer honestly</b>. Checking every box doesn't get you matched to more studies, it just ruins your profile.</p>
 
         <form class="application-form" id="student-application" novalidate>
