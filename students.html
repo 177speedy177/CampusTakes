@@ -33,7 +33,7 @@
   --line-dark:rgba(255,255,255,.22);
   --serif:"Source Serif 4",Georgia,serif;
   --sans:"Instrument Sans","Segoe UI",sans-serif;
-  --wrap:1040px;
+  --wrap:1180px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -69,7 +69,7 @@ h3{font-size:1.15rem;margin-bottom:8px}
 /* navy hero with the waitlist card beside it: signup above the fold */
 .hero{background:var(--navy);color:var(--white);padding:88px 0 96px}
 .hero .kicker{color:rgba(255,255,255,.6)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:start}
+.hero-grid{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(600px,1.38fr);gap:48px;align-items:start}
 .hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
 .hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
 .money{margin-top:36px;border-top:1px solid var(--line-dark)}
@@ -81,21 +81,88 @@ h3{font-size:1.15rem;margin-bottom:8px}
 .money dd{font-size:.92rem;color:rgba(255,255,255,.7);text-align:right;max-width:26ch}
 
 .waitlist-card{
-  background:var(--white);border-radius:8px;padding:36px 32px;color:var(--text);
-  text-align:center;
+  background:var(--white);border-radius:8px;padding:38px 38px 42px;color:var(--text);
+  text-align:left;
 }
-.waitlist-card h2{font-size:1.5rem;margin-bottom:6px}
-.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px;max-width:42ch;margin-inline:auto}
+.waitlist-card h2{font-size:1.5rem;margin-bottom:6px;text-align:center}
+.waitlist-card > p{color:var(--muted);font-size:.95rem;margin-bottom:4px;max-width:46ch;margin-inline:auto;text-align:center}
 .waitlist-card p b{color:var(--navy);font-weight:600}
 .waitlist-card .honesty{margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
 .time-note{font-size:.88rem;color:var(--muted);margin-bottom:14px}
-.form-embed{margin-top:20px;background:var(--off);border-radius:8px;padding:8px}
-.form-embed iframe{display:block;width:100%;border:none;border-radius:4px}
+.application-form{
+  height:620px;margin-top:30px;padding-right:14px;overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#9BA8BA transparent;
+}
+.application-form::-webkit-scrollbar{width:9px}
+.application-form::-webkit-scrollbar-track{background:transparent}
+.application-form::-webkit-scrollbar-thumb{background:#B0B8C4;border:2px solid #fff;border-radius:999px}
+.application-form::-webkit-scrollbar-thumb:hover{background:#8290A3}
+.form-section{border:0;border-top:1px solid var(--line);padding:30px 0 8px}
+.form-section+.form-section{margin-top:4px}
+.form-section legend{padding-right:14px;font-family:var(--serif);font-size:1.16rem;font-weight:600;color:var(--navy)}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
+.form-field{min-width:0}
+.form-field.full{grid-column:1/-1}
+.form-field label,.question-label{display:block;font-size:.84rem;font-weight:650;line-height:1.4;color:var(--text);margin-bottom:8px}
+.required-mark{color:#8E2530}
+.form-field input,.form-field select{
+  display:block;width:100%;min-height:44px;border:1px solid #C9CED7;border-radius:5px;background:#fff;
+  color:var(--text);font:inherit;font-size:.92rem;line-height:1.25;padding:10px 11px;
+}
+.form-field input:focus,.form-field select:focus{border-color:var(--navy-soft);outline:3px solid rgba(51,80,127,.15)}
+.form-field input[readonly]{background:#F0F5F2;border-color:#75A087;color:#33443A}
+.field-help{display:block;margin-top:7px;color:var(--muted);font-size:.77rem;line-height:1.45}
+.field-error{min-height:0;margin-top:5px;color:#8E2530;font-size:.78rem;line-height:1.35}
+.question-block{margin-top:4px;padding:16px 18px 18px;border:1px solid var(--line);border-radius:6px;background:var(--off)}
+.question-block .question-label{margin-bottom:3px;color:var(--navy);font-size:.96rem;font-weight:700}
+.question-block .field-help{margin-top:0;margin-bottom:12px}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 10px}
+.choice-grid.one{grid-template-columns:1fr}
+.choice{display:flex!important;align-items:flex-start;gap:9px;min-height:22px;margin:0!important;font-size:.83rem;line-height:1.4;color:var(--text);cursor:pointer}
+.choice input{flex:0 0 auto!important;width:17px!important;height:17px!important;min-height:17px!important;margin:1px 0 0!important;padding:0!important;accent-color:var(--navy)}
+.question-block .choice{align-items:flex-start;padding:9px 10px;border:1px solid #D6DAE1;border-radius:5px;background:#fff;font-weight:500}
+.question-block .choice:hover{border-color:#9BA8BA;background:#FAFBFD}
+.question-block .choice:has(input:checked){border-color:var(--navy-soft);background:#EEF3F9;color:var(--navy);font-weight:600}
+.verification-block{padding:14px;border:1px solid var(--line);border-radius:6px;background:var(--off)}
+.verification-actions,.code-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+.code-row{margin-top:9px}
+.code-row[hidden]{display:none}
+.verify-button,.change-button{
+  min-height:44px;border:1px solid var(--navy);border-radius:5px;padding:8px 12px;background:var(--navy);
+  color:#fff;font:inherit;font-size:.8rem;font-weight:650;cursor:pointer;white-space:nowrap;
+}
+.verify-button:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.verify-button:disabled{cursor:wait;opacity:.65}
+.change-button{display:none;background:transparent;color:var(--navy);margin-top:7px;min-height:34px;padding:4px 8px}
+.is-verified .change-button{display:inline-block}
+.verification-status{display:block;margin-top:7px;font-size:.77rem;line-height:1.35;color:var(--muted)}
+.verification-status.pending{color:#6C5416}.verification-status.error{color:#8E2530}.verification-status.verified{color:#27613E;font-weight:650}
+.verification-status.verified::before{content:"✓ ";}
+.consent-box{padding:14px;border-radius:6px;background:var(--off);border:1px solid var(--line)}
+.consent-box .choice+.choice{margin-top:10px}
+.consent-copy{margin:7px 0 0 25px;font-size:.74rem;line-height:1.45;color:var(--muted)}
+.consent-copy a{color:var(--navy)}
+.form-alert{margin-bottom:14px;padding:12px;border:1px solid #C77981;border-radius:5px;background:#FFF5F5;color:#7A1F28;font-size:.84rem;line-height:1.45}
+.submit-button{display:block;width:100%;min-height:50px;margin-top:20px;border:1px solid var(--navy);border-radius:6px;background:var(--navy);color:#fff;font:inherit;font-weight:650;cursor:pointer}
+.submit-button:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.submit-button:disabled{cursor:wait;opacity:.65}
+.success-card{padding:28px 18px;text-align:center;outline:none}
+.success-card h3{font-family:var(--serif);font-size:1.45rem;margin-bottom:10px}
+.success-card p{color:var(--muted);font-size:.92rem}
+.hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted);max-width:42ch;margin-inline:auto}
 .first-in-line b{color:var(--navy);font-weight:600}
-@media (max-width:860px){
+@media (max-width:980px){
   .hero{padding:64px 0 72px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:560px){
+  .form-grid,.choice-grid{grid-template-columns:1fr}
+  .verification-actions,.code-row{grid-template-columns:1fr}
+  .verify-button{width:100%}
+  .waitlist-card{padding:28px 22px 32px}
+  .application-form{height:560px;padding-right:9px}
+  .form-section{padding-top:26px}
 }
 
 section{padding:96px 0}
@@ -207,18 +274,244 @@ h1,h2{text-wrap:balance}
       </div>
       <div class="waitlist-card">
         <h2>Join the waitlist</h2>
-        <p class="time-note">Takes less than a minute to fill out</p>
-        <p class="honesty">Please <b>answer honestly</b>! Accurate answers
-        are what match you with the right studies.</p>
-        <!-- JotForm: Campus Takes Student Panel Application -->
-        <div class="form-embed" id="waitlist-form">
-          <iframe
-            id="JotFormIFrame-262445061796059"
-            title="Campus Takes Student Panel Application"
-            src="https://form.jotform.com/262445061796059"
-            allow="geolocation; microphone; camera; fullscreen"
-            frameborder="0" scrolling="auto" loading="lazy"
-            style="min-width:100%;max-width:100%;height:600px;border:none;"></iframe>
+        <p class="time-note">Takes about two minutes</p>
+        <p>Tell us a bit about yourself. We'll reach out when a study matches your profile.</p>
+        <p class="honesty">Please <b>answer honestly</b>. Accurate answers are what match you with the right studies.</p>
+
+        <form class="application-form" id="student-application" novalidate>
+          <div class="form-alert" id="form-alert" role="alert" tabindex="-1" hidden></div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <fieldset class="form-section">
+            <legend>Contact &amp; verification</legend>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="first-name">First name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="80" required>
+                <div class="field-error" data-error-for="firstName"></div>
+              </div>
+              <div class="form-field">
+                <label for="last-name">Last name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="last-name" name="lastName" type="text" autocomplete="family-name" maxlength="80" required>
+                <div class="field-error" data-error-for="lastName"></div>
+              </div>
+
+              <div class="form-field full verification-block">
+                <label for="school-email">School email <span class="required-mark" aria-hidden="true">*</span></label>
+                <div class="verification-actions">
+                  <input id="school-email" name="schoolEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@school.edu" maxlength="254" required>
+                  <button class="verify-button" type="button" data-action="send-code" data-channel="email">Send code</button>
+                </div>
+                <span class="field-help">Must end exactly in .edu. This confirms access to the mailbox; enrollment is reviewed separately.</span>
+                <div class="code-row" data-code-row="email" hidden>
+                  <input aria-label="School email verification code" data-code-input="email" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,10}" maxlength="10" placeholder="Verification code">
+                  <button class="verify-button" type="button" data-action="check-code" data-channel="email">Verify code</button>
+                </div>
+                <span class="verification-status" data-verification-status="email" role="status" aria-live="polite">Not verified yet.</span>
+                <button class="change-button" type="button" data-action="change-contact" data-channel="email">Use a different email</button>
+                <div class="field-error" data-error-for="schoolEmail"></div>
+              </div>
+
+              <div class="form-field full verification-block">
+                <label for="mobile-phone">Mobile phone <span class="required-mark" aria-hidden="true">*</span></label>
+                <div class="verification-actions">
+                  <input id="mobile-phone" name="mobilePhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(814) 555-0123" maxlength="30" required>
+                  <button class="verify-button" type="button" data-action="send-code" data-channel="sms">Send code</button>
+                </div>
+                <span class="field-help">We'll text one code to confirm the number. Message and data rates may apply.</span>
+                <div class="code-row" data-code-row="sms" hidden>
+                  <input aria-label="Phone verification code" data-code-input="sms" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,10}" maxlength="10" placeholder="Verification code">
+                  <button class="verify-button" type="button" data-action="check-code" data-channel="sms">Verify code</button>
+                </div>
+                <span class="verification-status" data-verification-status="sms" role="status" aria-live="polite">Not verified yet.</span>
+                <button class="change-button" type="button" data-action="change-contact" data-channel="sms">Use a different number</button>
+                <div class="field-error" data-error-for="mobilePhone"></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Student profile</legend>
+            <div class="form-grid">
+              <div class="form-field full">
+                <label for="university">University or college <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="university" name="university" required>
+                  <option value="">Select your school</option>
+                  <option>Arizona State University</option><option>Bucks County Community College</option><option>Carnegie Mellon University</option><option>Champlain College</option><option>Chandler-Gilbert Community College</option><option>City College of San Francisco</option><option>Colby College</option><option>Collin College</option><option>Drexel University</option><option>Duquesne University</option><option>Emory University</option><option>Estrella Mountain Community College</option><option>Florida International University</option><option>Franciscan University of Steubenville</option><option>GateWay Community College</option><option>George Mason University</option><option>Georgia Institute of Technology</option><option>Georgia State University</option><option>Glendale Community College</option><option>Grand Canyon University</option><option>Howard University</option><option>Lehigh University</option><option>Mesa Community College</option><option>Michigan State University</option><option>New Jersey Institute of Technology</option><option>Paradise Valley Community College</option><option>Penn State</option><option>PennWest University</option><option>Phoenix College</option><option>Pitt Community College</option><option>Rio Salado College</option><option>Rutgers University</option><option>Saint Joseph’s University</option><option>Scottsdale Community College</option><option>Southern New Hampshire University</option><option>South Mountain Community College</option><option>Syracuse University</option><option>Tarleton State University</option><option>Temple University</option><option>Texas A&amp;M University</option><option>Texas Christian University</option><option>The College of New Jersey</option><option>The Ohio State University</option><option>United States Military Academy</option><option>University at Buffalo</option><option>University of Arizona</option><option>University of California, Berkeley</option><option>University of California, Los Angeles</option><option>University of California, San Diego</option><option>University of Central Florida</option><option>University of Chicago</option><option>University of Cincinnati</option><option>University of Colorado Colorado Springs</option><option>University of Florida</option><option>University of Hawaiʻi at Mānoa</option><option>University of Illinois Chicago</option><option>University of Iowa</option><option>University of Lynchburg</option><option>University of Maryland, College Park</option><option>University of Massachusetts Boston</option><option>University of Massachusetts Lowell</option><option>University of Minnesota</option><option>University of Pennsylvania</option><option>University of Pittsburgh</option><option>University of Portland</option><option>University of Southern Mississippi</option><option>University of Texas at Austin</option><option>University of Virginia</option><option>University of Wisconsin–Madison</option><option>Villanova University</option><option>West Chester University</option><option>West Virginia University</option><option>Western Carolina University</option>
+                  <option>Other US college or university</option>
+                </select>
+                <div class="field-error" data-error-for="university"></div>
+              </div>
+              <div class="form-field full" id="other-institution-wrap" hidden>
+                <label for="other-institution">College or university name <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="other-institution" name="otherInstitution" type="text" autocomplete="organization" maxlength="160">
+                <div class="field-error" data-error-for="otherInstitution"></div>
+              </div>
+              <div class="form-field full">
+                <label for="campus-city">Campus or city <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="campus-city" name="campusCity" type="text" placeholder="University Park or State College" maxlength="120" required>
+                <div class="field-error" data-error-for="campusCity"></div>
+              </div>
+              <div class="form-field">
+                <label for="academic-level">Academic level <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="academic-level" name="academicLevel" required><option value="">Select one</option><option>First year</option><option>Sophomore</option><option>Junior</option><option>Senior</option><option>Graduate or professional student</option><option>Other</option></select>
+                <div class="field-error" data-error-for="academicLevel"></div>
+              </div>
+              <div class="form-field">
+                <label for="birth-year">Year of birth <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="birth-year" name="birthYear" type="number" inputmode="numeric" min="1900" max="2008" placeholder="2005" required>
+                <div class="field-error" data-error-for="birthYear"></div>
+              </div>
+              <div class="form-field">
+                <label for="grad-month">Expected graduation month <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="grad-month" name="gradMonth" required><option value="">Select month</option><option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option></select>
+                <div class="field-error" data-error-for="gradMonth"></div>
+              </div>
+              <div class="form-field">
+                <label for="grad-year">Expected graduation year <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="grad-year" name="gradYear" required><option value="">Select year</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option><option>2035 or later</option></select>
+                <div class="field-error" data-error-for="gradYear"></div>
+              </div>
+              <div class="form-field">
+                <label for="academic-area">Academic area <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="academic-area" name="academicArea" required><option value="">Select one</option><option>Business</option><option>Communications or marketing</option><option>Computer science or data</option><option>Education</option><option>Engineering</option><option>Health or medicine</option><option>Humanities or languages</option><option>Law or public policy</option><option>Natural sciences or mathematics</option><option>Social or behavioral sciences</option><option>Arts or design</option><option>Trades or technical</option><option>Undecided</option><option>Other</option></select>
+                <div class="field-error" data-error-for="academicArea"></div>
+              </div>
+              <div class="form-field">
+                <label for="major">Major or field of study <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="major" name="major" type="text" maxlength="120" required>
+                <div class="field-error" data-error-for="major"></div>
+              </div>
+              <div class="form-field full">
+                <label for="living-situation">Current living situation <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="living-situation" name="livingSituation" required><option value="">Select one</option><option>On-campus housing</option><option>Off-campus apartment or house</option><option>Fraternity or sorority house</option><option>Commute from home</option><option>Prefer not to say</option><option>Other</option></select>
+                <div class="field-error" data-error-for="livingSituation"></div>
+              </div>
+              <div class="form-field">
+                <label for="greek-life">Are you involved in a fraternity or sorority? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="greek-life" name="greekLife" required><option value="">Select one</option><option>Yes</option><option>No</option><option>Prefer not to say</option></select>
+                <div class="field-error" data-error-for="greekLife"></div>
+              </div>
+              <div class="form-field">
+                <label for="student-athlete">Are you a student athlete? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="student-athlete" name="studentAthlete" required><option value="">Select one</option><option>NCAA or varsity athlete</option><option>Club athlete</option><option>No</option><option>Prefer not to say</option></select>
+                <div class="field-error" data-error-for="studentAthlete"></div>
+              </div>
+            </div>
+
+            <div class="form-field full question-block">
+              <span class="question-label">Which student backgrounds describe you? <span class="required-mark" aria-hidden="true">*</span></span>
+              <span class="field-help">Select all that apply.</span>
+              <div class="choice-grid">
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="International student">International student</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="First-generation college student">First-generation student</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="Transfer student">Transfer student</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="Student parent">Student parent</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="Veteran or military-connected student">Veteran or military-connected</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="None of these" data-exclusive>None of these</label>
+                <label class="choice"><input type="checkbox" name="studentBackgrounds[]" value="Prefer not to say" data-exclusive>Prefer not to say</label>
+              </div>
+              <div class="field-error" data-error-for="studentBackgrounds"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Research matching</legend>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="gender">Gender <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="gender" name="gender" required><option value="">Select one</option><option>Man</option><option>Woman</option><option>Non-binary</option><option>Another identity</option><option>Prefer not to say</option></select>
+                <div class="field-error" data-error-for="gender"></div>
+              </div>
+              <div class="form-field">
+                <label for="employment-status">Are you employed during the school year? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="employment-status" name="employmentStatus" required><option value="">Select one</option><option>Not currently employed</option><option>Part-time</option><option>Full-time</option><option>Internship or co-op</option><option>Self-employed or freelance</option><option>Prefer not to say</option></select>
+                <div class="field-error" data-error-for="employmentStatus"></div>
+              </div>
+              <div class="form-field full question-block">
+                <span class="question-label">Race or ethnicity <span class="required-mark" aria-hidden="true">*</span></span>
+                <span class="field-help">Select all that apply.</span>
+                <div class="choice-grid">
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="American Indian or Alaska Native">American Indian or Alaska Native</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Asian">Asian</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Black or African American">Black or African American</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Hispanic or Latino">Hispanic or Latino</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Middle Eastern or North African">Middle Eastern or North African</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Native Hawaiian or Pacific Islander">Native Hawaiian or Pacific Islander</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="White">White</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Another race or ethnicity">Another race or ethnicity</label>
+                  <label class="choice"><input type="checkbox" name="raceEthnicity[]" value="Prefer not to say" data-exclusive>Prefer not to say</label>
+                </div>
+                <div class="field-error" data-error-for="raceEthnicity"></div>
+              </div>
+              <div class="form-field full question-block">
+                <span class="question-label">Devices you personally use <span class="required-mark" aria-hidden="true">*</span></span>
+                <span class="field-help">Select all that apply.</span>
+                <div class="choice-grid">
+                  <label class="choice"><input type="checkbox" name="devices[]" value="iPhone">iPhone</label><label class="choice"><input type="checkbox" name="devices[]" value="Android phone">Android phone</label><label class="choice"><input type="checkbox" name="devices[]" value="Windows computer">Windows computer</label><label class="choice"><input type="checkbox" name="devices[]" value="Mac">Mac</label><label class="choice"><input type="checkbox" name="devices[]" value="Tablet">Tablet</label><label class="choice"><input type="checkbox" name="devices[]" value="Gaming console">Gaming console</label>
+                </div>
+                <div class="field-error" data-error-for="devices"></div>
+              </div>
+              <div class="form-field full question-block">
+                <span class="question-label">Products or activities you use regularly <span class="required-mark" aria-hidden="true">*</span></span>
+                <span class="field-help">Select all that apply.</span>
+                <div class="choice-grid">
+                  <label class="choice"><input type="checkbox" name="productsActivities[]" value="Banking or payment apps">Banking or payment apps</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Food delivery">Food delivery</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Gaming">Gaming</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Social media">Social media</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Streaming">Streaming</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Fitness or wellness">Fitness or wellness</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Shopping or retail">Shopping or retail</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Study or AI tools">Study or AI tools</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Rideshare">Rideshare</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Travel">Travel</label><label class="choice"><input type="checkbox" name="productsActivities[]" value="Dating apps">Dating apps</label>
+                </div>
+                <div class="field-error" data-error-for="productsActivities"></div>
+              </div>
+              <div class="form-field full question-block">
+                <span class="question-label">When are you usually available? <span class="required-mark" aria-hidden="true">*</span></span>
+                <span class="field-help">Select all that apply.</span>
+                <div class="choice-grid"><label class="choice"><input type="checkbox" name="availability[]" value="Weekday mornings">Weekday mornings</label><label class="choice"><input type="checkbox" name="availability[]" value="Weekday afternoons">Weekday afternoons</label><label class="choice"><input type="checkbox" name="availability[]" value="Weekday evenings">Weekday evenings</label><label class="choice"><input type="checkbox" name="availability[]" value="Weekends">Weekends</label></div>
+                <div class="field-error" data-error-for="availability"></div>
+              </div>
+              <div class="form-field full">
+                <label for="recording-willingness">Would you join a recorded research session? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="recording-willingness" name="recordingWillingness" required><option value="">Select one</option><option>Yes, with video</option><option>Yes, audio only</option><option>No</option><option>It depends on the study</option></select>
+                <span class="field-help">We explain how a recording will be used before you decide.</span>
+                <div class="field-error" data-error-for="recordingWillingness"></div>
+              </div>
+              <div class="form-field">
+                <label for="paid-research">Have you been paid for research before? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="paid-research" name="paidResearchBefore" required><option value="">Select one</option><option>Never</option><option>Once or twice</option><option>A few times</option><option>Regularly</option></select>
+                <div class="field-error" data-error-for="paidResearchBefore"></div>
+              </div>
+              <div class="form-field">
+                <label for="acquisition-channel">How did you hear about us? <span class="required-mark" aria-hidden="true">*</span></label>
+                <select id="acquisition-channel" name="acquisitionChannel" required><option value="">Select one</option><option>Friend or referral</option><option>Student organization or club</option><option>Flyer or QR code</option><option>Social media</option><option>Professor or researcher</option><option>Other</option></select>
+                <div class="field-error" data-error-for="acquisitionChannel"></div>
+              </div>
+              <div class="form-field full" id="acquisition-detail-wrap" hidden>
+                <label for="acquisition-detail" id="acquisition-detail-label">Tell us where you heard about Campus Takes <span class="required-mark" aria-hidden="true">*</span></label>
+                <input id="acquisition-detail" name="acquisitionDetail" type="text" maxlength="160">
+                <div class="field-error" data-error-for="acquisitionDetail"></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Confirm &amp; apply</legend>
+            <div class="consent-box">
+              <label class="choice"><input type="checkbox" name="confirmAgeEnrollment" value="yes" required>I am 18 or older and currently enrolled at a college or university.</label>
+              <div class="field-error" data-error-for="confirmAgeEnrollment"></div>
+              <label class="choice"><input type="checkbox" name="confirmAccuracy" value="yes" required>The information I provided is accurate.</label>
+              <div class="field-error" data-error-for="confirmAccuracy"></div>
+              <label class="choice"><input type="checkbox" name="emailConsent" value="yes" required>I agree that Campus Takes may contact me by email about my application and paid research opportunities. I can unsubscribe at any time.</label>
+              <div class="field-error" data-error-for="emailConsent"></div>
+              <label class="choice"><input type="checkbox" name="smsConsent" value="yes">I agree to receive recurring automated text messages from Campus Takes at the mobile number provided about application updates and paid research opportunities.</label>
+              <p class="consent-copy">Text consent is optional and is not a condition of joining. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our <a href="terms.html" target="_blank">Terms</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>.</p>
+            </div>
+            <button class="submit-button" id="application-submit" type="submit">Apply to join</button>
+          </fieldset>
+        </form>
+
+        <div class="success-card" id="application-success" tabindex="-1" hidden>
+          <h3>Application received</h3>
+          <p>Your email and phone are confirmed. We'll review your application and reach out when a study matches your profile.</p>
         </div>
         <p class="first-in-line"><b>Join now and you're first in line</b> when a
         study fits you. We reach out as matches come up, so the waitlist is the
@@ -265,8 +558,8 @@ h1,h2{text-wrap:balance}
       <div class="step">
         <div class="step-num">1</div>
         <h3>Join the waitlist</h3>
-        <p>Tell us a little about yourself and verify that you're currently
-        enrolled using your .edu email.</p>
+        <p>Tell us a little about yourself and confirm your school email and
+        phone. We review enrollment separately before you join the panel.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
@@ -315,13 +608,7 @@ h1,h2{text-wrap:balance}
     </p>
   </div>
 </footer>
-<script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-<script>
-  window.jotformEmbedHandler(
-    "iframe[id='JotFormIFrame-262445061796059']",
-    "https://form.jotform.com/"
-  );
-</script>
+<script src="/student-application.js" defer></script>
 
 </body>
 </html>
