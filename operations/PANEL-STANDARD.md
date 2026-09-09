@@ -14,8 +14,8 @@ real students who respond, match honestly, attend, and get paid quickly.
 - 25 of the 44 Active records are Penn State; 19 are spread across 19 other schools
 - no duplicate email or phone exists inside the Active cohort
 - 20 historic Study 001 completions are recorded; no client sessions exist
-- 3 native applications were observed in the audit; all require enrollment review.
-  Distinguish founder/test records and reapplications before counting people.
+- Final implementation check: 10 real applications (three native and seven legacy),
+  plus five explicitly marked test records. All real applicants need further review.
 
 The Airtable `Panel Quality Tier` field now makes this distinction visible:
 
@@ -44,8 +44,9 @@ A panelist may be counted as current-ready only after all of these are true:
 8. No duplicate identity, material contradiction, fraud signal, or professional-
    respondent concern remains unresolved.
 9. The application is linked to exactly one Panelists record.
-10. Joey records Reviewed By and Reviewed At, explicitly resolves Phone Screen Status
-    to Completed or Not required, and checks Current Intake Approved last.
+10. Joey records Reviewed By, resolves Phone Screen Status to Completed or Not required,
+    and selects Review Status Approved last. The guarded automation stamps Reviewed At,
+    links the durable panelist and sets Current Intake Approved after successful processing.
 11. Application Eligibility reads PASS. That formula checks expiry and withdrawal;
     it does not validate link cardinality or study limits. Check those separately.
 
@@ -57,7 +58,8 @@ not for judging a person's quality.
 
 ### Wave 1: establish a trusted nucleus
 
-1. Review the two real native applications; the third native record is the founder test.
+1. Review the three real native applications first; another real native submission arrived
+   during implementation. Legacy applications need current consent and verified contacts.
 2. Match both normalized email and phone across all panel records before linking.
    No non-test application currently has an exact two-contact match. Do not merge
    partial matches or create a new panelist before resolving identity conflicts.
@@ -114,20 +116,11 @@ healthy performance looks like.
 
 ## Human review sequence
 
-Use the private Airtable `Panel Quality` interface:
-
-- Application Review draft: https://airtable.com/appSfUlKrUVeUN7bG/pagjk93ww3acYIpdX/edit
-- Inviteable Panel draft: https://airtable.com/appSfUlKrUVeUN7bG/pag1dBHnibGnInYHH/edit
-
-Interface publication has not been verified. Use the underlying tables if unavailable.
-
-1. `Application Review` page: resolve duplicate, enrollment, consent, and review state.
-2. Link approved/refreshed applications to the correct Panelists record.
-3. Copy current profile fields only after approval; do not overwrite a stronger value
-   with a blank application value.
-4. Set Panelists `Verification Status` to Email verified.
-5. Set Current Application to the one reviewed application and check Current Intake Approved last.
-   The live tier requires exactly one link, matching normalized email/phone and a passing
-   application gate. Expiry, withdrawal or failed review removes readiness. Recheck study
-   caps and suppression at invitation; current-ready is not universal study eligibility.
-6. Send the approval/welcome message manually and record the communication.
+Use the published private [Application Review](https://airtable.com/appSfUlKrUVeUN7bG/pagjk93ww3acYIpdX)
+and [Current-ready panel](https://airtable.com/appSfUlKrUVeUN7bG/pag1dBHnibGnInYHH) pages.
+Follow HOW-TO-REVIEW.md. The review automation performs identity matching, linking,
+profile copying and processing stamps after human evidence review. Read Panel Transfer
+Result and resolve any HOLD; do not bypass it with manual approval checkboxes. Expiry,
+withdrawal or failed application review removes readiness through the live gate.
+Recheck study caps, suppression and current answers at invitation. Welcome messages
+remain a deliberate owner action recorded with the applicant.
