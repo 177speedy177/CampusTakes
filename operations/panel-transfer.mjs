@@ -21,11 +21,18 @@ export function planTransfer(application, panelists, applications, now = new Dat
   const past = field => { const t = Date.parse(a[field]); return Number.isFinite(t) && t <= now.getTime(); };
   if (val('Email Control Status') !== 'Verified' || val('Phone Control Status') !== 'Verified' || !past('Email Verified At') || !past('Phone Verified At')) return fail('Complete the native email and phone verification.');
   if (val('Consent Version') !== 'student-intake-2026-09-07' || !past('Consent Accepted At')) return fail('Current consent evidence is missing.');
-  if (val('Enrollment Status') !== 'Verified' || !past('Enrollment Verified At') || !val('Enrollment Verification Method') || !val('Enrollment Evidence Notes')) return fail('Record enrollment method, verification date and a short evidence note.');
-  const latestExpiry = monthsAfter(a['Enrollment Verified At'], 12);
-  const expiry = a['Enrollment Verification Expires'] ? new Date(a['Enrollment Verification Expires']) : latestExpiry;
-  if (!Number.isFinite(expiry.getTime()) || expiry <= now || latestExpiry <= now) return fail('Enrollment evidence has expired; reverify before approval.');
-  if (!['Completed', 'Not required'].includes(val('Phone Screen Status'))) return fail('Complete the phone screen or choose Not required.');
+  // Admission uses verified contacts plus the student's current declaration.
+  // Never invent independent enrollment evidence to make routine admission pass.
+  if (!['', 'Not reviewed', 'Pending evidence', 'Verified'].includes(val('Enrollment Status'))) return fail('Resolve the rejected, expired or unknown enrollment check before approval.');
+  let expiry = null;
+  if (val('Enrollment Status') === 'Verified') {
+    if (!past('Enrollment Verified At') || !val('Enrollment Verification Method') || !val('Enrollment Evidence Notes')) return fail('An independently Verified enrollment needs its real method, date and evidence note.');
+    const latestExpiry = monthsAfter(a['Enrollment Verified At'], 12);
+    const requestedExpiry = a['Enrollment Verification Expires'] ? new Date(a['Enrollment Verification Expires']) : latestExpiry;
+    if (!Number.isFinite(requestedExpiry.getTime()) || requestedExpiry <= now || latestExpiry <= now) return fail('Enrollment evidence has expired; reverify before approval.');
+    expiry = new Date(Math.min(requestedExpiry, latestExpiry)).toISOString().slice(0,10);
+  }
+  if (!['', 'Not scheduled', 'Completed', 'Not required'].includes(val('Phone Screen Status'))) return fail('Resolve the scheduled or failed phone screen before approval.');
   const candidates = panelists.filter(p => normalizeEmail(p.fields['.edu email']) === email || normalizePhone(p.fields.Phone) === phone);
   if (candidates.length > 1) return fail('Email/phone match multiple panelists. Resolve the identity conflict manually.');
   let existing = candidates[0];
@@ -40,7 +47,7 @@ export function planTransfer(application, panelists, applications, now = new Dat
   const links = a['Linked Panelist'] || [];
   if (links.length > 1 || (links.length && links[0].id !== existing?.id)) return fail('Linked Panelist disagrees with the verified contact identity.');
   if (applications.some(r => r.id !== application.id && !r.fields['Test Record'] && !r.fields['Processed At'] && textValue(r.fields['Review Status']) === 'Approved' && (normalizeEmail(r.fields['School Email']) === email || normalizePhone(r.fields['Mobile Phone']) === phone))) return fail('Another approved application shares a contact. Choose the canonical application first.');
-  return { ok: true, existingId: existing?.id || null, email, phone, expiry: new Date(Math.min(expiry, latestExpiry)).toISOString().slice(0,10), reviewer: val('Reviewed By') };
+  return { ok: true, existingId: existing?.id || null, email, phone, expiry, reviewer: val('Reviewed By') };
 }
 
 export async function transferReviewedApplicant(base, recordId, { dryRun = false, now = new Date() } = {}) {
@@ -72,7 +79,12 @@ export async function transferReviewedApplicant(base, recordId, { dryRun = false
     await apps.updateRecordAsync(recordId, { 'Panel Transfer Result': 'HOLD — ' + plan.reason, 'Review Status': { name: 'On hold' } });
     return { outcome: 'HOLD — ' + plan.reason };
   }
-  if (application.fields['Processed At'] && plan.existingId && (panelists.find(p => p.id === plan.existingId).fields['Current Application'] || []).some(r => r.id === recordId) && panelists.find(p => p.id === plan.existingId).fields['Current Intake Approved']) return { outcome: 'Already transferred; no duplicate or timestamp reset.' };
+  if (application.fields['Processed At'] && plan.existingId && (panelists.find(p => p.id === plan.existingId).fields['Current Application'] || []).some(r => r.id === recordId) && panelists.find(p => p.id === plan.existingId).fields['Current Intake Approved']) {
+    // A later study may need an independent check after routine panel admission.
+    // Save its bounded expiry without creating a person or renewing review dates.
+    if (plan.expiry && application.fields['Enrollment Verification Expires'] !== plan.expiry) await apps.updateRecordAsync(recordId, {'Enrollment Verification Expires':plan.expiry});
+    return { outcome: 'Already transferred; no duplicate or timestamp reset.' };
+  }
   const fresh = await apps.selectRecordAsync(recordId);
   if (JSON.stringify(asObject(fresh,apps).fields) !== JSON.stringify(application.fields)) throw new Error('Application changed during transfer. Review and retry.');
   const a = application.fields, skipped = [];
@@ -101,7 +113,10 @@ export async function transferReviewedApplicant(base, recordId, { dryRun = false
   // A partial failure leaves readiness false. Retrying matches this same identity.
   const panelId = plan.existingId || await panel.createRecordAsync(fields);
   if (plan.existingId) await panel.updateRecordAsync(panelId,fields);
-  await apps.updateRecordAsync(recordId, { 'Reviewed At': now.toISOString(), 'Enrollment Verification Expires': plan.expiry, 'Linked Panelist': [{id:panelId}], 'Processed At': now.toISOString() });
+  const reviewFields = { 'Reviewed At': now.toISOString(), 'Linked Panelist': [{id:panelId}], 'Processed At': now.toISOString() };
+  if (plan.expiry) reviewFields['Enrollment Verification Expires'] = plan.expiry;
+  if (['', 'Not scheduled'].includes(textValue(a['Phone Screen Status']))) reviewFields['Phone Screen Status'] = {name:'Not required'};
+  await apps.updateRecordAsync(recordId, reviewFields);
   await panel.updateRecordAsync(panelId, {'Current Intake Approved':true});
   const outcome = 'DONE — ' + (plan.existingId ? 'updated existing panelist' : 'created and linked panelist') + (skipped.length ? '. Current application retains unmapped profile fields: ' + skipped.join(', ') : '');
   await apps.updateRecordAsync(recordId, {'Panel Transfer Result':outcome});

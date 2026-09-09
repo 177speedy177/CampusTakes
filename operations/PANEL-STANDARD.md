@@ -27,16 +27,15 @@ The Airtable `Panel Quality Tier` field now makes this distinction visible:
 
 ## Current-standard admission gate
 
+Updated September 9 after owner feedback: routine panel admission uses contact verification, student self-declaration and human consistency review. Independent enrollment evidence is an additional assurance level for concerns or client requirements, not a universal signup requirement. READY — current means current panel admission; it does not certify independent enrollment or a particular study's eligibility. This supersedes the earlier blanket document requirement.
+
 A panelist may be counted as current-ready only after all of these are true:
 
 1. Age 18+ affirmed and birth year is plausible.
 2. School email control verified by OTP.
 3. Phone control verified by OTP.
-4. Current U.S. enrollment supported by one minimally invasive method:
-   live student-portal check, registrar verification, or a redacted current-enrollment
-   document. Do not retain unnecessary grades, student ID numbers, addresses, or
-   financial information.
-5. School, email domain, graduation timing, and spoken answers are consistent.
+4. Current enrollment declared by the applicant. Independent evidence is required for unresolved enrollment concerns or a client study's agreed requirement. Its actual method, date and notes must be recorded before labeling enrollment Verified.
+5. School, email domain, graduation timing, and application answers are consistent.
 6. Five-minute phone screen completed when identity or response-quality confidence
    needs a human check. It is not necessary for an obviously consistent low-risk
    applicant.
@@ -44,7 +43,7 @@ A panelist may be counted as current-ready only after all of these are true:
 8. No duplicate identity, material contradiction, fraud signal, or professional-
    respondent concern remains unresolved.
 9. The application is linked to exactly one Panelists record.
-10. Joey records Reviewed By, resolves Phone Screen Status to Completed or Not required,
+10. Joey records Reviewed By; an unscheduled routine phone screen becomes Not required automatically,
     and selects Review Status Approved last. The guarded automation stamps Reviewed At,
     links the durable panelist and sets Current Intake Approved after successful processing.
 11. Application Eligibility reads PASS. That formula checks expiry and withdrawal;
@@ -103,7 +102,7 @@ Review monthly and after every study:
 | Current-ready / presented as available | 100% |
 | Duplicate active identities | 0 |
 | Unresolved risk flags among invitees | 0 |
-| Enrollment evidence age | no more than 12 months |
+| Independent enrollment evidence, when relied upon | no more than 12 months, or a stricter client requirement |
 | Profile confirmation age | no more than 6 months |
 | Valid-completion payout | within 1 business day |
 | Studies per panelist | no more than 2 per month |

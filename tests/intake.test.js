@@ -187,7 +187,7 @@ test("durable limiter sends atomic Redis commands and respects a failed NX claim
   }
 });
 
-test("Airtable payload marks control verified but enrollment pending", async () => {
+test("Airtable payload marks control verified but independent enrollment not reviewed", async () => {
   process.env.AIRTABLE_TOKEN = "test-token";
   const originalFetch = global.fetch;
   let request;
@@ -202,9 +202,9 @@ test("Airtable payload marks control verified but enrollment pending", async () 
     const fields = body.records[0].fields;
     assert.equal(fields[FIELD.emailStatus], "Verified");
     assert.equal(fields[FIELD.phoneStatus], "Verified");
-    assert.equal(fields[FIELD.enrollmentStatus], "Pending evidence");
+    assert.equal(fields[FIELD.enrollmentStatus], "Not reviewed");
     assert.equal(fields[FIELD.phoneScreenStatus], "Not scheduled");
-    assert.equal(fields[FIELD.reviewStatus], "Needs verification");
+    assert.equal(fields[FIELD.reviewStatus], "Ready for review");
     assert.equal(fields[FIELD.schoolEmail], "jo@psu.edu");
     assert.equal(fields[FIELD.smsConsent], undefined);
     assert.equal(fields[FIELD.acquisitionDetail], undefined);

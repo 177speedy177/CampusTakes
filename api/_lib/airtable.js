@@ -139,9 +139,9 @@ async function createApplication(value, now = new Date()) {
     [FIELD.emailVerifiedAt]: timestamp,
     [FIELD.phoneStatus]: "Verified",
     [FIELD.phoneVerifiedAt]: timestamp,
-    [FIELD.enrollmentStatus]: "Pending evidence",
+    [FIELD.enrollmentStatus]: "Not reviewed",
     [FIELD.phoneScreenStatus]: "Not scheduled",
-    [FIELD.reviewStatus]: "Needs verification",
+    [FIELD.reviewStatus]: "Ready for review",
     [FIELD.major]: value.major,
   };
   if (value.otherInstitution) fields[FIELD.otherInstitution] = value.otherInstitution;

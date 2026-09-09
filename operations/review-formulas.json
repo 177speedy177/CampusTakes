@@ -1,0 +1,85 @@
+{
+  "tables": [
+    {
+      "tableId": "tblpl0M3qI8H5ES2z",
+      "fields": [
+        {
+          "id": "fldCohsV5zk4Unn7d",
+          "type": "formula",
+          "config": {
+            "isValid": true,
+            "formula": "IF(AND({fldKdAzvslSFFsFHv}>=1900,{fldKdAzvslSFFsFHv}<=YEAR(TODAY())-18,FIND(\"I am 18 or older and currently enrolled\",ARRAYJOIN({fld1pUdhw2oxBLczM}))>0,{fldFKVLXpcfERVISC},{fldFKVLXpcfERVISC}<=NOW(),{fldiFoc2RMjv0iMJk},{fldiFoc2RMjv0iMJk}<=NOW(),IS_AFTER({fld4p3VAa600f4Bgu},DATEADD(NOW(),-6,\"months\")),NOT({fldcOCVo0JzKy23x5}),NOT({fldzamvX2zTP5wcn5}),{fldFvCsgywpA91cv7}=\"Approved\",{fldTFsYRhRHac7ssC}!=\"\",{fld4p3VAa600f4Bgu},{fld4p3VAa600f4Bgu}<=NOW(),{fldieZm6KwMg2cNS1}=\"Verified\",{fld2sOvlGXdkbJob9}=\"Verified\",IF({fldCDBLsGWVoIJTv6}=\"Verified\",AND({fldRS1tWTNGbswZmt},{fldYsXGdkYDjWVEY0},{fldEvGoBBmggQuQdg},{fldEvGoBBmggQuQdg}<=NOW(),IS_AFTER({fldEvGoBBmggQuQdg},DATEADD(NOW(),-12,\"months\")),{fldxNs44blArTzcib}>NOW()),OR({fldCDBLsGWVoIJTv6}=\"\",{fldCDBLsGWVoIJTv6}=\"Not reviewed\",{fldCDBLsGWVoIJTv6}=\"Pending evidence\")),{fldO4w9kYAOFU8jY6}=\"student-intake-2026-09-07\",{fldpzrx3DymDOfNIz},{fldpzrx3DymDOfNIz}<=NOW(),COUNTA({fldDlhHNHBshFYZ3w})=0,OR({fldhBJF7b7QRxUBX8}=\"Completed\",{fldhBJF7b7QRxUBX8}=\"Not required\")),\"PASS — review identity link\",\"HOLD — incomplete or expired\")",
+            "referencedFieldIds": [
+              "fldKdAzvslSFFsFHv",
+              "fld1pUdhw2oxBLczM",
+              "fldFKVLXpcfERVISC",
+              "fldiFoc2RMjv0iMJk",
+              "fld4p3VAa600f4Bgu",
+              "fldcOCVo0JzKy23x5",
+              "fldzamvX2zTP5wcn5",
+              "fldFvCsgywpA91cv7",
+              "fldTFsYRhRHac7ssC",
+              "fldieZm6KwMg2cNS1",
+              "fld2sOvlGXdkbJob9",
+              "fldCDBLsGWVoIJTv6",
+              "fldRS1tWTNGbswZmt",
+              "fldYsXGdkYDjWVEY0",
+              "fldEvGoBBmggQuQdg",
+              "fldxNs44blArTzcib",
+              "fldO4w9kYAOFU8jY6",
+              "fldpzrx3DymDOfNIz",
+              "fldDlhHNHBshFYZ3w",
+              "fldhBJF7b7QRxUBX8"
+            ],
+            "result": {
+              "type": "singleLineText"
+            }
+          }
+        },
+        {
+          "id": "fldjj3k7UnqXfkELC",
+          "type": "formula",
+          "config": {
+            "isValid": true,
+            "formula": "IF({fldcOCVo0JzKy23x5},\"TEST — excluded\",IF({fldzamvX2zTP5wcn5},\"STOP — consent withdrawn\",IF(OR({fldFvCsgywpA91cv7}=\"Rejected\",{fldFvCsgywpA91cv7}=\"Duplicate\"),\"CLOSED — \"&{fldFvCsgywpA91cv7},IF(COUNTA({fldDlhHNHBshFYZ3w})>0,\"HOLD — resolve the flagged concern; request evidence only if needed\",IF(OR({fldieZm6KwMg2cNS1}!=\"Verified\",{fld2sOvlGXdkbJob9}!=\"Verified\",{fldO4w9kYAOFU8jY6}!=\"student-intake-2026-09-07\"),\"WAIT — updated form and contact verification needed\",IF(OR({fldCDBLsGWVoIJTv6}=\"Rejected\",{fldCDBLsGWVoIJTv6}=\"Expired\",{fldhBJF7b7QRxUBX8}=\"Scheduled\",{fldhBJF7b7QRxUBX8}=\"Failed\"),\"HOLD — resolve the existing enrollment or phone-screen concern\",IF({fldhUlHlYGbEUEQjI},{fldhUlHlYGbEUEQjI},IF(NOT({fldTFsYRhRHac7ssC}),\"REVIEW — expand answers; enter your name in Reviewed By\",IF({fldFvCsgywpA91cv7}!=\"Approved\",\"DECIDE — Approved if consistent; On hold if unclear. Notes optional.\",\"PROCESSING — check Panel Transfer Result\")))))))))",
+            "referencedFieldIds": [
+              "fldcOCVo0JzKy23x5",
+              "fldzamvX2zTP5wcn5",
+              "fldFvCsgywpA91cv7",
+              "fldDlhHNHBshFYZ3w",
+              "fldieZm6KwMg2cNS1",
+              "fld2sOvlGXdkbJob9",
+              "fldO4w9kYAOFU8jY6",
+              "fldCDBLsGWVoIJTv6",
+              "fldhBJF7b7QRxUBX8",
+              "fldhUlHlYGbEUEQjI",
+              "fldTFsYRhRHac7ssC"
+            ],
+            "result": {
+              "type": "singleLineText"
+            }
+          }
+        },
+        {
+          "id": "fldLnvB2Qhxquyg6H",
+          "type": "formula",
+          "config": {
+            "isValid": true,
+            "formula": "IF({fldCDBLsGWVoIJTv6}=\"Verified\",IF(AND({fldRS1tWTNGbswZmt},{fldYsXGdkYDjWVEY0},{fldEvGoBBmggQuQdg},{fldEvGoBBmggQuQdg}<=NOW(),IS_AFTER({fldEvGoBBmggQuQdg},DATEADD(NOW(),-12,\"months\")),{fldxNs44blArTzcib}>NOW()),\"INDEPENDENTLY CHECKED — current\",\"CHECK — independent evidence incomplete or expired\"),IF(OR({fldCDBLsGWVoIJTv6}=\"Rejected\",{fldCDBLsGWVoIJTv6}=\"Expired\"),\"CHECK — enrollment concern\",IF(FIND(\"I am 18 or older and currently enrolled\",ARRAYJOIN({fld1pUdhw2oxBLczM}))>0,\"SELF-REPORTED — no independent enrollment check\",\"MISSING — student declaration\")))",
+            "referencedFieldIds": [
+              "fldCDBLsGWVoIJTv6",
+              "fldRS1tWTNGbswZmt",
+              "fldYsXGdkYDjWVEY0",
+              "fldEvGoBBmggQuQdg",
+              "fldxNs44blArTzcib",
+              "fld1pUdhw2oxBLczM"
+            ],
+            "result": {
+              "type": "singleLineText"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
