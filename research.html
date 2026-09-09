@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recruit Verified Student Research Participants | Campus Takes</title>
-<meta name="description" content="Recruit verified college students for interviews, usability tests, and surveys. In our first panel study a quota of 20 completed responses filled in 24 hours. One flat price per completed session.">
+<title>College Student Research Recruitment | Campus Takes</title>
+<meta name="description" content="Campus Takes recruits, screens, schedules, confirms, and pays college-student participants for client-run interviews, usability tests, focus groups, and surveys.">
 <link rel="canonical" href="https://campustakes.com/research">
 <meta name="theme-color" content="#10254A">
 <link rel="apple-touch-icon" href="/icon-512.png">
@@ -132,8 +132,46 @@ section{padding:96px 0}
 .cta h2{max-width:24ch}
 .cta .lede{margin-bottom:8px}
 .cta-actions{margin-top:36px}
-.form-embed{margin-top:24px;max-width:640px}
-.form-embed iframe{display:block;width:100%;border:none}
+.request-shell{max-width:720px;margin-top:28px;padding:32px;background:var(--off);border:1px solid var(--line);border-radius:10px}
+.request-form{display:grid;gap:24px}
+.request-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.request-field{min-width:0}
+.request-field-full{grid-column:1/-1}
+.request-format{margin:0;padding:0;border:0}
+.request-label,.request-legend{display:block;margin-bottom:7px;color:var(--navy);font-size:.93rem;font-weight:650;line-height:1.35}
+.request-required{color:#8E2530}
+.request-input,.request-select,.request-textarea{display:block;width:100%;border:1px solid #C9CFD8;border-radius:6px;background:var(--white);color:var(--text);font:inherit;font-size:1rem;line-height:1.4;transition:border-color .2s ease,box-shadow .2s ease}
+.request-input,.request-select{min-height:48px;padding:10px 12px}
+.request-textarea{min-height:116px;padding:12px;resize:vertical}
+.request-input:hover,.request-select:hover,.request-textarea:hover{border-color:#98A3B3}
+.request-input:focus,.request-select:focus,.request-textarea:focus{border-color:var(--navy-soft);outline:0;box-shadow:0 0 0 3px rgba(51,80,127,.16)}
+.request-input[aria-invalid="true"],.request-select[aria-invalid="true"],.request-textarea[aria-invalid="true"]{border-color:#A62F3A}
+.request-help{margin-top:6px;color:var(--muted);font-size:.8rem;line-height:1.45}
+.request-error{min-height:0;margin-top:5px;color:#8E2530;font-size:.8rem;line-height:1.4}
+.request-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.request-option{position:relative;display:flex;align-items:center;min-height:48px;padding:10px 12px;border:1px solid #C9CFD8;border-radius:6px;background:var(--white);cursor:pointer;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.request-option:hover{border-color:#98A3B3}
+.request-option:has(input:checked){border-color:var(--navy);background:#EEF2F8;box-shadow:inset 0 0 0 1px var(--navy)}
+.request-option input{width:17px;height:17px;margin-right:9px;accent-color:var(--navy)}
+.request-option span{font-size:.9rem;font-weight:600;line-height:1.25}
+.request-submit{min-height:50px;border:1px solid var(--navy);border-radius:6px;background:var(--navy);color:#fff;font:inherit;font-weight:650;cursor:pointer;transition:background .2s ease,border-color .2s ease,transform .1s ease}
+.request-submit:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
+.request-submit:active{transform:translateY(1px)}
+.request-submit:disabled{cursor:wait;opacity:.68}
+.request-legal{color:var(--muted);font-size:.78rem;line-height:1.55}
+.request-legal a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line)}
+.request-status{min-height:1.4em;color:#8E2530;font-size:.84rem;line-height:1.45}
+.request-success{padding:10px 0 6px;outline:none}
+.request-success h3{font-size:1.55rem}
+.request-success p{max-width:54ch;color:var(--muted);margin-top:8px}
+.request-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+#client-turnstile{min-height:0}
+@media (max-width:640px){
+  .request-shell{padding:22px 18px;margin-top:22px}
+  .request-grid{grid-template-columns:1fr;gap:18px}
+  .request-field-full{grid-column:auto}
+  .request-options{grid-template-columns:1fr}
+}
 
 .site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
 .footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
@@ -204,15 +242,15 @@ h1,h2{text-wrap:balance}
 <section class="hero">
   <div class="wrap">
     <span class="kicker">For research teams</span>
-    <h1>Recruiting, with the numbers attached</h1>
+    <h1>We recruit the students.<br>You run the research.</h1>
     <p class="lede">
-      Campus Takes recruits college students for interviews, usability tests, and
-      surveys, hand-picked against the criteria you set. Our first panel study is
-      published in full, so you can check the numbers before you talk to us.
+      You set the audience, screener, format, and dates. Campus Takes finds eligible
+      students, manages screening and scheduling, sends confirmations and reminders,
+      and coordinates incentives. Your team runs the research.
     </p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="#request">Tell us about your study</a>
-      <p class="risk-note">No subscription, no retainer. One flat price per completed session, incentive included.</p>
+      <p class="risk-note">A written quote before recruiting starts, with the incentive and scope clearly included.</p>
     </div>
     <div class="stats">
       <div class="stat">
@@ -246,19 +284,19 @@ h1,h2{text-wrap:balance}
     </p>
     <div class="points-grid">
       <div class="point">
-        <h3>Verified, not self-reported</h3>
-        <p>Every panelist signs up with a verified school email, and every
-        response ties back to one panelist record.</p>
+        <h3>Reviewed before presentation</h3>
+        <p>Applicants confirm control of a U.S. .edu mailbox and phone by one-time
+        code. We review current enrollment separately before presenting anyone for a study.</p>
       </div>
       <div class="point">
         <h3>Closed invite, not an open link</h3>
-        <p>Studies go to named panelists we pick against your criteria, with an
-        online screener attached. No open link and no river sample.</p>
+        <p>Studies go to named, approved panelists who match the criteria already
+        in their profiles, followed by your study-specific screener. We do not post an open study link.</p>
       </div>
       <div class="point">
-        <h3>Small on purpose</h3>
-        <p>A marketplace sells access to a pool. We keep the panel small enough
-        to know who is in it, and to choose the invitations one at a time.</p>
+        <h3>Human review when needed</h3>
+        <p>If an application, enrollment record, or screener answer needs another
+        check, we review it before inviting that person and can use a short phone screen.</p>
       </div>
       <div class="point">
         <h3>Capped participation</h3>
@@ -272,27 +310,25 @@ h1,h2{text-wrap:balance}
 <section id="how">
   <div class="wrap">
     <span class="kicker">How it works</span>
-    <h2>From screener to completed sessions</h2>
+    <h2>From study brief to completed sessions</h2>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
         <h3>Tell us who you need</h3>
-        <p>Share your quotas, screener, and format: moderated interviews,
-        unmoderated usability tests, or surveys. We tell you what is feasible,
-        and what is not, before you commit.</p>
+        <p>Share the audience, quotas, screener, format, dates, and recording needs.
+        We check the panel and tell you what appears feasible before you commit.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>We invite and screen</h3>
-        <p>We pick enrollment-verified panelists who match your criteria and send
-        your screener with the invite. You get the ones who qualify.</p>
+        <h3>We match and screen</h3>
+        <p>We invite approved, enrollment-reviewed panelists who match the profile
+        criteria, then apply your approved screener and record each outcome.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>You run the research</h3>
-        <p>You choose the format and the tool for the session. We book the
-        participants in, send reminders, and pay them afterwards. You pay only
-        for the sessions that are actually completed.</p>
+        <h3>We manage the fieldwork</h3>
+        <p>We schedule qualified participants, confirm the time and time zone, send
+        reminders, track attendance, and coordinate payment after you confirm completion.</p>
       </div>
     </div>
   </div>
@@ -301,34 +337,33 @@ h1,h2{text-wrap:balance}
 <!-- Credibility section: sells the method, and links the published report. -->
 <section class="method">
   <div class="wrap">
-    <span class="kicker">How the panel is run</span>
-    <h2>How we keep the panel honest</h2>
+    <span class="kicker">What we handle</span>
+    <h2>Recruitment-only fieldwork</h2>
     <p class="lede">
-      We are a new panel, and a deliberately small one, so we will not show you
-      borrowed logos. Here is the process instead, and the one study we have run
-      so far, published in full with its limits stated.
+      We do not design, moderate, or analyze the study. We recruit and manage the
+      participants so your team can run the research.
     </p>
     <div class="method-grid">
       <div class="method-item">
-        <h3>Verified at signup</h3>
-        <p>Every panelist signs up with a verified school email, and every
-        response ties back to one panelist record.</p>
+        <h3>Applicant review</h3>
+        <p>School email and phone control are checked by one-time codes. Enrollment
+        is reviewed separately, and each approved applicant has one panel record.</p>
       </div>
       <div class="method-item">
-        <h3>One flat price per completed session</h3>
-        <p>The incentive is included and nothing stacks on top. No subscription,
-        no retainer, and you are not charged for a session that is not completed.</p>
+        <h3>Study-specific screening</h3>
+        <p>We use the criteria and screener you approve, keep individual screening
+        outcomes, and do not reveal which answers qualify.</p>
       </div>
       <div class="method-item">
-        <h3>Panelists paid quickly</h3>
-        <p>Median 18 hours from completed response to payment sent, across the
-        10 payouts issued through July 28.</p>
+        <h3>Scheduling and incentives</h3>
+        <p>We handle session booking, confirmations, reminders, participant status,
+        and incentive payment after completion is confirmed.</p>
       </div>
       <div class="method-item">
-        <h3>We publish what we measure</h3>
-        <p>The panel results we cite are published in full in our
-        <a href="panel-report.html">Panel Report</a>, methodology and limits
-        included. When we run the next study, we will publish that too.</p>
+        <h3>Documented results</h3>
+        <p>The results we use as proof are available in our
+        <a href="panel-report.html">Panel Report</a>, with full counts, method,
+        and limits rather than a marketing summary alone.</p>
       </div>
     </div>
   </div>
@@ -339,14 +374,76 @@ h1,h2{text-wrap:balance}
     <span class="kicker">Get started</span>
     <h2>Tell us about your study</h2>
     <p class="lede">
-      Three quick questions: who you need, what format, and when. We reply
-      within one business day with feasibility, cost, and a recruiting plan.
-      Prefer to talk first? Say so in the form and we will set up a call.
+      Tell us who you need, how many participants, and when. We reply within one
+      business day to clarify the brief. We confirm availability and cost before committing to a recruiting plan.
     </p>
     <div class="cta-actions">
-      <!-- Tally form: "Looking for participants" (client intake) -->
-      <div class="form-embed" id="typeform-clients">
-        <iframe src="https://tally.so/embed/ODyBRY?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Request research participants"></iframe>
+      <div class="request-shell">
+        <form class="request-form" id="client-request-form" novalidate>
+          <div class="request-grid">
+            <div class="request-field">
+              <label class="request-label" for="client-name">Name <span class="request-required" aria-hidden="true">*</span></label>
+              <input class="request-input" id="client-name" name="clientName" type="text" autocomplete="name" maxlength="120" required aria-describedby="client-name-error">
+              <div class="request-error" id="client-name-error" data-error-for="clientName" aria-live="polite"></div>
+            </div>
+            <div class="request-field">
+              <label class="request-label" for="work-email">Work email <span class="request-required" aria-hidden="true">*</span></label>
+              <input class="request-input" id="work-email" name="workEmail" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="work-email-help work-email-error">
+              <p class="request-help" id="work-email-help">Use your company or university address.</p>
+              <div class="request-error" id="work-email-error" data-error-for="workEmail" aria-live="polite"></div>
+            </div>
+            <div class="request-field request-field-full">
+              <label class="request-label" for="company">Organization <span class="request-required" aria-hidden="true">*</span></label>
+              <input class="request-input" id="company" name="company" type="text" autocomplete="organization" maxlength="160" required aria-describedby="company-error">
+              <div class="request-error" id="company-error" data-error-for="company" aria-live="polite"></div>
+            </div>
+            <div class="request-field request-field-full">
+              <label class="request-label" for="target-description">Who do you need to talk to? <span class="request-required" aria-hidden="true">*</span></label>
+              <textarea class="request-textarea" id="target-description" name="targetDescription" maxlength="2500" required aria-describedby="target-help target-error" placeholder="For example: undergraduate students who have used a budgeting app in the past month."></textarea>
+              <p class="request-help" id="target-help">Include any hard requirements or quotas. A rough description is enough for an initial feasibility check.</p>
+              <div class="request-error" id="target-error" data-error-for="targetDescription" aria-live="polite"></div>
+            </div>
+            <div class="request-field">
+              <label class="request-label" for="participant-count">How many participants? <span class="request-required" aria-hidden="true">*</span></label>
+              <input class="request-input" id="participant-count" name="participantCount" type="number" inputmode="numeric" min="1" max="1000" step="1" required aria-describedby="participant-count-error">
+              <div class="request-error" id="participant-count-error" data-error-for="participantCount" aria-live="polite"></div>
+            </div>
+            <div class="request-field">
+              <label class="request-label" for="incentive-budget">Planned incentive per participant</label>
+              <input class="request-input" id="incentive-budget" name="incentiveBudget" type="number" inputmode="decimal" min="0" max="10000" step="0.01" placeholder="$" aria-describedby="incentive-help incentive-error">
+              <p class="request-help" id="incentive-help">Optional. Leave blank if you want a recommendation.</p>
+              <div class="request-error" id="incentive-error" data-error-for="incentiveBudget" aria-live="polite"></div>
+            </div>
+            <fieldset class="request-field request-field-full request-format">
+              <legend class="request-legend">What format is the study? <span class="request-required" aria-hidden="true">*</span></legend>
+              <div class="request-options">
+                <label class="request-option"><input name="format" type="radio" value="Interview" required><span>Interview or focus group</span></label>
+                <label class="request-option"><input name="format" type="radio" value="Usability"><span>Usability test</span></label>
+                <label class="request-option"><input name="format" type="radio" value="Survey"><span>Survey</span></label>
+              </div>
+              <div class="request-error" data-error-for="format" aria-live="polite"></div>
+            </fieldset>
+            <div class="request-field request-field-full">
+              <label class="request-label" for="timing">When do you need participants? <span class="request-required" aria-hidden="true">*</span></label>
+              <input class="request-input" id="timing" name="timing" type="text" maxlength="500" required aria-describedby="timing-help timing-error" placeholder="For example: sessions during the week of October 12">
+              <p class="request-help" id="timing-help">Exact dates are helpful, but “within two weeks” or “flexible” works too.</p>
+              <div class="request-error" id="timing-error" data-error-for="timing" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="request-honeypot" aria-hidden="true">
+            <label for="request-website">Website</label>
+            <input id="request-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div id="client-turnstile"></div>
+          <p class="request-legal">By submitting, you agree that Campus Takes may contact you about this request. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p>
+          <button class="request-submit" id="client-request-submit" type="submit">Send study details</button>
+          <div class="request-status" id="client-request-status" role="status" aria-live="polite"></div>
+        </form>
+        <div class="request-success" id="client-request-success" tabindex="-1" hidden>
+          <h3>We received your study details.</h3>
+          <p>Joey will review the audience, timing, and format and reply within one business day. If anything is urgent, email <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -374,5 +471,7 @@ h1,h2{text-wrap:balance}
   </div>
 </footer>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
+<script src="/client-request.js" defer></script>
 </body>
 </html>

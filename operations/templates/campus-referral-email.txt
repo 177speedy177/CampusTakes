@@ -1,0 +1,16 @@
+Subject: Know another student who gives thoughtful feedback?
+
+Hi {{first_name}},
+
+I’m building a small group of verified students at {{school}}, rather than adding a
+single person from as many colleges as possible. If you know one or two enrolled
+students who would take paid research seriously, you can send them this link:
+
+https://campustakes.com/students?src={{campus_source_code}}
+
+There’s no obligation and no guarantee of a study; everyone applies and verifies
+independently. Please don’t post it to coupon, survey-reward, or paid-research groups.
+
+Thanks,
+Joey
+Campus Takes

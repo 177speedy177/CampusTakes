@@ -1,0 +1,15 @@
+Subject: Please reverify your Campus Takes profile
+
+Hi {{first_name}},
+
+I’m updating the Campus Takes panel so every student profile is current before I send
+new research opportunities. Please complete the short application at
+https://campustakes.com/students?src=panel-reverify-2026. It verifies your school email
+and phone and refreshes the information used to match you with studies.
+
+Completing it does not obligate you to join any study. If you would rather leave the
+panel, reply and I’ll mark your profile inactive.
+
+Thanks,
+Joey
+Campus Takes

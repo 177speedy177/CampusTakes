@@ -1,0 +1,11 @@
+{
+  "completions": 10,
+  "price": 120,
+  "incentive": 50,
+  "directCostPerCompletion": 5,
+  "founderHours": 15,
+  "hourlyCost": 30,
+  "acquisitionCost": 0,
+  "riskReserve": 0,
+  "targetMargin": 0.25
+}

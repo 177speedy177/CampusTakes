@@ -1,0 +1,15 @@
+Subject: You’re approved for the Campus Takes panel
+
+Hi {{first_name}},
+
+Your Campus Takes profile is approved. When a study fits, I’ll send the topic, format,
+time commitment, recording details, and exact incentive before you decide whether to
+take part.
+
+There is never an obligation to participate, and I will not share your school email,
+phone number, or payment details with a research client. You can update or leave the
+panel at any time by replying to this email.
+
+Thanks,
+Joey
+Campus Takes

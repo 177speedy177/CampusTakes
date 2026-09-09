@@ -49,7 +49,7 @@ function validChoice(name, value) {
 }
 
 function validArray(name, value, max = 20) {
-  return Array.isArray(value) && value.length > 0 && value.length <= max && value.every((item) => choices[name].has(item));
+  return Array.isArray(value) && value.length <= max && new Set(value).size === value.length && value.every((item) => choices[name].has(item)) && !(value.length > 1 && value.some(item => ["None of these", "Prefer not to say"].includes(item)));
 }
 
 function validateApplication(input) {
@@ -80,16 +80,16 @@ function validateApplication(input) {
   if (!validChoice("academicArea", input.academicArea)) errors.academicArea = "Select your academic area.";
   if (!major) errors.major = "Enter your major or field of study.";
   if (!Number.isInteger(birthYear) || birthYear < oldestYear || birthYear > youngestYear) errors.birthYear = "Enter a valid birth year. You must be at least 18.";
-  if (!validChoice("livingSituation", input.livingSituation)) errors.livingSituation = "Select your living situation.";
-  if (!validChoice("greekLife", input.greekLife)) errors.greekLife = "Select an answer.";
-  if (!validChoice("studentAthlete", input.studentAthlete)) errors.studentAthlete = "Select an answer.";
-  if (!validArray("studentBackgrounds", input.studentBackgrounds)) errors.studentBackgrounds = "Select at least one answer.";
-  if (!validChoice("gender", input.gender)) errors.gender = "Select an answer.";
-  if (!validArray("raceEthnicity", input.raceEthnicity)) errors.raceEthnicity = "Select at least one answer.";
-  if (!validChoice("employmentStatus", input.employmentStatus)) errors.employmentStatus = "Select an answer.";
-  if (!validArray("devices", input.devices)) errors.devices = "Select at least one device.";
-  if (!validArray("productsActivities", input.productsActivities)) errors.productsActivities = "Select at least one answer.";
-  if (!validArray("availability", input.availability, 4)) errors.availability = "Select at least one time.";
+  if (input.livingSituation != null && input.livingSituation !== "" && !validChoice("livingSituation", input.livingSituation)) errors.livingSituation = "Select your living situation.";
+  if (input.greekLife != null && input.greekLife !== "" && !validChoice("greekLife", input.greekLife)) errors.greekLife = "Select an answer.";
+  if (input.studentAthlete != null && input.studentAthlete !== "" && !validChoice("studentAthlete", input.studentAthlete)) errors.studentAthlete = "Select an answer.";
+  if (!validArray("studentBackgrounds", input.studentBackgrounds)) errors.studentBackgrounds = "Choose consistent answers, or leave this optional question blank.";
+  if (input.gender != null && input.gender !== "" && !validChoice("gender", input.gender)) errors.gender = "Select an answer.";
+  if (!validArray("raceEthnicity", input.raceEthnicity)) errors.raceEthnicity = "Choose consistent answers, or leave this optional question blank.";
+  if (input.employmentStatus != null && input.employmentStatus !== "" && !validChoice("employmentStatus", input.employmentStatus)) errors.employmentStatus = "Select an answer.";
+  if (!validArray("devices", input.devices)) errors.devices = "Choose valid devices, or leave this optional question blank.";
+  if (!validArray("productsActivities", input.productsActivities)) errors.productsActivities = "Choose valid activities, or leave this optional question blank.";
+  if (!validArray("availability", input.availability, 4) || !input.availability.length) errors.availability = "Select at least one time.";
   if (!validChoice("recordingWillingness", input.recordingWillingness)) errors.recordingWillingness = "Select an answer.";
   if (!validChoice("paidResearchBefore", input.paidResearchBefore)) errors.paidResearchBefore = "Select an answer.";
   if (!validChoice("acquisitionChannel", input.acquisitionChannel)) errors.acquisitionChannel = "Select how you heard about Campus Takes.";

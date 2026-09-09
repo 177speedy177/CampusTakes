@@ -135,7 +135,7 @@ and logo previews next to every value.
 | | |
 |---|---|
 | Brand name | Campus Takes (two words, both capitalized) |
-| Legal entity | Campus Takes LLC |
+| Legal entity | Campus Takes (legal entity name requires confirmation) |
 | Tagline | Verified students. Honest takes. |
 | Contact | hello@campustakes.com |
 | Website | campustakes.com |

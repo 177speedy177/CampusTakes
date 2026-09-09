@@ -29,9 +29,24 @@ Create an Airtable personal access token with only these scopes:
 
 Limit it to the Campus Takes base. The native form writes only to `Panelist Applications`; it does not change old records or create records in `Panelists`.
 
-## 3. Vercel environment variables
+## 3. Bot protection and durable abuse controls
 
-Add these under the `freshtake` project for Production, Preview, and Development:
+Create a free Cloudflare Turnstile widget in **Managed** mode for both `campustakes.com` and
+`www.campustakes.com`. Copy its site key and secret key. Turnstile is verified only by the server;
+the public site key is intentionally returned by `/api/bot-config`.
+
+Create a free Upstash Redis database in a region near the Vercel deployment. Copy the REST URL and
+REST token. Redis makes rate limits and duplicate-submission locks work across all serverless
+instances; the in-memory fallback is used only for local development and tests.
+
+Production fails closed when either protection is missing. This prevents an incomplete deployment
+from exposing paid Twilio verification endpoints.
+
+## 4. Vercel environment variables
+
+Add the existing Twilio, Airtable, and signing variables under the `freshtake` project
+for the environments where you intentionally test them. Add the four production
+Turnstile/Upstash values to **Production first**:
 
 | Variable | Value |
 |---|---|
@@ -42,6 +57,11 @@ Add these under the `freshtake` project for Production, Preview, and Development
 | `AIRTABLE_BASE_ID` | `appSfUlKrUVeUN7bG` |
 | `AIRTABLE_APPLICATIONS_TABLE_ID` | `tblpl0M3qI8H5ES2z` |
 | `VERIFICATION_TOKEN_SECRET` | Random secret of at least 32 characters |
+| `TURNSTILE_SITE_KEY` | Public Cloudflare Turnstile site key |
+| `TURNSTILE_SECRET_KEY` | Secret Cloudflare Turnstile server key |
+| `TURNSTILE_ALLOWED_HOSTNAMES` | Optional; defaults to `campustakes.com,www.campustakes.com` |
+| `UPSTASH_REDIS_REST_URL` | Upstash database REST URL |
+| `UPSTASH_REDIS_REST_TOKEN` | Upstash database REST token |
 | `ALLOWED_ORIGINS` | Optional comma-separated preview origins |
 
 Generate `VERIFICATION_TOKEN_SECRET` locally with:
@@ -52,7 +72,13 @@ node -e "console.log(require('node:crypto').randomBytes(48).toString('base64url'
 
 Do not paste any secret into an HTML or JavaScript file. Environment changes apply only to a new Vercel deployment.
 
-## 4. State written on successful application
+For Preview, create a separate Turnstile widget and allow only the exact preview
+hostname(s), then add a matching `TURNSTILE_ALLOWED_HOSTNAMES` and `ALLOWED_ORIGINS`.
+Do not reuse the production widget with wildcard hostnames. Local development bypasses
+Turnstile and Redis only when their variables are absent, so leave those four variables
+unset in Development unless you are deliberately testing provider integration.
+
+## 5. State written on successful application
 
 - Email Control Status: `Verified`
 - Phone Control Status: `Verified`
@@ -62,7 +88,7 @@ Do not paste any secret into an HTML or JavaScript file. Environment changes app
 
 This is deliberate. OTP confirms possession of the mailbox and phone. It does not prove identity or current enrollment. Those checks remain a later human-controlled workflow.
 
-## 5. Pre-launch check
+## 6. Pre-launch check
 
 Run:
 
@@ -80,5 +106,7 @@ On the local form, confirm:
 4. Editing a verified email or phone invalidates its verification.
 5. A successful application creates exactly one `Panelist Applications` record with the states above.
 6. Reusing the same school email reports that an application already exists.
+7. Repeated code requests are blocked by both requester IP and target contact limits.
+8. The application cannot request a code when Turnstile or Redis is unavailable in production.
 
 Only after those checks should the site be deployed to production and the old Jotform integration be disabled.

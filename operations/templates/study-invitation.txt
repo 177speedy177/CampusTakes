@@ -1,0 +1,18 @@
+Subject: Paid Campus Takes study — {{topic}}, {{incentive}}
+
+Hi {{first_name}},
+
+I’m recruiting for a {{format}} about {{plain_language_topic}}. It takes about
+{{duration}} and pays {{incentive}} after a valid completion.
+
+{{recording_disclosure}}
+
+If you’re interested, complete this short screener by {{deadline}}:
+{{unique_screener_link}}
+
+The screener determines fit; completing it does not guarantee selection. Participation
+is voluntary, and declining will not affect future invitations.
+
+Thanks,
+Joey
+Campus Takes

@@ -1,0 +1,21 @@
+# Private business systems and data must never be part of the public site bundle.
+outreach/
+outreach-v2/
+backups/
+operations/
+brand/
+
+# Local tooling, tests, and internal documentation are not runtime assets.
+.git/
+.vercel/
+tests/
+NATIVE-INTAKE-SETUP.md
+SECURITY.md
+SECURITY-AUDIT-*.md
+
+# Local credentials and environment snapshots.
+.env
+.env.*
+*.env
+
+.github/

@@ -89,7 +89,7 @@ async function airtableRequest(query = "", options = {}) {
 }
 
 async function applicationExists(email) {
-  const formula = `LOWER({School Email})="${email}"`;
+  const formula = `AND(LOWER({School Email})=${JSON.stringify(email)},IS_AFTER({Submitted At},DATEADD(NOW(),-1,"days")))`;
   const query = `?maxRecords=1&filterByFormula=${encodeURIComponent(formula)}&fields%5B%5D=${FIELD.schoolEmail}`;
   const data = await airtableRequest(query);
   return Array.isArray(data.records) && data.records.length > 0;
@@ -103,9 +103,9 @@ function applicationId(now = new Date()) {
 async function createApplication(value, now = new Date()) {
   const timestamp = now.toISOString();
   const fields = {
-    [FIELD.applicationId]: applicationId(now),
+    [FIELD.applicationId]: value.requestId ? `CT-${value.requestId}` : applicationId(now),
     [FIELD.submittedAt]: timestamp,
-    [FIELD.formVersion]: "native-2026-09-v2",
+    [FIELD.formVersion]: "native-2026-09-v3",
     [FIELD.firstName]: value.firstName,
     [FIELD.lastName]: value.lastName,
     [FIELD.schoolEmail]: value.schoolEmail,
@@ -148,11 +148,18 @@ async function createApplication(value, now = new Date()) {
   if (value.acquisitionDetail) fields[FIELD.acquisitionDetail] = value.acquisitionDetail;
   if (value.smsConsent) fields[FIELD.smsConsent] = [SMS_CONSENT];
 
+  for (const key of Object.keys(fields)) if (fields[key] === "" || fields[key] == null || (Array.isArray(fields[key]) && fields[key].length === 0)) delete fields[key];
   const data = await airtableRequest("", {
-    method: "POST",
-    body: JSON.stringify({ records: [{ fields }], typecast: false }),
+    method: value.requestId ? "PATCH" : "POST",
+    body: JSON.stringify({ records: [{ fields }], typecast: false, ...(value.requestId ? { performUpsert: { fieldsToMergeOn: [FIELD.applicationId] } } : {}) }),
   });
-  return data.records?.[0];
+  if (!data.records?.[0]?.id) throw new Error("Airtable did not confirm a saved application.");
+  return data.records[0];
 }
 
-module.exports = { FIELD, applicationExists, createApplication };
+async function findApplication(requestId) {
+  const formula = `{Application ID}=${JSON.stringify('CT-' + requestId)}`;
+  const data = await airtableRequest('?maxRecords=1&returnFieldsByFieldId=true&filterByFormula=' + encodeURIComponent(formula));
+  return data.records?.[0];
+}
+module.exports = { FIELD, applicationExists, createApplication, findApplication };

@@ -5,6 +5,10 @@
   const state = {
     email: { token: "", contact: "" },
     sms: { token: "", contact: "" },
+    requestId: crypto.randomUUID(),
+    botProof: "",
+    botChallenge: "",
+    botWidget: null,
   };
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -18,6 +22,58 @@
   const acquisitionDetailWrap = $("#acquisition-detail-wrap");
   const acquisitionDetailInput = $("#acquisition-detail");
   const acquisitionDetailLabel = $("#acquisition-detail-label");
+  const botStatus = $("#bot-status");
+
+  async function waitForTurnstile() {
+    for (let attempt = 0; attempt < 50; attempt += 1) {
+      if (window.turnstile) return window.turnstile;
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+    throw new Error("Security check could not load. Please refresh the page.");
+  }
+
+  async function initializeBotCheck() {
+    try {
+      const response = await fetch("/api/bot-config", { headers: { Accept: "application/json" } });
+      const config = await response.json();
+      if (!response.ok || !config.enabled || !config.siteKey) {
+        if (["localhost", "127.0.0.1"].includes(location.hostname)) return;
+        throw new Error("Applications are temporarily unavailable while the security check is configured.");
+      }
+      const turnstile = await waitForTurnstile();
+      state.botWidget = turnstile.render("#turnstile-widget", {
+        sitekey: config.siteKey,
+        action: "student-intake",
+        theme: "light",
+        callback(token) {
+          state.botChallenge = token;
+          botStatus.textContent = "Security check complete.";
+          botStatus.className = "verification-status verified";
+        },
+        "expired-callback"() {
+          state.botChallenge = "";
+          botStatus.textContent = "Security check expired. Please complete it again.";
+          botStatus.className = "verification-status error";
+        },
+        "error-callback"() {
+          state.botChallenge = "";
+          botStatus.textContent = "Security check could not load. Please refresh the page.";
+          botStatus.className = "verification-status error";
+        },
+      });
+    } catch (error) {
+      botStatus.textContent = error.message;
+      botStatus.className = "verification-status error";
+      $$('[data-action="send-code"]').forEach(button => { button.disabled = true; });
+    }
+  }
+
+  initializeBotCheck();
+
+  function resetBotChallenge() {
+    state.botChallenge = "";
+    if (state.botWidget !== null && window.turnstile) window.turnstile.reset(state.botWidget);
+  }
 
   const normalizeEmail = (value) => value.trim().toLowerCase();
   const normalizePhone = (value) => {
@@ -51,6 +107,17 @@
     setStatus(channel, "", channel === "email" ? "Not verified yet." : "Not verified yet.");
   }
 
+  function expireProofs() {
+    for (const channel of ["email", "sms"]) {
+      if (state[channel].token && Date.now() >= state[channel].expiresAt) {
+        invalidate(channel);
+        setStatus(channel, "error", "Verification expired. Request a new code; your answers are preserved.");
+      }
+    }
+  }
+  setInterval(expireProofs, 10000);
+  document.addEventListener("visibilitychange", expireProofs);
+
   function verificationContact(channel) {
     return channel === "email" ? normalizeEmail(emailInput.value) : normalizePhone(phoneInput.value);
   }
@@ -83,15 +150,24 @@
     setBusy(button, true, "Sending…");
     setStatus(channel, "pending", "Sending your code…");
     try {
-      await post("/api/verification-start", {
+      if (!state.botProof && !state.botChallenge && !["localhost", "127.0.0.1"].includes(location.hostname)) {
+        throw new Error("Complete the security check before requesting a code.");
+      }
+      const data = await post("/api/verification-start", {
         channel,
         value: contact,
         website: form.elements.website.value,
+        botProof: state.botProof,
+        botChallenge: state.botChallenge,
       });
+      if (data.botProof) state.botProof = data.botProof;
+      resetBotChallenge();
       $(`[data-code-row="${channel}"]`).hidden = false;
       setStatus(channel, "pending", channel === "email" ? "Code sent. Check your school inbox." : "Code sent by text.");
       $(`[data-code-input="${channel}"]`).focus();
     } catch (error) {
+      resetBotChallenge();
+      if (error.status === 403) state.botProof = "";
       setStatus(channel, "error", error.message);
     } finally {
       setBusy(button, false, "");
@@ -114,14 +190,20 @@
         value: contact,
         code: codeInput.value.trim(),
         website: form.elements.website.value,
+        botProof: state.botProof,
+        botChallenge: state.botChallenge,
       });
-      state[channel] = { token: data.token, contact: data.contact };
+      if (data.botProof) state.botProof = data.botProof;
+      state[channel] = { token: data.token, contact: data.contact, expiresAt: data.expiresAt };
+      resetBotChallenge();
       const input = channel === "email" ? emailInput : phoneInput;
       input.setAttribute("readonly", "");
       input.closest(".verification-block").classList.add("is-verified");
       $(`[data-code-row="${channel}"]`).hidden = true;
       setStatus(channel, "verified", channel === "email" ? "School email verified." : "Phone number verified.");
     } catch (error) {
+      resetBotChallenge();
+      if (error.status === 403) state.botProof = "";
       setStatus(channel, "error", error.message);
     } finally {
       setBusy(button, false, "");
@@ -283,6 +365,7 @@
   function payload() {
     const data = new FormData(form);
     return {
+      requestId: state.requestId,
       firstName: data.get("firstName"),
       lastName: data.get("lastName"),
       schoolEmail: data.get("schoolEmail"),
@@ -316,9 +399,11 @@
       smsConsent: data.get("smsConsent") === "yes",
       website: data.get("website"),
       sourceCode: form.dataset.sourceCode,
-      applicationUrl: window.location.href.slice(0, 500),
+      applicationUrl: (window.location.origin + window.location.pathname).slice(0, 500),
       emailVerificationToken: state.email.token,
       phoneVerificationToken: state.sms.token,
+      botProof: state.botProof,
+      botChallenge: state.botChallenge,
     };
   }
 
@@ -353,6 +438,7 @@
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearErrors();
+    expireProofs();
     if (!form.reportValidity()) return;
     if (!state.email.token || !state.sms.token) {
       showErrors(Object.assign(new Error("Verify both your school email and phone number before applying."), {
@@ -372,6 +458,9 @@
       success.focus();
       success.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
     } catch (error) {
+      resetBotChallenge();
+      if (error.fields?.schoolEmail) invalidate("email");
+      if (error.fields?.mobilePhone) invalidate("sms");
       showErrors(error);
     } finally {
       setBusy(submitButton, false, "");

@@ -215,7 +215,7 @@ WHAT MAY BE SAID
   - 15 of 20 respondents will go on camera.
   - 17 of 20 can join a study within two days.
   - Median payout was 18 hours, across 10 payouts.
-  - Every panelist verifies enrollment with a school email at signup.
+  - School-email access is confirmed at signup; current enrollment requires separate review.
   - Panelists are picked by hand against the criteria the client sets,
     and an online screener goes out with the invite. The correct term for
     the whole process is "closed invite with an online screener".

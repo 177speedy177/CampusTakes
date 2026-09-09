@@ -15,10 +15,16 @@ function json(res, status, body) {
 }
 
 function readBody(req) {
-  if (req.body && typeof req.body === "object") return req.body;
+  const contentLength = Number(req.headers?.["content-length"] || 0);
+  if (contentLength > 50_000) return null;
+  if (req.body && typeof req.body === "object" && !Array.isArray(req.body)) {
+    try { return JSON.stringify(req.body).length <= 50_000 ? req.body : null; } catch { return null; }
+  }
   if (typeof req.body === "string") {
+    if (Buffer.byteLength(req.body, "utf8") > 50_000) return null;
     try {
-      return JSON.parse(req.body);
+      const parsed = JSON.parse(req.body);
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : null;
     } catch {
       return null;
     }
@@ -36,7 +42,7 @@ function allowedOrigins() {
 
 function isAllowedOrigin(req) {
   const origin = req.headers.origin;
-  if (!origin) return true;
+  if (!origin) return !process.env.VERCEL_ENV && process.env.NODE_ENV !== "production";
   if (allowedOrigins().has(origin)) return true;
   try {
     const url = new URL(origin);
@@ -57,6 +63,11 @@ function requirePost(req, res) {
   }
   if (!isAllowedOrigin(req)) {
     json(res, 403, { error: "Request origin is not allowed." });
+    return false;
+  }
+  const contentType = String(req.headers["content-type"] || "").toLowerCase();
+  if (!contentType.startsWith("application/json")) {
+    json(res, 415, { error: "Content-Type must be application/json." });
     return false;
   }
   return true;

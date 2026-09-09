@@ -7,3 +7,6 @@ backups/
 .env
 *.env
 .env.*
+
+# Local sourcing warehouse and diagnostics contain private prospect data.
+outreach-v2/
