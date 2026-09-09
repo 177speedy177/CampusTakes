@@ -32,7 +32,7 @@ export function planTransfer(application, panelists, applications, now = new Dat
   if (existing) {
     const p = existing.fields;
     if (normalizeEmail(p['.edu email']) !== email || normalizePhone(p.Phone) !== phone) return fail('Only one contact matches an existing panelist. Resolve the conflict; do not create a duplicate.');
-    if (textValue(p.Status) !== 'Active' || (p['Fraud Flags'] || []).length) return fail('Existing identity is inactive, suppressed or flagged. Resolve it manually.');
+    if (!['', 'Active'].includes(textValue(p.Status)) || (p['Fraud Flags'] || []).length) return fail('Existing identity is inactive, suppressed or flagged. Resolve it manually.');
     if (names(p['First name'], p['Last name']) !== names(a['First Name'], a['Last Name'])) return fail('Existing contact has a different name. Resolve the identity conflict manually.');
     const currentIds = (p['Current Application'] || []).map(r => r.id);
     if (applications.some(r => currentIds.includes(r.id) && r.fields['Consent Withdrawn At'])) return fail('Existing panelist has withdrawn consent; resolve suppression manually.');

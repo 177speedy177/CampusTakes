@@ -1,5 +1,7 @@
 # Review an applicant and add them to the panel
 
+Lost in Airtable? Start with [Your panel, simply](START-HERE.md) for the full panel list, the refresh email log, and an explanation of enrollment evidence.
+
 Open [Application Review](https://airtable.com/appSfUlKrUVeUN7bG/pagjk93ww3acYIpdX). This is the published owner interface. Test records are excluded. The Review Next Step column tells you what needs attention. Expand a person to review their answers and evidence.
 
 1. Check the applicant's identity, current consent, adult affirmation and verified email/phone. Legacy applicants with missing proof need to complete the current [student application](https://www.campustakes.com/students). Do not manually manufacture OTP or consent evidence.

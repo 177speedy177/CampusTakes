@@ -7,6 +7,8 @@ test('transfer admits new identity and reuses exact normalized existing identity
  const {planTransfer}=await import('../operations/panel-transfer.mjs');
  assert.equal(planTransfer(applicant(),[],[],now).ok,true);
  assert.equal(planTransfer(applicant(),[panelist()],[],now).existingId,'pan1');
+ const legacy = panelist(); delete legacy.fields.Status;
+ assert.equal(planTransfer(applicant(),[legacy],[],now).existingId,'pan1','unreviewed blank-status legacy identity is reused after full new review');
 });
 test('transfer rejects missing, expired, withdrawn, test and contradictory evidence',async()=>{
  const {planTransfer}=await import('../operations/panel-transfer.mjs');
@@ -16,7 +18,7 @@ test('transfer rejects missing, expired, withdrawn, test and contradictory evide
 });
 test('transfer blocks partial matches, suppression, names, duplicate approvals and wrong links',async()=>{
  const {planTransfer}=await import('../operations/panel-transfer.mjs');
- for(const patch of [{Phone:'+12125550198'},{Status:{name:'Inactive'}},{'Fraud Flags':[{name:'Fraud'}]},{'First name':'Other'}]) {
+ for(const patch of [{Phone:'+12125550198'},{Status:{name:'Inactive'}},{Status:{name:'Blacklist'}},{Status:{name:'Unknown'}},{'Fraud Flags':[{name:'Fraud'}]},{'First name':'Other'}]) {
   const p=panelist();Object.assign(p.fields,patch);assert.equal(planTransfer(applicant(),[p],[],now).ok,false);
  }
  assert.equal(planTransfer(applicant(),[panelist(),{...panelist(),id:'pan2'}],[],now).ok,false);
