@@ -3,6 +3,36 @@ const assert = require('node:assert/strict');
 const now = new Date('2026-09-09T22:00:00Z');
 function applicant() { return {id:'app1',fields:{'Review Status':{name:'Approved'},'Reviewed By':'Joey','First Name':'Case','Last Name':'Student','School Email':'Case@example.edu','Mobile Phone':'+1 212 555 0199','Birth Year':2000,'Applicant Confirmations':[{name:'I am 18 or older and currently enrolled'}],'Email Control Status':{name:'Verified'},'Phone Control Status':{name:'Verified'},'Email Verified At':'2026-09-08T12:00:00Z','Phone Verified At':'2026-09-08T12:00:00Z','Consent Version':'student-intake-2026-09-07','Consent Accepted At':'2026-09-08T12:00:00Z','Enrollment Status':{name:'Verified'},'Enrollment Verified At':'2026-09-09T12:00:00Z','Enrollment Verification Method':{name:'Live student-portal check'},'Enrollment Evidence Notes':'Current term and name checked; no document retained.','Phone Screen Status':{name:'Not required'}}}; }
 function panelist() {return {id:'pan1',fields:{'First name':'Case','Last name':'Student','.edu email':'case@example.edu',Phone:'+12125550199',Status:{name:'Active'}}};}
+function automaticApplicant() {
+ const a=applicant();
+ Object.assign(a.fields,{'Review Status':{name:'Ready for review'},'Reviewed By':'','Form Version':'native-2026-09-v3','Submitted At':'2026-09-09T12:00:00Z','School Email':'case@psu.edu','University or College':'Pennsylvania State University','Campus or City':'University Park','Academic Level':{name:'Junior'},'Expected Graduation Month':'May','Expected Graduation Year':{name:'2028'},'Academic Area':{name:'Engineering'},'Major or Field of Study':'Engineering','Availability':[{name:'Weekdays'}],'Recorded Session Willingness':{name:'Yes'},'Paid Research Before':{name:'No'},'Enrollment Status':{name:'Not reviewed'},'Phone Screen Status':{name:'Not scheduled'}});
+ for(const k of ['Enrollment Verified At','Enrollment Evidence Notes','Enrollment Verification Method'])delete a.fields[k];
+ return a;
+}
+
+test('automatic admission records machine provenance, not human or enrollment proof; retries are idempotent',async()=>{
+ const {transferReviewedApplicant,AUTO_REVIEWER}=await import('../operations/panel-transfer.mjs');
+ const a=automaticApplicant(),f=fakeBase(a);
+ const preview=await transferReviewedApplicant(f.base,a.id,{automatic:true,dryRun:true,now});assert.match(preview.outcome,/create panelist/);assert.equal(f.creates(),0);
+ await transferReviewedApplicant(f.base,a.id,{automatic:true,now});
+ assert.equal(a.fields['Review Status'].name,'Approved');assert.equal(a.fields['Reviewed By'],AUTO_REVIEWER);assert.equal(a.fields['Enrollment Status'].name,'Not reviewed');assert.equal(a.fields['Enrollment Verified At'],undefined);
+ await transferReviewedApplicant(f.base,a.id,{automatic:true,now});await transferReviewedApplicant(f.base,a.id,{now});assert.equal(f.creates(),1);
+});
+test('automatic admission holds mismatched, unknown, stale, incomplete or conflicting applications',async()=>{
+ const {planTransfer,transferReviewedApplicant}=await import('../operations/panel-transfer.mjs');
+ for(const patch of [{'School Email':'case@evilpsu.edu'},{'School Email':'case@gcu.edu'},{'University or College':'Unknown College'},{'Expected Graduation Year':{name:'2025'}},{'Expected Graduation Year':{name:'2035 or later'}},{'Expected Graduation Year':{name:'2027'},'Academic Level':{name:'First year'},'Expected Graduation Month':'January'},{'Submitted At':'2024-01-01'},{'Form Version':'legacy'},{'Major or Field of Study':''},{'Consent Withdrawn At':now.toISOString()},{'Test Record':true},{'Risk Flags':[{name:'Identity concern'}]}]) {
+  const a=automaticApplicant();Object.assign(a.fields,patch);assert.equal(planTransfer(a,[],[],now,{automatic:true}).ok,false,JSON.stringify(patch));
+ }
+ const a=automaticApplicant();const other=automaticApplicant();other.id='app2';
+ assert.equal(planTransfer(a,[],[other],now,{automatic:true}).ok,false);
+ other.fields['Review Status']={name:'Rejected'};other.fields['Consent Withdrawn At']=now.toISOString();assert.equal(planTransfer(a,[],[other],now,{automatic:true}).ok,false);
+ a.fields['University or College']='Unknown College';const f=fakeBase(a);await transferReviewedApplicant(f.base,a.id,{automatic:true,now});assert.equal(f.creates(),0);assert.equal(a.fields['Review Status'].name,'On hold');assert.match(a.fields['Panel Transfer Result'],/Check school/);
+});
+test('automatic school comparison accepts official subdomains and the Other school field',async()=>{
+ const {planTransfer}=await import('../operations/panel-transfer.mjs');
+ const a=automaticApplicant();a.fields['School Email']='case@mail.psu.edu';assert.equal(planTransfer(a,[],[],now,{automatic:true}).ok,true);
+ a.fields['University or College']='Other US college or university';a.fields['Other Institution Name']='Appalachian State University';a.fields['School Email']='case@appstate.edu';assert.equal(planTransfer(a,[],[],now,{automatic:true}).ok,true);
+});
 test('transfer admits new identity and reuses exact normalized existing identity',async()=>{
  const {planTransfer}=await import('../operations/panel-transfer.mjs');
  assert.equal(planTransfer(applicant(),[],[],now).ok,true);

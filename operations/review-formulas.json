@@ -8,7 +8,7 @@
           "type": "formula",
           "config": {
             "isValid": true,
-            "formula": "IF(AND({fldKdAzvslSFFsFHv}>=1900,{fldKdAzvslSFFsFHv}<=YEAR(TODAY())-18,FIND(\"I am 18 or older and currently enrolled\",ARRAYJOIN({fld1pUdhw2oxBLczM}))>0,{fldFKVLXpcfERVISC},{fldFKVLXpcfERVISC}<=NOW(),{fldiFoc2RMjv0iMJk},{fldiFoc2RMjv0iMJk}<=NOW(),IS_AFTER({fld4p3VAa600f4Bgu},DATEADD(NOW(),-6,\"months\")),NOT({fldcOCVo0JzKy23x5}),NOT({fldzamvX2zTP5wcn5}),{fldFvCsgywpA91cv7}=\"Approved\",{fldTFsYRhRHac7ssC}!=\"\",{fld4p3VAa600f4Bgu},{fld4p3VAa600f4Bgu}<=NOW(),{fldieZm6KwMg2cNS1}=\"Verified\",{fld2sOvlGXdkbJob9}=\"Verified\",IF({fldCDBLsGWVoIJTv6}=\"Verified\",AND({fldRS1tWTNGbswZmt},{fldYsXGdkYDjWVEY0},{fldEvGoBBmggQuQdg},{fldEvGoBBmggQuQdg}<=NOW(),IS_AFTER({fldEvGoBBmggQuQdg},DATEADD(NOW(),-12,\"months\")),{fldxNs44blArTzcib}>NOW()),OR({fldCDBLsGWVoIJTv6}=\"\",{fldCDBLsGWVoIJTv6}=\"Not reviewed\",{fldCDBLsGWVoIJTv6}=\"Pending evidence\")),{fldO4w9kYAOFU8jY6}=\"student-intake-2026-09-07\",{fldpzrx3DymDOfNIz},{fldpzrx3DymDOfNIz}<=NOW(),COUNTA({fldDlhHNHBshFYZ3w})=0,OR({fldhBJF7b7QRxUBX8}=\"Completed\",{fldhBJF7b7QRxUBX8}=\"Not required\")),\"PASS — review identity link\",\"HOLD — incomplete or expired\")",
+            "formula": "IF(AND({fldKdAzvslSFFsFHv}>=1900,{fldKdAzvslSFFsFHv}<=YEAR(TODAY())-18,FIND(\"I am 18 or older and currently enrolled\",ARRAYJOIN({fld1pUdhw2oxBLczM}))>0,{fldFKVLXpcfERVISC},{fldFKVLXpcfERVISC}<=DATEADD(NOW(),15,\"minutes\"),{fldiFoc2RMjv0iMJk},{fldiFoc2RMjv0iMJk}<=DATEADD(NOW(),15,\"minutes\"),IS_AFTER({fld4p3VAa600f4Bgu},DATEADD(NOW(),-6,\"months\")),NOT({fldcOCVo0JzKy23x5}),NOT({fldzamvX2zTP5wcn5}),{fldFvCsgywpA91cv7}=\"Approved\",{fldTFsYRhRHac7ssC}!=\"\",{fld4p3VAa600f4Bgu},{fld4p3VAa600f4Bgu}<=DATEADD(NOW(),15,\"minutes\"),{fldieZm6KwMg2cNS1}=\"Verified\",{fld2sOvlGXdkbJob9}=\"Verified\",IF({fldCDBLsGWVoIJTv6}=\"Verified\",AND({fldRS1tWTNGbswZmt},{fldYsXGdkYDjWVEY0},{fldEvGoBBmggQuQdg},{fldEvGoBBmggQuQdg}<=DATEADD(NOW(),15,\"minutes\"),IS_AFTER({fldEvGoBBmggQuQdg},DATEADD(NOW(),-12,\"months\")),{fldxNs44blArTzcib}>NOW()),OR({fldCDBLsGWVoIJTv6}=\"\",{fldCDBLsGWVoIJTv6}=\"Not reviewed\",{fldCDBLsGWVoIJTv6}=\"Pending evidence\")),{fldO4w9kYAOFU8jY6}=\"student-intake-2026-09-07\",{fldpzrx3DymDOfNIz},{fldpzrx3DymDOfNIz}<=DATEADD(NOW(),15,\"minutes\"),COUNTA({fldDlhHNHBshFYZ3w})=0,OR({fldhBJF7b7QRxUBX8}=\"Completed\",{fldhBJF7b7QRxUBX8}=\"Not required\")),\"PASS — review identity link\",\"HOLD — incomplete or expired\")",
             "referencedFieldIds": [
               "fldKdAzvslSFFsFHv",
               "fld1pUdhw2oxBLczM",
@@ -41,19 +41,14 @@
           "type": "formula",
           "config": {
             "isValid": true,
-            "formula": "IF({fldcOCVo0JzKy23x5},\"TEST — excluded\",IF({fldzamvX2zTP5wcn5},\"STOP — consent withdrawn\",IF(OR({fldFvCsgywpA91cv7}=\"Rejected\",{fldFvCsgywpA91cv7}=\"Duplicate\"),\"CLOSED — \"&{fldFvCsgywpA91cv7},IF(COUNTA({fldDlhHNHBshFYZ3w})>0,\"HOLD — resolve the flagged concern; request evidence only if needed\",IF(OR({fldieZm6KwMg2cNS1}!=\"Verified\",{fld2sOvlGXdkbJob9}!=\"Verified\",{fldO4w9kYAOFU8jY6}!=\"student-intake-2026-09-07\"),\"WAIT — updated form and contact verification needed\",IF(OR({fldCDBLsGWVoIJTv6}=\"Rejected\",{fldCDBLsGWVoIJTv6}=\"Expired\",{fldhBJF7b7QRxUBX8}=\"Scheduled\",{fldhBJF7b7QRxUBX8}=\"Failed\"),\"HOLD — resolve the existing enrollment or phone-screen concern\",IF({fldhUlHlYGbEUEQjI},{fldhUlHlYGbEUEQjI},IF(NOT({fldTFsYRhRHac7ssC}),\"REVIEW — expand answers; enter your name in Reviewed By\",IF({fldFvCsgywpA91cv7}!=\"Approved\",\"DECIDE — Approved if consistent; On hold if unclear. Notes optional.\",\"PROCESSING — check Panel Transfer Result\")))))))))",
+            "formula": "IF({fldcOCVo0JzKy23x5},\"TEST — excluded\",IF({fldzamvX2zTP5wcn5},\"STOP — consent withdrawn\",IF(OR({fldFvCsgywpA91cv7}=\"Rejected\",{fldFvCsgywpA91cv7}=\"Duplicate\"),\"CLOSED — \"&{fldFvCsgywpA91cv7},IF({fldFvCsgywpA91cv7}=\"On hold\",IF(LEFT({fldhUlHlYGbEUEQjI},4)=\"HOLD\",{fldhUlHlYGbEUEQjI},\"NEEDS YOU — \"&IF({fldDsuWcX3rgecKLv},{fldDsuWcX3rgecKLv},\"record the concern, resolve it, then retry or approve\")),IF({fldFvCsgywpA91cv7}=\"Ready for review\",\"AUTOMATIC — queued for eligibility checks\",IF({fldFvCsgywpA91cv7}=\"Approved\",IF({fldCohsV5zk4Unn7d}=\"PASS — review identity link\",IF({fldhUlHlYGbEUEQjI},{fldhUlHlYGbEUEQjI},\"ADMITTED — study eligibility is checked separately\"),\"HOLD — admitted profile now needs an evidence or consent check\"),\"WAIT — updated form and contact verification needed\"))))))",
             "referencedFieldIds": [
               "fldcOCVo0JzKy23x5",
               "fldzamvX2zTP5wcn5",
               "fldFvCsgywpA91cv7",
-              "fldDlhHNHBshFYZ3w",
-              "fldieZm6KwMg2cNS1",
-              "fld2sOvlGXdkbJob9",
-              "fldO4w9kYAOFU8jY6",
-              "fldCDBLsGWVoIJTv6",
-              "fldhBJF7b7QRxUBX8",
               "fldhUlHlYGbEUEQjI",
-              "fldTFsYRhRHac7ssC"
+              "fldDsuWcX3rgecKLv",
+              "fldCohsV5zk4Unn7d"
             ],
             "result": {
               "type": "singleLineText"
@@ -76,6 +71,27 @@
             ],
             "result": {
               "type": "singleLineText"
+            }
+          }
+        },
+        {
+          "id": "fldp9DLJMq7e0z07A",
+          "type": "formula",
+          "config": {
+            "isValid": true,
+            "formula": "IF(AND(NOT({fldcOCVo0JzKy23x5}),{fld46iJ9VIQg3ElGz},NOT({fldzamvX2zTP5wcn5}),OR({fldFvCsgywpA91cv7}=\"On hold\",AND({fldFvCsgywpA91cv7}=\"Approved\",{fldCohsV5zk4Unn7d}!=\"PASS — review identity link\"),AND({fldFvCsgywpA91cv7}=\"Ready for review\",IS_BEFORE({fld46iJ9VIQg3ElGz},DATEADD(NOW(),-15,\"minutes\"))))),1,0)",
+            "referencedFieldIds": [
+              "fldcOCVo0JzKy23x5",
+              "fld46iJ9VIQg3ElGz",
+              "fldzamvX2zTP5wcn5",
+              "fldFvCsgywpA91cv7",
+              "fldCohsV5zk4Unn7d"
+            ],
+            "result": {
+              "type": "number",
+              "options": {
+                "precision": 0
+              }
             }
           }
         }

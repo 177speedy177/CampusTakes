@@ -1,6 +1,6 @@
 # Your panel, simply
 
-Start in [Review applicants — start here](https://airtable.com/appSfUlKrUVeUN7bG/pagFCIGFnC1wou223). Expand the answers, enter Joey in Reviewed By, leave an optional Review Notes entry, then choose Approved or On hold in Review Status. You do not need to operate the Automations editor.
+Start in [Needs your attention](https://airtable.com/appSfUlKrUVeUN7bG/pagFCIGFnC1wou223). Clean applications join automatically. If this page is empty, there is no applicant review for you to do. Read the reason for any exception, resolve it, and use the linked checklist below. You do not need the Automations editor.
 
 - [All panel records](https://airtable.com/appSfUlKrUVeUN7bG/pagGjErhSzPcu2ONq): your existing panel and participation history. 77 records at the September 9 refresh.
 - [Application Review](https://airtable.com/appSfUlKrUVeUN7bG/pagjk93ww3acYIpdX): new applications to check. There were 10 real applications: three through the new form and seven legacy submissions. Joey and other tests are excluded. These are separate records, not necessarily 87 unique people across both tables.
@@ -10,9 +10,9 @@ Start in [Review applicants — start here](https://airtable.com/appSfUlKrUVeUN7
 ## What to do next
 
 1. Let older members complete the updated form. Their submissions appear in Application Review. Do not copy or delete their old rows.
-2. Start with the three real new-form applicants: Bella Dinger, Mikenna Schneider and Trinity Batchelder.
-3. Review the student's declaration and profile for consistency. Routine admission does not require a document or call. School-email and phone codes prove control of those accounts; they do not independently prove enrollment. Request extra evidence only for an actual concern or an agreed study requirement.
-4. Follow [the short review checklist](HOW-TO-REVIEW.md), then set Approved last. A successful transfer updates a matching old panelist and preserves participation history. Conflicting identities stay on hold for review.
+2. Let the automatic checks process new native applications. At go-live, nine applicants were admitted and one contact conflict was held.
+3. Review only exceptions in Needs your attention. Routine admission does not require a document or call. School-email and phone codes prove control of those accounts; they do not independently prove enrollment.
+4. Follow [the exception checklist](HOW-TO-REVIEW.md). A successful transfer updates a matching old panelist and preserves participation history. Conflicting identities stay on hold.
 5. Before inviting anyone to a paid study, check current readiness and that study's eligibility. If someone replies that they left school or wants to leave the panel, record that and stop future invitations.
 
 ## September 9 refresh record

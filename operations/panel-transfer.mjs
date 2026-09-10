@@ -4,15 +4,52 @@ export const normalizeEmail = v => textValue(v).trim().toLowerCase();
 export const normalizePhone = v => textValue(v).replace(/\D/g, '');
 const names = (first, last) => `${textValue(first)} ${textValue(last)}`.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim();
 const monthsAfter = (value, months) => { const d = new Date(value); d.setUTCMonth(d.getUTCMonth() + months); return d; };
+export const AUTO_REVIEWER = 'Automatic eligibility checks v1';
+const schoolKey = value => textValue(value).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g,'');
+// Institutional domain ownership, not proof that the mailbox holder is enrolled.
+// Unknown schools go to the exception queue; add verified aliases deliberately.
+export const SCHOOL_DOMAINS = [
+  {domain:'psu.edu', names:['Pennsylvania State University','The Pennsylvania State University','Penn State','Penn State University'], source:'https://www.psu.edu/'},
+  {domain:'gcu.edu', names:['Grand Canyon University'], source:'https://www.gcu.edu/home'},
+  {domain:'rutgers.edu', names:['Rutgers University','Rutgers, The State University of New Jersey','Rutgers University New Brunswick','Rutgers University Newark','Rutgers University Camden'], source:'https://it.rutgers.edu/technology-guide/student-tech-guide/'},
+  {domain:'appstate.edu', names:['Appalachian State University','App State'], source:'https://www.appstate.edu/about/'},
+  {domain:'colby.edu', names:['Colby College'], source:'https://www.colby.edu/'},
+  {domain:'msu.edu', names:['Michigan State University'], source:'https://msu.edu/'},
+  {domain:'wcu.edu', names:['Western Carolina University'], source:'https://www.wcu.edu/apply/undergraduate-admissions/contact-admission.aspx'},
+];
 
-export function planTransfer(application, panelists, applications, now = new Date()) {
+export function automaticConcerns(application, applications, now = new Date()) {
+  const a=application.fields, val=n=>textValue(a[n]).trim(), concerns=[];
+  if (!['native-2026-09-v2','native-2026-09-v3'].includes(val('Form Version'))) concerns.push('Complete the current native application; legacy proof cannot be auto-approved.');
+  const submitted=Date.parse(a['Submitted At']);
+  if (!Number.isFinite(submitted) || submitted>now || submitted<monthsAfter(now,-6)) concerns.push('Application is missing a current submission date.');
+  const school=val('University or College')==='Other US college or university' ? val('Other Institution Name') : val('University or College');
+  const known=SCHOOL_DOMAINS.find(s=>s.names.some(n=>schoolKey(n)===schoolKey(school)));
+  const domain=normalizeEmail(a['School Email']).split('@')[1]||'';
+  if (!known) concerns.push('Check school: this school name is not in the approved domain list yet.');
+  else if (!(domain===known.domain || domain.endsWith('.'+known.domain))) concerns.push('Check school: school name and verified email domain do not match.');
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const month=months.indexOf(val('Expected Graduation Month')), year=Number(val('Expected Graduation Year'));
+  if (month<0 || !Number.isInteger(year) || year<1900) concerns.push('Check graduation: a definite graduation month and year are needed for automatic admission.');
+  else if (year*12+month < now.getUTCFullYear()*12+now.getUTCMonth()) concerns.push('Check graduation: the expected graduation date is already past.');
+  else if (year>now.getUTCFullYear()+10 || (val('Academic Level')==='First year' && year*12+month<now.getUTCFullYear()*12+now.getUTCMonth()+9)) concerns.push('Check graduation: academic level and graduation timing need clarification.');
+  for(const required of ['Campus or City','Academic Level','Academic Area','Major or Field of Study','Availability','Recorded Session Willingness','Paid Research Before']) if(!val(required)) concerns.push('Application is incomplete: '+required+'.');
+  const email=normalizeEmail(a['School Email']), phone=normalizePhone(a['Mobile Phone']);
+  const shared=applications.filter(r=>r.id!==application.id && !r.fields['Test Record'] && (normalizeEmail(r.fields['School Email'])===email || normalizePhone(r.fields['Mobile Phone'])===phone));
+  if(shared.some(r=>r.fields['Consent Withdrawn At'])) concerns.push('A prior application sharing this contact withdrew consent. Resolve suppression manually.');
+  if(shared.some(r=>!r.fields['Processed At'] && ['Ready for review','Approved','On hold'].includes(textValue(r.fields['Review Status'])))) concerns.push('Another pending application shares a contact. Resolve the duplicate before admission.');
+  return concerns;
+}
+
+export function planTransfer(application, panelists, applications, now = new Date(), {automatic=false} = {}) {
   const a = application.fields, val = name => textValue(a[name]).trim();
   const fail = reason => ({ ok: false, reason });
-  if (val('Review Status') !== 'Approved') return fail('Select Approved only after your review is complete.');
+  if (val('Review Status') !== (automatic ? 'Ready for review' : 'Approved')) return fail('Application is not queued for this admission path.');
   if (a['Test Record']) return fail('Test records cannot become panelists.');
   if (a['Consent Withdrawn At']) return fail('Consent was withdrawn.');
   if ((a['Risk Flags'] || []).length) return fail('Resolve the application risk flags.');
-  if (!val('Reviewed By')) return fail('Enter the human reviewer name.');
+  if (!automatic && !val('Reviewed By')) return fail('Enter the human reviewer name.');
+  if (automatic) { const concerns=automaticConcerns(application,applications,now); if(concerns.length) return fail(concerns.join(' ')); }
   if (!val('First Name') || !val('Last Name')) return fail('Applicant name is incomplete.');
   const email = normalizeEmail(a['School Email']), phone = normalizePhone(a['Mobile Phone']);
   if (!/^[^\s@]+@[^\s@]+\.edu$/.test(email) || phone.length < 8 || phone.length > 15) return fail('Contact details are invalid.');
@@ -47,10 +84,10 @@ export function planTransfer(application, panelists, applications, now = new Dat
   const links = a['Linked Panelist'] || [];
   if (links.length > 1 || (links.length && links[0].id !== existing?.id)) return fail('Linked Panelist disagrees with the verified contact identity.');
   if (applications.some(r => r.id !== application.id && !r.fields['Test Record'] && !r.fields['Processed At'] && textValue(r.fields['Review Status']) === 'Approved' && (normalizeEmail(r.fields['School Email']) === email || normalizePhone(r.fields['Mobile Phone']) === phone))) return fail('Another approved application shares a contact. Choose the canonical application first.');
-  return { ok: true, existingId: existing?.id || null, email, phone, expiry, reviewer: val('Reviewed By') };
+  return { ok: true, existingId: existing?.id || null, email, phone, expiry, reviewer: automatic ? AUTO_REVIEWER : val('Reviewed By') };
 }
 
-export async function transferReviewedApplicant(base, recordId, { dryRun = false, now = new Date() } = {}) {
+export async function transferReviewedApplicant(base, recordId, { dryRun = false, now = new Date(), automatic = false } = {}) {
   const apps = base.getTable('Panelist Applications'), panel = base.getTable('Panelists');
   const raw = await apps.selectRecordAsync(recordId);
   if (!raw) throw new Error('Application not found.');
@@ -69,11 +106,12 @@ export async function transferReviewedApplicant(base, recordId, { dryRun = false
     return {outcome:(dryRun ? 'DRY RUN — ' : '')+'WITHDRAWN — '+matches.length+' matching panelist(s) suppressed.'};
   }
   // An automation test may select an unapproved existing row. Never mutate it.
-  if (textValue(application.fields['Review Status']) !== 'Approved') return { outcome: 'SKIPPED — application is not approved' };
+  if (application.fields['Test Record']) return { outcome:'SKIPPED — test record' };
+  if (textValue(application.fields['Review Status']) !== (automatic ? 'Ready for review' : 'Approved')) return { outcome: 'SKIPPED — application is not queued for this admission path' };
   const panelQuery = await panel.selectRecordsAsync({ fields: panel.fields.filter(f => !f.isComputed).map(f => f.name) });
   const appQuery = await apps.selectRecordsAsync({ fields: apps.fields.filter(f => !f.isComputed).map(f => f.name) });
   const panelists = panelQuery.records.map(r => asObject(r,panel)), applications = appQuery.records.map(r => asObject(r,apps));
-  const plan = planTransfer(application, panelists, applications, now);
+  const plan = planTransfer(application, panelists, applications, now, {automatic});
   if (dryRun) return { outcome: plan.ok ? (plan.existingId ? 'DRY RUN — update existing panelist' : 'DRY RUN — create panelist') : 'DRY RUN — ' + plan.reason };
   if (!plan.ok) {
     await apps.updateRecordAsync(recordId, { 'Panel Transfer Result': 'HOLD — ' + plan.reason, 'Review Status': { name: 'On hold' } });
@@ -92,12 +130,16 @@ export async function transferReviewedApplicant(base, recordId, { dryRun = false
     'First name': textValue(a['First Name']), 'Last name': textValue(a['Last Name']),
     '.edu email': plan.email, Phone: textValue(a['Mobile Phone']),
     Status: { name: 'Active' }, 'Verification Status': { name: 'Email verified' },
-    'Verified At': a['Email Verified At'], 'Verification Method': { name: 'Replied to .edu email' },
+    'Verified At': a['Email Verified At'], 'Verification Method': null,
     'Birth Year': a['Birth Year'], 'Adult Confirmed': true,
     'Consent Version': a['Consent Version'], 'Consent Accepted At': new Date(a['Consent Accepted At']).toISOString().slice(0,10),
     'Current Application': [{ id: recordId }], 'Current Intake Approved': false,
   };
   if (!plan.existingId) fields['Date joined'] = now.toISOString().slice(0,10);
+  const institution=textValue(a['University or College'])==='Other US college or university' ? textValue(a['Other Institution Name']) : textValue(a['University or College']);
+  const knownSchool=SCHOOL_DOMAINS.find(s=>s.names.some(n=>schoolKey(n)===schoolKey(institution)));
+  const campusChoice=(panel.getField('Campus').options?.choices||[]).find(c=>schoolKey(c.name)===schoolKey(institution)||knownSchool?.names.some(n=>schoolKey(n)===schoolKey(c.name)));
+  if(campusChoice) fields.Campus={name:campusChoice.name}; else if(institution) skipped.push('Campus (see current application)');
   const mapping = { 'Academic Level':'Year', 'Major or Field of Study':'Major', 'Acquisition Channel':'How did you hear about us', 'Acquisition Detail':'Referring org/club', 'Source Code':'Source Code', 'Living Situation':'Living situation', 'Greek Life':'Greek life?', Gender:'Gender', 'Race or Ethnicity':'Race/ethnicity', 'Products or Activities':'Apps/interests', Availability:'Availability', 'Paid Research Before':'Paid Research Before' };
   for (const [source,target] of Object.entries(mapping)) {
     const value = a[source];
@@ -118,7 +160,9 @@ export async function transferReviewedApplicant(base, recordId, { dryRun = false
   if (['', 'Not scheduled'].includes(textValue(a['Phone Screen Status']))) reviewFields['Phone Screen Status'] = {name:'Not required'};
   await apps.updateRecordAsync(recordId, reviewFields);
   await panel.updateRecordAsync(panelId, {'Current Intake Approved':true});
-  const outcome = 'DONE — ' + (plan.existingId ? 'updated existing panelist' : 'created and linked panelist') + (skipped.length ? '. Current application retains unmapped profile fields: ' + skipped.join(', ') : '');
-  await apps.updateRecordAsync(recordId, {'Panel Transfer Result':outcome});
+  const outcome = 'DONE — ' + (automatic ? 'automatic admission; ' : '') + (plan.existingId ? 'updated existing panelist' : 'created and linked panelist') + (skipped.length ? '. Current application retains unmapped profile fields: ' + skipped.join(', ') : '');
+  // Publish admission only after identity linking is complete. The manual automation
+  // may observe Approved, but retries then find the same completed panelist.
+  await apps.updateRecordAsync(recordId, {'Panel Transfer Result':outcome,...(automatic?{'Review Status':{name:'Approved'},'Reviewed By':AUTO_REVIEWER}:{})});
   return { outcome, panelId };
 }

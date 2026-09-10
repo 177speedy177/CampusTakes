@@ -4,11 +4,16 @@ Verified September 9, 2026 in Campus Takes, base appSfUlKrUVeUN7bG. Workspace se
 
 | Enabled workflow | Trigger | Work |
 |---|---|---|
+| Automatic panel admission — exceptions only | Review Status enters Ready for review | Applies native proof, school/domain, graduation, consent and identity checks; admits clean records or writes a specific On hold reason. No emails. |
 | Reviewed applicant → safely link panelist | Review Status or Consent Withdrawn At updated | Runs the evidence/identity gate, creates or updates one durable panelist, links the application, records processing results; handles withdrawal and preserves suppression. |
 | New study request → owner alert | Study Requests record created | Sends a private queue reminder to hello@campustakes.com. |
 | Weekday owner digest — reviews, requests and payouts | Monday–Friday, 13:00 UTC, starting September 10 | Reads five tables and emails counts and private queue links to hello@campustakes.com. |
 
 Review automation: wfldShpFoPQbVuopx; script wacRWPNPU3TbAB4FW; input recordId = trigger Airtable record ID. Source panel-transfer.mjs; remove the export keywords and append the runner below when updating the Airtable script:
+
+Automatic admission: wflYRfkLrBatWNA4H; trigger wtrRhajYYREED8gVa; script wac0BsL686A0KqyBs. Same source, with `transferReviewedApplicant(base, recordId, {automatic:true})`. Input recordId is the triggering record ID. Never hardcode a test ID. Ready for review is the internal automatic queue; On hold is the owner's exception queue. The manual runner ignores Ready for review and the automatic runner ignores Approved, so the follow-on update cannot create a second identity. Both skip test records and preserve withdrawal/suppression.
+
+The normal path consumes one automatic run plus a harmless manual-trigger skip/idempotent run when status changes. There is no polling schedule or AI action. The owner digest now separates one exception from seven old applications awaiting the updated form; it links to Needs your attention. Current Team limits remain sufficient; no plan change was made.
 
 ```js
 const config = input.config();

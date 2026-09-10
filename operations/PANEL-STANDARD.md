@@ -3,7 +3,7 @@
 The product is not a large email list. It is a small, current, consented group of
 real students who respond, match honestly, attend, and get paid quickly.
 
-## Truthful baseline — September 9, 2026
+## Historical baseline — September 9, before automatic admission
 
 - 77 total legacy panel records
 - 44 currently marked Active after removing one clearly flagged record
@@ -27,7 +27,7 @@ The Airtable `Panel Quality Tier` field now makes this distinction visible:
 
 ## Current-standard admission gate
 
-Updated September 9 after owner feedback: routine panel admission uses contact verification, student self-declaration and human consistency review. Independent enrollment evidence is an additional assurance level for concerns or client requirements, not a universal signup requirement. READY — current means current panel admission; it does not certify independent enrollment or a particular study's eligibility. This supersedes the earlier blanket document requirement.
+Updated September 9 after owner authorization: routine panel admission is automatic after native proof, current consent, a student declaration, school/domain consistency, graduation checks and identity checks pass. Human review handles exceptions only. Independent enrollment evidence is an additional assurance level for concerns or client requirements, not a universal signup requirement. READY — current means current panel admission; it does not certify independent enrollment or a particular study's eligibility. This supersedes the earlier blanket document and human-approval requirements. The first automatic batch admitted nine people: five new panel records and four updates; one contact conflict was held. Total panel records became 82.
 
 A panelist may be counted as current-ready only after all of these are true:
 
@@ -43,9 +43,7 @@ A panelist may be counted as current-ready only after all of these are true:
 8. No duplicate identity, material contradiction, fraud signal, or professional-
    respondent concern remains unresolved.
 9. The application is linked to exactly one Panelists record.
-10. Joey records Reviewed By; an unscheduled routine phone screen becomes Not required automatically,
-    and selects Review Status Approved last. The guarded automation stamps Reviewed At,
-    links the durable panelist and sets Current Intake Approved after successful processing.
+10. Automatic checks record their own provenance in Reviewed By, never Joey's name. A human reviewer enters their name only for an exception approval. An unscheduled routine phone screen becomes Not required. Approval is published only after the durable panelist has been linked successfully.
 11. Application Eligibility reads PASS. That formula checks expiry and withdrawal;
     it does not validate link cardinality or study limits. Check those separately.
 
@@ -57,13 +55,12 @@ not for judging a person's quality.
 
 ### Wave 1: establish a trusted nucleus
 
-1. Review the three real native applications first; another real native submission arrived
-   during implementation. Legacy applications need current consent and verified contacts.
+1. Native applications are now processed automatically. Legacy applications need current consent and verified contacts through the current form. Only exceptions need human review.
 2. Match both normalized email and phone across all panel records before linking.
    No non-test application currently has an exact two-contact match. Do not merge
    partial matches or create a new panelist before resolving identity conflicts.
 3. Ask the 18 provisional legacy members to complete the native intake again.
-4. Approve only records that pass the current gate.
+4. Admit only records that pass the current gate; manually handle the exceptions the automatic checks identify.
 5. Aim for **20–30 current-ready members**, not a cosmetic total count.
 
 ### Wave 2: recover or retire old records
@@ -115,10 +112,10 @@ healthy performance looks like.
 
 ## Human review sequence
 
-Use the published private [Application Review](https://airtable.com/appSfUlKrUVeUN7bG/pagjk93ww3acYIpdX)
+Use the published private [Needs your attention](https://airtable.com/appSfUlKrUVeUN7bG/pagFCIGFnC1wou223)
 and [Current-ready panel](https://airtable.com/appSfUlKrUVeUN7bG/pag1dBHnibGnInYHH) pages.
-Follow HOW-TO-REVIEW.md. The review automation performs identity matching, linking,
-profile copying and processing stamps after human evidence review. Read Panel Transfer
+Follow HOW-TO-REVIEW.md for exceptions only. Automatic admission and manual exception approval both perform identity matching, linking,
+profile copying and processing stamps. Read Panel Transfer
 Result and resolve any HOLD; do not bypass it with manual approval checkboxes. Expiry,
 withdrawal or failed application review removes readiness through the live gate.
 Recheck study caps, suppression and current answers at invitation. Welcome messages

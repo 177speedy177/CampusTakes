@@ -1,29 +1,36 @@
-# Your role: review, decide, handle exceptions
+# Your role: handle exceptions
 
-Open [Review applicants — start here](https://airtable.com/appSfUlKrUVeUN7bG/pagFCIGFnC1wou223). You do not need the Automations editor.
+Open [Needs your attention](https://airtable.com/appSfUlKrUVeUN7bG/pagFCIGFnC1wou223).
 
-1. Start with rows whose **Review Next Step** begins **REVIEW**. WAIT means the person still needs the updated form; leave that row alone.
-2. Hover beside the person's name and click **Expand**. Read their school, school email, age declaration, graduation timing and answers. Check that they agree with one another and that there are no unresolved Risk Flags. The system handles email and phone codes; do not edit those verification fields.
-3. Back in the grid, type **Joey** in **Reviewed By**. Use **Review Notes** only if there is something worth recording.
-4. In **Review Status**, choose **Approved** if the application is consistent. Choose **On hold** if it is unclear and write the specific concern in Review Notes. Add the corresponding Risk Flag when a real concern exists.
-5. Approval automatically checks identity and consent, links or updates the panelist, and removes a successfully processed application from this queue. Find them in [Current-ready panel](https://airtable.com/appSfUlKrUVeUN7bG/pag1dBHnibGnInYHH). If they remain in the queue, read Review Next Step for the transfer result. A HOLD explains what needs resolving.
+**If this page is empty, there is no applicant review for you to do.** Clean applications join automatically. You do not approve them, write routine notes, collect documents, or conduct routine calls.
 
-**You are not collecting documents or doing calls for every applicant.** Routine approval uses verified contacts plus the student's enrollment declaration. Leave the separate Enrollment Status, method, date and evidence notes alone. Older records may say Pending evidence because that used to be the default; it is not a request you must fulfill. New submissions say Not reviewed.
+For a record on this page:
 
-The automation marks an unscheduled routine phone screen Not required. It never marks enrollment Verified or invents evidence. Scheduled/failed screens, rejected/expired enrollment checks, unresolved risk flags, consent withdrawal and conflicting identities still block transfer.
+1. Read **Review Next Step**. It explains the hold or stalled processing.
+2. Click **Expand** beside the name and resolve the specific issue. Do not change email/phone proof or invent enrollment evidence.
+3. If the issue is corrected and the person can pass automatic checks, change **Review Status** to **Ready for review** to retry.
+4. If the exception needs your judgment, record it in **Review Notes**, enter **Joey** in **Reviewed By**, and select **Approved** last. Identity conflicts and suppression must actually be resolved; Approved does not bypass them. Leave uncertain cases **On hold**, or choose **Rejected/Duplicate** where supported by the facts.
 
-## Only when an extra check is needed
+Successfully admitted people appear in [Current-ready panel](https://airtable.com/appSfUlKrUVeUN7bG/pag1dBHnibGnInYHH). That means panel admission, not eligibility for every study. Their application and old participation history remain available.
 
-If the school/email, graduation timing or identity is inconsistent, put the applicant On hold and request the smallest clarification that resolves it. A brief current student-portal check can avoid collecting a document. Use a redacted current-enrollment document or registrar check when appropriate. Never request passwords or retain unnecessary grades, IDs or financial details.
+## What the automatic checks establish
 
-When you actually perform an independent enrollment check, record **Enrollment Verification Method**, **Enrollment Verified At**, and **Enrollment Evidence Notes**, then set **Enrollment Status = Verified**. Approved last reruns the guarded transfer. A current Verified status needs complete evidence; routine approval cannot bypass an expired or rejected check. Read-only **Enrollment Assurance** distinguishes SELF-REPORTED from INDEPENDENTLY CHECKED.
+The workflow requires a current native application, adult/student declaration, current consent, verified email and phone, a recognized school/domain pairing, plausible future graduation timing, complete core answers and no unresolved identity or risk concern. It records **Automatic eligibility checks v1** as its provenance. It does not pretend you personally reviewed the person.
 
-Before a client study, reconfirm current enrollment in that study's screener and apply the agreed eligibility and assurance requirements. If a client requires independent verification, obtain it for the shortlisted participants before confirming them. Panel admission is not automatic study qualification. Describe the actual verification level to clients.
+An unknown school is an exception, not a rejection. Confirm the school's official domain, document the check, and approve the individual if appropriate. The current domain catalog is in panel-transfer.mjs; adding a verified institution there removes that recurring exception. It initially covers Penn State, GCU, Rutgers, Appalachian State, Colby, Michigan State and Western Carolina, including their subdomains and listed aliases.
 
-## Exceptions and history
+## Extra evidence is for an actual need
 
-Do not copy old rows or manually check Current Intake Approved. Exact identity matches preserve the existing participation history. Partial matches, competing records and suppressed identities need deliberate resolution; never erase a blacklist just to make approval pass.
+Enrollment starts as **self-reported**. Ask for independent proof only if an actual concern or agreed study requirement calls for it. A brief student-portal check may avoid collecting a document. Never request passwords or retain unnecessary grades, full IDs or financial details.
 
-Record a real opt-out in Consent Withdrawn At using its actual time. The workflow suppresses matching panelists and preserves Blacklist. Clearing that date does not renew consent.
+Only after doing that check, record **Enrollment Verification Method**, **Enrollment Verified At**, and **Enrollment Evidence Notes**, then mark **Enrollment Status = Verified**. An expired/rejected check or scheduled/failed phone screen remains blocked until resolved. Ordinary auto-admission never fills these evidence fields.
 
-Approval is a human decision. I have not approved real applicants on your behalf during this simplification. Phone and document evidence requests are deliberate exceptions; no new participant messages were sent by this change.
+Before confirming someone for a client study, reconfirm enrollment and that study's criteria in the screener. If the client requires independent enrollment verification, obtain it for shortlisted participants and describe the actual assurance level accurately.
+
+## History and opt-outs
+
+Do not copy old rows or manually check Current Intake Approved. Exact email, phone and name matches update the existing panelist. Partial contact matches stay on hold.
+
+Record a real opt-out in **Consent Withdrawn At** using its actual time. The workflow suppresses matching panel records and preserves Blacklist. Clearing a withdrawal date does not renew consent.
+
+An application stalled in the automatic queue for more than 15 minutes also appears here. Check its automation error before retrying. The script supports retries without routine duplicate creation. No automatic welcome or proof-request email was added by this release.
