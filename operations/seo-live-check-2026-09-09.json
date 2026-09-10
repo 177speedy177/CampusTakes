@@ -1,0 +1,60 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/",
+    "title": "College Student Research Panel | Campus Takes",
+    "bytes": 13868
+  },
+  {
+    "path": "/research",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/research",
+    "title": "College Student Research Recruitment | Campus Takes",
+    "bytes": 32922
+  },
+  {
+    "path": "/students",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/students",
+    "title": "Paid Research Studies for College Students | Campus Takes",
+    "bytes": 51320
+  },
+  {
+    "path": "/panel-report",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/panel-report",
+    "title": "Student Research Panel Report: July 2026 | Campus Takes",
+    "bytes": 26361
+  },
+  {
+    "path": "/privacy",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/privacy",
+    "title": "Privacy Policy | Campus Takes",
+    "bytes": 26496
+  },
+  {
+    "path": "/terms",
+    "status": 200,
+    "canonical": "https://www.campustakes.com/terms",
+    "title": "Terms of Service | Campus Takes",
+    "bytes": 23558
+  },
+  {
+    "path": "/sitemap.xml",
+    "status": 200,
+    "bytes": 497
+  },
+  {
+    "path": "/robots.txt",
+    "status": 200,
+    "bytes": 73
+  },
+  {
+    "path": "/seo-nonexistent-404",
+    "status": 404,
+    "title": "Page not found | Campus Takes",
+    "bytes": 2244
+  }
+]
