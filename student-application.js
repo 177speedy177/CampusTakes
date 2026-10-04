@@ -113,6 +113,7 @@
         throw new Error("Applications are temporarily unavailable while the security check is configured.");
       }
       const turnstile = await waitForTurnstile();
+      botStatus.textContent = "Complete the security check before requesting a code.";
       state.botWidget = turnstile.render("#turnstile-widget", {
         sitekey: config.siteKey,
         action: "student-intake",
