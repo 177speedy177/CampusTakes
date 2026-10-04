@@ -24,51 +24,61 @@
   const acquisitionDetailLabel = $("#acquisition-detail-label");
   const botStatus = $("#bot-status");
   const sections = $$(".form-section", form);
-  const stepNames = ["Contact details", "Your studies", "Study preferences", "Confirm and apply"];
-  let currentStep = 0;
+  const sectionNames = ["Contact details", "Your studies", "Study matching", "Confirm and apply"];
   const progress = document.createElement("div");
   progress.className = "application-progress";
-  const stepLabel = document.createElement("p");
-  stepLabel.setAttribute("role", "status");
+  const progressLabel = document.createElement("p");
+  const locationLabel = document.createElement("span");
+  const scrollHint = document.createElement("span");
+  scrollHint.className = "scroll-hint";
+  progressLabel.append(locationLabel, scrollHint);
   const track = document.createElement("div");
-  track.className = "progress-track";
-  track.setAttribute("aria-hidden", "true");
-  sections.forEach(() => track.append(document.createElement("span")));
-  progress.append(stepLabel, track);
-  const actions = document.createElement("div");
-  actions.className = "application-actions";
-  const backButton = document.createElement("button");
-  backButton.type = "button";
-  backButton.className = "application-back";
-  backButton.textContent = "Back";
-  const nextButton = document.createElement("button");
-  nextButton.type = "button";
-  nextButton.className = "application-next";
-  nextButton.textContent = "Continue";
-  actions.append(backButton, nextButton);
+  track.className = "scroll-track";
+  track.setAttribute("role", "progressbar");
+  track.setAttribute("aria-label", "Scroll position in application");
+  track.setAttribute("aria-valuemin", "0");
+  track.setAttribute("aria-valuemax", "100");
+  const fill = document.createElement("span");
+  track.append(fill);
+  progress.append(progressLabel, track);
 
-  function showStep(index, focus = true) {
-    currentStep = index;
-    sections.forEach((section, i) => { section.hidden = i !== index; });
-    stepLabel.textContent = `Step ${index + 1} of ${sections.length} · ${stepNames[index]}`;
-    [...track.children].forEach((bar, i) => bar.classList.toggle("complete", i <= index));
-    backButton.hidden = index === 0;
-    nextButton.hidden = index === sections.length - 1;
-    if (focus) {
-      $("legend", sections[index]).focus({ preventScroll: true });
-      progress.scrollIntoView({ block: "start", behavior: "instant" });
-    }
+  let scrollFrame = 0;
+  function updateScrollProgress() {
+    scrollFrame = 0;
+    if (form.hidden) return;
+    const headerHeight = $(".site-header").offsetHeight;
+    const marker = headerHeight + progress.offsetHeight + 40;
+    let index = 0;
+    sections.forEach((section, i) => {
+      if (section.getBoundingClientRect().top <= marker) index = i;
+    });
+    const rect = form.getBoundingClientRect();
+    const distance = Math.max(1, rect.height - window.innerHeight + marker);
+    const position = Math.max(0, Math.min(1, (marker - rect.top) / distance));
+    locationLabel.textContent = (index + 1) + " of " + sections.length + " · " + sectionNames[index];
+    scrollHint.textContent = index < sections.length - 1 ? "Scroll to continue ↓" : "Review and apply below";
+    fill.style.transform = "scaleX(" + position + ")";
+    track.setAttribute("aria-valuenow", String(Math.round(position * 100)));
+    track.setAttribute("aria-valuetext", "Section " + (index + 1) + " of " + sections.length + ": " + sectionNames[index]);
+  }
+  function queueScrollProgress() {
+    if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollProgress);
+  }
+
+  function focusField(input) {
+    input.focus({ preventScroll: true });
+    input.scrollIntoView({ block: "center", behavior: "instant" });
   }
 
   function validateSection(index) {
     const invalid = $$("input:not([data-code-input]), select", sections[index]).find(input => !input.checkValidity());
     if (invalid) {
-      showStep(index, false);
+      focusField(invalid);
       invalid.reportValidity();
       return false;
     }
     if (index === 0 && (!state.email.token || !state.sms.token)) {
-      showErrors(Object.assign(new Error("Verify your school email and phone number to continue."), {
+      showErrors(Object.assign(new Error("Verify your school email and phone number before applying."), {
         fields: {
           ...(!state.email.token ? { schoolEmail: "Send a code to your school email, then enter it here." } : {}),
           ...(!state.sms.token ? { mobilePhone: "Send a code to your phone, then enter it here." } : {}),
@@ -84,17 +94,6 @@
     }
     return true;
   }
-
-  function advanceStep() {
-    clearErrors();
-    expireProofs();
-    if (validateSection(currentStep)) showStep(currentStep + 1);
-  }
-  nextButton.addEventListener("click", advanceStep);
-  backButton.addEventListener("click", () => {
-    clearErrors();
-    showStep(currentStep - 1);
-  });
 
   async function waitForTurnstile() {
     for (let attempt = 0; attempt < 50; attempt += 1) {
@@ -492,7 +491,7 @@
     formAlert.hidden = false;
     formAlert.textContent = error.message;
     if (!error.fields) {
-      formAlert.focus();
+      focusField(formAlert);
       return;
     }
     let first;
@@ -506,23 +505,16 @@
         if (!first) first = node;
       }
     });
-    const sectionIndex = first ? sections.indexOf(first.closest(".form-section")) : -1;
-    if (sectionIndex >= 0) showStep(sectionIndex, false);
-    (first || formAlert).focus();
+    focusField(first || formAlert);
   }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (submitButton.disabled) return;
-    if (currentStep < sections.length - 1) {
-      advanceStep();
-      return;
-    }
     clearErrors();
     expireProofs();
     if (sections.some((section, index) => !validateSection(index))) return;
     setBusy(submitButton, true, "Submitting…");
-    backButton.disabled = true;
     try {
       await post("/api/applications", payload());
       form.hidden = true;
@@ -537,16 +529,13 @@
       showErrors(error);
     } finally {
       setBusy(submitButton, false, "");
-      backButton.disabled = false;
     }
   });
 
   const params = new URLSearchParams(window.location.search);
   form.dataset.sourceCode = (params.get("src") || params.get("utm_source") || "website").slice(0, 100);
 
-  // Keep the full form available if JavaScript does not initialize. Hidden steps
-  // stay enabled so their answers and verification proofs survive navigation.
-  sections.forEach(section => $("legend", section).setAttribute("tabindex", "-1"));
+  // The full application stays visible; navigation never hides questions.
   $$(".field-error[data-error-for]", form).forEach(error => {
     error.id = `error-${error.dataset.errorFor}`;
     const name = error.dataset.errorFor;
@@ -557,12 +546,16 @@
   const botCheck = $(".bot-check", form);
   sections[0].insertBefore(botCheck, $(".form-grid", sections[0]));
   form.prepend(progress);
-  form.append(actions);
   $$('[data-code-input]', form).forEach(input => input.addEventListener("keydown", event => {
     if (event.key !== "Enter") return;
     event.preventDefault();
     const button = $(`[data-action="check-code"][data-channel="${input.dataset.codeInput}"]`);
     if (!button.disabled) checkCode(input.dataset.codeInput, button);
   }));
-  showStep(0, false);
+  window.addEventListener("scroll", queueScrollProgress, { passive: true });
+  window.addEventListener("resize", queueScrollProgress);
+  form.addEventListener("input", queueScrollProgress);
+  const formResizeObserver = new ResizeObserver(queueScrollProgress);
+  formResizeObserver.observe(form);
+  updateScrollProgress();
 })();
