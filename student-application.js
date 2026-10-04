@@ -23,6 +23,78 @@
   const acquisitionDetailInput = $("#acquisition-detail");
   const acquisitionDetailLabel = $("#acquisition-detail-label");
   const botStatus = $("#bot-status");
+  const sections = $$(".form-section", form);
+  const stepNames = ["Contact details", "Your studies", "Study preferences", "Confirm and apply"];
+  let currentStep = 0;
+  const progress = document.createElement("div");
+  progress.className = "application-progress";
+  const stepLabel = document.createElement("p");
+  stepLabel.setAttribute("role", "status");
+  const track = document.createElement("div");
+  track.className = "progress-track";
+  track.setAttribute("aria-hidden", "true");
+  sections.forEach(() => track.append(document.createElement("span")));
+  progress.append(stepLabel, track);
+  const actions = document.createElement("div");
+  actions.className = "application-actions";
+  const backButton = document.createElement("button");
+  backButton.type = "button";
+  backButton.className = "application-back";
+  backButton.textContent = "Back";
+  const nextButton = document.createElement("button");
+  nextButton.type = "button";
+  nextButton.className = "application-next";
+  nextButton.textContent = "Continue";
+  actions.append(backButton, nextButton);
+
+  function showStep(index, focus = true) {
+    currentStep = index;
+    sections.forEach((section, i) => { section.hidden = i !== index; });
+    stepLabel.textContent = `Step ${index + 1} of ${sections.length} · ${stepNames[index]}`;
+    [...track.children].forEach((bar, i) => bar.classList.toggle("complete", i <= index));
+    backButton.hidden = index === 0;
+    nextButton.hidden = index === sections.length - 1;
+    if (focus) {
+      $("legend", sections[index]).focus({ preventScroll: true });
+      progress.scrollIntoView({ block: "start", behavior: "instant" });
+    }
+  }
+
+  function validateSection(index) {
+    const invalid = $$("input:not([data-code-input]), select", sections[index]).find(input => !input.checkValidity());
+    if (invalid) {
+      showStep(index, false);
+      invalid.reportValidity();
+      return false;
+    }
+    if (index === 0 && (!state.email.token || !state.sms.token)) {
+      showErrors(Object.assign(new Error("Verify your school email and phone number to continue."), {
+        fields: {
+          ...(!state.email.token ? { schoolEmail: "Send a code to your school email, then enter it here." } : {}),
+          ...(!state.sms.token ? { mobilePhone: "Send a code to your phone, then enter it here." } : {}),
+        },
+      }));
+      return false;
+    }
+    if (index === 2 && !selectedValues("availability").length) {
+      showErrors(Object.assign(new Error("Choose at least one time you are usually available."), {
+        fields: { availability: "Select at least one time." },
+      }));
+      return false;
+    }
+    return true;
+  }
+
+  function advanceStep() {
+    clearErrors();
+    expireProofs();
+    if (validateSection(currentStep)) showStep(currentStep + 1);
+  }
+  nextButton.addEventListener("click", advanceStep);
+  backButton.addEventListener("click", () => {
+    clearErrors();
+    showStep(currentStep - 1);
+  });
 
   async function waitForTurnstile() {
     for (let attempt = 0; attempt < 50; attempt += 1) {
@@ -45,6 +117,7 @@
         sitekey: config.siteKey,
         action: "student-intake",
         theme: "light",
+        size: matchMedia("(max-width: 420px)").matches ? "compact" : "normal",
         callback(token) {
           state.botChallenge = token;
           botStatus.textContent = "Security check complete.";
@@ -432,24 +505,23 @@
         if (!first) first = node;
       }
     });
+    const sectionIndex = first ? sections.indexOf(first.closest(".form-section")) : -1;
+    if (sectionIndex >= 0) showStep(sectionIndex, false);
     (first || formAlert).focus();
   }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    clearErrors();
-    expireProofs();
-    if (!form.reportValidity()) return;
-    if (!state.email.token || !state.sms.token) {
-      showErrors(Object.assign(new Error("Verify both your school email and phone number before applying."), {
-        fields: {
-          ...(!state.email.token ? { schoolEmail: "Verify your school email." } : {}),
-          ...(!state.sms.token ? { mobilePhone: "Verify your phone number." } : {}),
-        },
-      }));
+    if (submitButton.disabled) return;
+    if (currentStep < sections.length - 1) {
+      advanceStep();
       return;
     }
+    clearErrors();
+    expireProofs();
+    if (sections.some((section, index) => !validateSection(index))) return;
     setBusy(submitButton, true, "Submitting…");
+    backButton.disabled = true;
     try {
       await post("/api/applications", payload());
       form.hidden = true;
@@ -464,9 +536,32 @@
       showErrors(error);
     } finally {
       setBusy(submitButton, false, "");
+      backButton.disabled = false;
     }
   });
 
   const params = new URLSearchParams(window.location.search);
   form.dataset.sourceCode = (params.get("src") || params.get("utm_source") || "website").slice(0, 100);
+
+  // Keep the full form available if JavaScript does not initialize. Hidden steps
+  // stay enabled so their answers and verification proofs survive navigation.
+  sections.forEach(section => $("legend", section).setAttribute("tabindex", "-1"));
+  $$(".field-error[data-error-for]", form).forEach(error => {
+    error.id = `error-${error.dataset.errorFor}`;
+    const name = error.dataset.errorFor;
+    $$(`[name="${name}"], [name="${name}[]"]`, form).forEach(input => {
+      input.setAttribute("aria-describedby", [input.getAttribute("aria-describedby"), error.id].filter(Boolean).join(" "));
+    });
+  });
+  const botCheck = $(".bot-check", form);
+  sections[0].insertBefore(botCheck, $(".form-grid", sections[0]));
+  form.prepend(progress);
+  form.append(actions);
+  $$('[data-code-input]', form).forEach(input => input.addEventListener("keydown", event => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    const button = $(`[data-action="check-code"][data-channel="${input.dataset.codeInput}"]`);
+    if (!button.disabled) checkCode(input.dataset.codeInput, button);
+  }));
+  showStep(0, false);
 })();

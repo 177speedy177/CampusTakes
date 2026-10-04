@@ -13,14 +13,14 @@
 <meta property="og:title" content="College Student Research Panel | Campus Takes">
 <meta property="og:description" content="Recruit college students for interviews, usability tests, focus groups, and surveys. Campus Takes handles screening, scheduling, and participant incentives.">
 <meta property="og:url" content="https://www.campustakes.com/">
-<meta property="og:image" content="https://www.campustakes.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Campus Takes: Verified Students Honest Takes">
+<meta property="og:image" content="https://www.campustakes.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Campus Takes conversation-bubble logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="College Student Research Panel | Campus Takes">
 <meta name="twitter:description" content="Recruit college students for interviews, usability tests, focus groups, and surveys. Campus Takes handles screening, scheduling, and participant incentives.">
-<meta name="twitter:image" content="https://www.campustakes.com/og-image.png">
+<meta name="twitter:image" content="https://www.campustakes.com/icon-512.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -152,6 +152,39 @@ h1,h2{text-wrap:balance}
   .footer-links a{display:inline-block;padding-block:11px}
   .path .go{display:inline-block;padding-block:6px}
 }
+
+/* Readable, touch-friendly layouts, including narrow phones. */
+[hidden]{display:none!important}
+html{scroll-padding-top:88px}
+input,select,textarea{scroll-margin-top:16px}
+.site-header .wrap{max-width:1244px;margin-inline:auto}
+.brand-name{white-space:nowrap}
+.site-nav a{display:flex;align-items:center;min-height:44px}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px}
+:where(a,button,input,select,textarea,summary){-webkit-tap-highlight-color:rgba(51,80,127,.15)}
+:where(a,button,summary):focus-visible{outline:3px solid var(--navy-soft);outline-offset:4px}
+.lede,.path p,.point p,.step p{color:var(--text)}
+@media (max-width:640px){
+  .wrap{padding-inline:20px}
+  .site-header .wrap{padding-inline:16px;gap:10px}
+  .brand{gap:6px}
+  .brand-name{font-size:1.0625rem}
+  .brand-logo{height:23px}
+  .site-nav{gap:12px}
+  .site-nav a{font-size:.875rem}
+  .footer-links{gap:0 20px}
+  .footer-legal{font-size:.8125rem;line-height:1.6}
+}
+@media (max-width:360px){
+  .site-header .wrap{padding-inline:12px;gap:8px}
+  .brand-name{font-size:1rem}
+  .brand-logo{height:20px}
+  .site-nav{gap:9px}
+  .site-nav a{font-size:.8125rem}
+  .wrap{padding-inline:16px}
+}
+
+@media (max-width:640px){.fork{grid-template-columns:1fr}.fork .btn{width:100%;padding-inline:16px}.fork-caption{display:none}.hero h1{font-size:clamp(2rem,8.5vw,3.5rem)}.evidence-note{font-size:.9375rem}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.campustakes.com/#organization","name":"Campus Takes","url":"https://www.campustakes.com/","logo":"https://www.campustakes.com/icon-512.png","email":"hello@campustakes.com","description":"College student participant recruitment for interviews, usability tests, focus groups, and surveys."},{"@type":"WebSite","@id":"https://www.campustakes.com/#website","url":"https://www.campustakes.com/","name":"Campus Takes","publisher":{"@id":"https://www.campustakes.com/#organization"}},{"@type":"WebPage","@id":"https://www.campustakes.com/#webpage","url":"https://www.campustakes.com/","name":"College Student Research Panel | Campus Takes","description":"Recruit college students for interviews, usability tests, focus groups, and surveys. Campus Takes handles screening, scheduling, and participant incentives.","isPartOf":{"@id":"https://www.campustakes.com/#website"},"about":{"@id":"https://www.campustakes.com/#organization"},"inLanguage":"en-US"}]}
@@ -180,36 +213,16 @@ h1,h2{text-wrap:balance}
 <section class="hero">
   <div class="wrap">
     <h1>Verified Students<br>Honest Takes</h1>
-    <p class="hero-sub">
-      Campus Takes recruits college students for research studies, handles the
-      fieldwork around each session, and pays students for their time.
-    </p>
+    <p class="hero-sub">We connect research teams with college students for paid interviews, usability tests, focus groups, and surveys.</p>
     <div class="fork">
       <a class="btn btn-solid" href="/research">I need research participants</a>
-      <a class="btn btn-outline" href="/students">I'm a student</a>
+      <a class="btn btn-outline" href="/students">Find paid studies</a>
     </div>
     <div class="fork-caption">
       <span>For researchers and brands</span>
       <span>Apply to join the panel</span>
     </div>
-    <div class="evidence">
-      <div>
-        <div class="ev-num">24<small>hrs</small></div>
-        <div class="ev-label">A quota of 20 filled</div>
-      </div>
-      <div>
-        <div class="ev-num">65<small>%</small></div>
-        <div class="ev-label">New to paid research</div>
-      </div>
-      <div>
-        <div class="ev-num">75<small>%</small></div>
-        <div class="ev-label">Willing to join on camera</div>
-      </div>
-    </div>
-    <p class="evidence-note">
-      Measured in <a href="/panel-report">Panel Report</a>, a study of 20 completed
-      responses fielded July 27 to 28, 2026. Full counts and method are in the report.
-    </p>
+    <p class="evidence-note">Recruit students for your next study, or apply to take part.</p>
   </div>
 </section>
 
@@ -218,14 +231,12 @@ h1,h2{text-wrap:balance}
     <div class="paths-grid">
       <div class="path">
         <h2>For research teams</h2>
-        <p>We recruit, screen, schedule, confirm, and pay college-student
-        participants. You run the interviews, usability tests, or surveys.</p>
+        <p>Tell us who you need and when. We check availability, screen students against your criteria, and coordinate the recruit so your team can focus on the research.</p>
         <a class="go" href="/research">See how recruiting works</a>
       </div>
       <div class="path">
         <h2>For students</h2>
-        <p>Share your honest opinions in paid research studies. Every invitation
-        tells you what the study involves, how long it takes, and what it pays.</p>
+        <p>Get paid to test an app, join an interview, or answer a survey. Each invitation explains what you will do, how long it takes, and what it pays.</p>
         <a class="go" href="/students">Apply to join</a>
       </div>
     </div>
@@ -234,14 +245,11 @@ h1,h2{text-wrap:balance}
 
 <section class="creed">
   <div class="wrap">
-    <h2>A panel, not an open signup</h2>
-    <p>Students apply, confirm their school email and phone, and go through a
-    set of eligibility, identity and consistency checks before admission. Exceptions
-    receive human review. Enrollment
-    is self-reported unless independently checked. Each study then has its own
-    criteria and screener. We publish the results we use as proof.</p>
+    <h2>Screened for the study you are running</h2>
+    <p>Students confirm their school email and phone when applying. For interviews and usability tests, we phone-screen shortlisted students against your approved questions before booking. Current enrollment is self-reported unless independently checked.</p>
   </div>
 </section>
+
 
 </main>
 
@@ -259,8 +267,8 @@ h1,h2{text-wrap:balance}
     </div>
     <p class="footer-legal">
       © 2026 Campus Takes. Campus Takes is an independent research panel of university
-      students. It is not affiliated with, sponsored by, or endorsed by any
-      university or educational institution.
+      students. It is not affiliated with, sponsored by, or endorsed by The Pennsylvania
+      State University or any other university or educational institution.
     </p>
   </div>
 </footer>

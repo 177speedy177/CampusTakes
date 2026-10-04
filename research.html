@@ -13,14 +13,14 @@
 <meta property="og:title" content="College Student Research Recruitment | Campus Takes">
 <meta property="og:description" content="Recruit college students for usability tests, interviews, focus groups, and surveys. Get a feasibility check and a written quote from Campus Takes.">
 <meta property="og:url" content="https://www.campustakes.com/research">
-<meta property="og:image" content="https://www.campustakes.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Campus Takes: verified students, honest takes.">
+<meta property="og:image" content="https://www.campustakes.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Campus Takes conversation-bubble logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="College Student Research Recruitment | Campus Takes">
 <meta name="twitter:description" content="Recruit college students for usability tests, interviews, focus groups, and surveys. Get a feasibility check and a written quote from Campus Takes.">
-<meta name="twitter:image" content="https://www.campustakes.com/og-image.png">
+<meta name="twitter:image" content="https://www.campustakes.com/icon-512.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,6 +224,53 @@ h1,h2{text-wrap:balance}
 .recruitment-faq summary{font-weight:600;color:var(--navy);cursor:pointer;padding:4px 0}
 .recruitment-faq p{margin-top:14px;color:var(--muted)}
 .recruitment-faq a{color:var(--navy);text-underline-offset:3px}
+
+/* Readable, touch-friendly layouts, including narrow phones. */
+[hidden]{display:none!important}
+html{scroll-padding-top:88px}
+input,select,textarea{scroll-margin-top:16px}
+.site-header .wrap{max-width:1244px;margin-inline:auto}
+.brand-name{white-space:nowrap}
+.site-nav a{display:flex;align-items:center;min-height:44px}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px}
+:where(a,button,input,select,textarea,summary){-webkit-tap-highlight-color:rgba(51,80,127,.15)}
+:where(a,button,summary):focus-visible{outline:3px solid var(--navy-soft);outline-offset:4px}
+.lede,.path p,.point p,.step p{color:var(--text)}
+@media (max-width:640px){
+  .wrap{padding-inline:20px}
+  .site-header .wrap{padding-inline:16px;gap:10px}
+  .brand{gap:6px}
+  .brand-name{font-size:1.0625rem}
+  .brand-logo{height:23px}
+  .site-nav{gap:12px}
+  .site-nav a{font-size:.875rem}
+  .footer-links{gap:0 20px}
+  .footer-legal{font-size:.8125rem;line-height:1.6}
+}
+@media (max-width:360px){
+  .site-header .wrap{padding-inline:12px;gap:8px}
+  .brand-name{font-size:1rem}
+  .brand-logo{height:20px}
+  .site-nav{gap:9px}
+  .site-nav a{font-size:.8125rem}
+  .wrap{padding-inline:16px}
+}
+
+/* Research formats sit on a light background. */
+#study-formats{padding-top:0}
+#study-formats .method-item h3{color:var(--navy)}
+#study-formats .method-item p{color:var(--text)}
+.recruitment-faq p{color:var(--text)}
+.recruitment-faq summary{min-height:44px}
+.risk-note{max-width:65ch}
+.request-form .request-help,.request-legal,.request-error{font-size:.875rem}
+@media (max-width:640px){
+  .hero{padding:36px 0 44px}
+  .hero-cta .btn{width:100%;padding-inline:16px}
+  .hero h1{font-size:clamp(2rem,8.8vw,3.5rem)}
+  .request-shell{padding:22px 16px}
+  .recruitment-faq details{padding:14px 0}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.campustakes.com/#organization","name":"Campus Takes","url":"https://www.campustakes.com/","logo":"https://www.campustakes.com/icon-512.png","email":"hello@campustakes.com","description":"College student participant recruitment for interviews, usability tests, focus groups, and surveys."},{"@type":"WebSite","@id":"https://www.campustakes.com/#website","url":"https://www.campustakes.com/","name":"Campus Takes","publisher":{"@id":"https://www.campustakes.com/#organization"}},{"@type":"WebPage","@id":"https://www.campustakes.com/research#webpage","url":"https://www.campustakes.com/research","name":"College Student Research Recruitment | Campus Takes","description":"Recruit college students for usability tests, interviews, focus groups, and surveys. Get a feasibility check and a written quote from Campus Takes.","isPartOf":{"@id":"https://www.campustakes.com/#website"},"about":{"@id":"https://www.campustakes.com/#organization"},"inLanguage":"en-US"},{"@type":"Service","@id":"https://www.campustakes.com/research#service","name":"College student research participant recruitment","serviceType":"Research participant recruitment","url":"https://www.campustakes.com/research","provider":{"@id":"https://www.campustakes.com/#organization"},"description":"Recruit college students for usability tests, interviews, focus groups, and surveys. Get a feasibility check and a written quote from Campus Takes."}]}
@@ -250,35 +297,12 @@ h1,h2{text-wrap:balance}
 <section class="hero">
   <div class="wrap">
     <span class="kicker">For research teams</span>
-    <h1>College student recruitment.<br>Built around your research.</h1>
-    <p class="lede">
-      You set the audience, screener, format, and dates. Campus Takes finds eligible
-      students, manages screening and scheduling, sends confirmations and reminders,
-      and coordinates incentives. Your team runs the research.
-    </p>
+    <h1>College students for<br>your next study</h1>
+    <p class="lede">Find students for interviews, usability tests, focus groups, and surveys. We handle recruitment, screening, and scheduling so your team can run the research.</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="#request">Tell us about your study</a>
-      <p class="risk-note">A written quote before recruiting starts, with the incentive and scope clearly included.</p>
+      <p class="risk-note">We check availability first, then send a quote with recruitment fees and student payments listed separately.</p>
     </div>
-    <div class="stats">
-      <div class="stat">
-        <b>24<small>hrs</small></b>
-        <span class="lbl">A quota of 20 filled</span>
-      </div>
-      <div class="stat">
-        <b>65<small>%</small></b>
-        <span class="lbl">Never been paid for research</span>
-      </div>
-      <div class="stat">
-        <b>75<small>%</small></b>
-        <span class="lbl">Will go on camera</span>
-      </div>
-    </div>
-    <p class="stats-note">
-      Measured in our <a href="/panel-report">Panel Report</a>, a study of 20 completed
-      responses fielded July 27 to 28, 2026. Every count, the method, and the limits are stated
-      in the report.
-    </p>
   </div>
 </section>
 
@@ -298,33 +322,24 @@ h1,h2{text-wrap:balance}
 <section class="points">
   <div class="wrap">
     <span class="kicker">Why Campus Takes</span>
-    <h2>13 of 20 respondents had never been paid for research</h2>
-    <p class="lede">
-      That is what our first panel study measured. The full breakdown, the method,
-      and the limits are in the <a href="/panel-report">Panel Report</a>.
-    </p>
+    <h2>Recruitment that fits your team</h2>
+    <p class="lede">Need us to manage the recruit? We can handle screening, scheduling, reminders, and incentive coordination. Already have a recruiting team? We can source students and hand over at the point you choose.</p>
     <div class="points-grid">
       <div class="point">
-        <h3>Reviewed before presentation</h3>
-        <p>Applicants confirm control of a U.S. .edu mailbox and phone by one-time
-        code. Consistent applications pass automated eligibility and identity checks;
-        exceptions receive human review. Enrollment starts as a student declaration.
-        Independent enrollment checks are used when your study requires them or a concern needs resolving.</p>
+        <h3>Screened against your criteria</h3>
+        <p>For interviews and usability tests, we phone-screen shortlisted students using your approved questions before booking. You receive the screening outcomes and any details still needing confirmation.</p>
       </div>
       <div class="point">
-        <h3>Closed invite, not an open link</h3>
-        <p>Studies go to named, approved panelists who match the criteria already
-        in their profiles, followed by your study-specific screener. We do not post an open study link.</p>
+        <h3>Invitations sent to matched students</h3>
+        <p>We invite panel members whose profiles match your audience, then check study eligibility with your screener. Study links are shared directly with those students.</p>
       </div>
       <div class="point">
-        <h3>Human review when needed</h3>
-        <p>If an application, enrollment record, or screener answer needs another
-        check, we review it before inviting that person and can use a short phone screen.</p>
+        <h3>Useful project records</h3>
+        <p>Follow each participant from screening through scheduling and completion. We agree on reporting, handoffs, and payment responsibilities before recruiting begins.</p>
       </div>
       <div class="point">
-        <h3>Capped participation</h3>
-        <p>Two studies per panelist per month, and a 90-day cooldown between
-        studies in the same category. Nobody here answers everything.</p>
+        <h3>Limits on repeat participation</h3>
+        <p>Our panel policy allows up to two studies per month, with 90 days between studies in the same category. We check participation recorded through Campus Takes before booking.</p>
       </div>
     </div>
   </div>
@@ -343,51 +358,14 @@ h1,h2{text-wrap:balance}
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h3>We match and screen</h3>
-        <p>We invite approved panelists who match the profile
-        criteria, then apply your approved screener and record each outcome.</p>
+        <h3>We find and screen students</h3>
+        <p>We invite potential matches and check interested students against your screener. You receive their eligibility details before sessions are confirmed.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
-        <h3>We manage the fieldwork</h3>
+        <h3>Your sessions get booked</h3>
         <p>We schedule qualified participants, confirm the time and time zone, send
         reminders, track attendance, and coordinate payment after you confirm completion.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Credibility section: sells the method, and links the published report. -->
-<section class="method">
-  <div class="wrap">
-    <span class="kicker">What we handle</span>
-    <h2>Recruitment-only fieldwork</h2>
-    <p class="lede">
-      We do not design, moderate, or analyze the study. We recruit and manage the
-      participants so your team can run the research.
-    </p>
-    <div class="method-grid">
-      <div class="method-item">
-        <h3>Applicant review</h3>
-        <p>School email and phone control are checked by one-time codes. Automated
-        checks admit consistent applications and hold exceptions for review. Enrollment
-        is self-reported unless independently checked; each admitted identity has one panel record.</p>
-      </div>
-      <div class="method-item">
-        <h3>Study-specific screening</h3>
-        <p>We use the criteria and screener you approve, keep individual screening
-        outcomes, and do not reveal which answers qualify.</p>
-      </div>
-      <div class="method-item">
-        <h3>Scheduling and incentives</h3>
-        <p>We handle session booking, confirmations, reminders, participant status,
-        and incentive payment after completion is confirmed.</p>
-      </div>
-      <div class="method-item">
-        <h3>Documented results</h3>
-        <p>The results we use as proof are available in our
-        <a href="/panel-report">Panel Report</a>, with full counts, method,
-        and limits rather than a marketing summary alone.</p>
       </div>
     </div>
   </div>
@@ -396,14 +374,14 @@ h1,h2{text-wrap:balance}
 <section id="recruitment-questions">
   <div class="wrap">
     <span class="kicker">Before you book</span>
-    <h2>Questions about recruiting college students</h2>
+    <h2>Recruiting questions</h2>
     <div class="recruitment-faq">
       <details><summary>What does student participant recruitment cost?</summary><p>We quote each study after checking the audience, participant count, session length, screening needs, and timeline. Your written quote includes the recruiting scope and participant incentives before work starts. <a href="#request">Send your study brief for a quote.</a></p></details>
-      <details><summary>How quickly can you recruit participants?</summary><p>Timing depends on how many eligible students are available and how specific your criteria are. Our first panel survey filled 20 responses in 24 hours; that is one historical result, not a promise for your study. We check feasibility before agreeing to a schedule.</p></details>
+      <details><summary>How quickly can you recruit participants?</summary><p>We build a recruiting schedule around your audience, quotas and session dates. Share your brief and we will confirm the delivery timeline before work begins.</p></details>
       <details><summary>How do you verify students?</summary><p>Applicants confirm control of their school email and phone with one-time codes. Automated checks assess eligibility and consistency, with human review for exceptions. Current enrollment is self-reported unless independently checked. Tell us if your study requires independent enrollment evidence so we can include it in screening.</p></details>
-      <details><summary>Can I target a particular school, major, or product user?</summary><p>Include those requirements in your brief, along with any quotas. We check current panel availability and use your approved screener to confirm study-specific fit. We do not promise coverage of every campus or audience.</p></details>
+      <details><summary>Can I target a particular school, major, or product user?</summary><p>Yes. We specialize in recruiting students attending Penn State and offer targeted recruitment across U.S. campuses. Include your target schools, majors, product experience and quotas in the brief. We assess availability for your audience and use your approved screener to confirm study-specific fit before booking.</p></details>
       <details><summary>Does Campus Takes moderate or analyze the research?</summary><p>Your team designs, moderates, and analyzes the study. Campus Takes handles participant recruitment, screening, scheduling, reminders, attendance tracking, and incentive coordination.</p></details>
-      <details><summary>Can students join the panel here?</summary><p>Yes. Visit <a href="/students">paid research studies for college students</a> to apply. Each invitation explains the time commitment and incentive, and participation is optional.</p></details>
+      <details><summary>Can students join the panel here?</summary><p>Yes. <a href="/students">Apply on our student page</a>. Each invitation explains the time commitment and incentive, and participation is optional.</p></details>
     </div>
   </div>
 </section>
@@ -439,7 +417,7 @@ h1,h2{text-wrap:balance}
             <div class="request-field request-field-full">
               <label class="request-label" for="target-description">Who do you need to talk to? <span class="request-required" aria-hidden="true">*</span></label>
               <textarea class="request-textarea" id="target-description" name="targetDescription" maxlength="2500" required aria-describedby="target-help target-error" placeholder="For example: undergraduate students who have used a budgeting app in the past month."></textarea>
-              <p class="request-help" id="target-help">Include any hard requirements or quotas. A rough description is enough for an initial feasibility check.</p>
+              <p class="request-help" id="target-help">Include any required traits or quotas. A rough description is enough to get started.</p>
               <div class="request-error" id="target-error" data-error-for="targetDescription" aria-live="polite"></div>
             </div>
             <div class="request-field">
@@ -480,7 +458,7 @@ h1,h2{text-wrap:balance}
           <div class="request-status" id="client-request-status" role="status" aria-live="polite"></div>
         </form>
         <div class="request-success" id="client-request-success" tabindex="-1" hidden>
-          <h3>We received your study details.</h3>
+          <h3>We received your study details</h3>
           <p>Joey will review the audience, timing, and format and reply within one business day. If anything is urgent, email <a href="mailto:hello@campustakes.com">hello@campustakes.com</a>.</p>
         </div>
       </div>
@@ -504,8 +482,8 @@ h1,h2{text-wrap:balance}
     </div>
     <p class="footer-legal">
       © 2026 Campus Takes. Campus Takes is an independent research panel of university
-      students. It is not affiliated with, sponsored by, or endorsed by any
-      university or educational institution.
+      students. It is not affiliated with, sponsored by, or endorsed by The Pennsylvania
+      State University or any other university or educational institution.
     </p>
   </div>
 </footer>

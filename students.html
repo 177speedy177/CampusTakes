@@ -13,14 +13,14 @@
 <meta property="og:title" content="Paid Research Studies for College Students | Campus Takes">
 <meta property="og:description" content="Join the Campus Takes student panel for paid interviews, usability tests, and surveys. Apply with your school email and choose the studies that fit you.">
 <meta property="og:url" content="https://www.campustakes.com/students">
-<meta property="og:image" content="https://www.campustakes.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Campus Takes: verified students, honest takes.">
+<meta property="og:image" content="https://www.campustakes.com/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="Campus Takes conversation-bubble logo">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Paid Research Studies for College Students | Campus Takes">
 <meta name="twitter:description" content="Join the Campus Takes student panel for paid interviews, usability tests, and surveys. Apply with your school email and choose the studies that fit you.">
-<meta name="twitter:image" content="https://www.campustakes.com/og-image.png">
+<meta name="twitter:image" content="https://www.campustakes.com/icon-512.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,19 +66,24 @@ h3{font-size:1.15rem;margin-bottom:8px}
   .nl-short{display:inline}
 }
 
-/* navy hero with the waitlist card beside it: signup above the fold */
-.hero{background:var(--navy);color:var(--white);padding:88px 0 96px}
-.hero .kicker{color:rgba(255,255,255,.6)}
-.hero-grid{display:grid;grid-template-columns:minmax(300px,.78fr) minmax(600px,1.22fr);gap:64px;align-items:start}
-.hero-copy{padding-top:48px}
-.hero h1{color:var(--white);font-size:clamp(2.3rem,1.5rem + 3.6vw,3.5rem)}
-.hero-sub{margin-top:20px;font-size:1.12rem;color:rgba(255,255,255,.8);max-width:44ch}
-.study-types{margin-top:44px;padding-top:22px;border-top:1px solid var(--line-dark)}
-.study-types-title{display:block;margin-bottom:14px;color:rgba(255,255,255,.58);font-size:.74rem;font-weight:650;letter-spacing:.1em;text-transform:uppercase}
-.study-types-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;list-style:none}
-.study-types-list li{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.78);font-size:.85rem;line-height:1.35}
-.study-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border:1px solid rgba(255,255,255,.2);border-radius:7px;background:rgba(255,255,255,.05);color:var(--white)}
-.study-icon svg{display:block;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* Student introduction */
+.hero{background:var(--navy);color:var(--white);padding:72px 0}
+.hero .kicker{color:#C4D2E6}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:88px;align-items:center}
+.hero-copy{padding-top:0}
+.hero h1{color:var(--white);font-size:clamp(2.65rem,2rem + 2.4vw,4.15rem);line-height:1.08;text-wrap:initial}
+.hero-sub{margin-top:24px;font-size:1.125rem;color:#E2E8F1;max-width:40ch}
+.hero .hero-apply{margin-top:28px;background:var(--white);border-color:var(--white);color:var(--navy)}
+.hero .hero-apply:hover{background:#E2E8F1;border-color:#E2E8F1}
+.hero-note{margin-top:14px;color:#C4D2E6;font-size:.875rem}
+.student-overview{border-left:1px solid rgba(255,255,255,.25);padding-left:40px}
+.student-overview h2{color:var(--white);font-size:1.8rem;margin-bottom:28px}
+.overview-steps{list-style:none;display:grid;gap:26px}
+.overview-steps li{display:grid;grid-template-columns:30px 1fr;gap:16px}
+.overview-number{color:#B7CAE8;font-size:.875rem;font-weight:600;line-height:1.7;font-variant-numeric:tabular-nums}
+.overview-steps h3{font-family:var(--sans);font-size:1.0625rem;line-height:1.5;color:var(--white);margin-bottom:5px}
+.overview-steps p{color:#E2E8F1;font-size:1rem;line-height:1.6}
+.overview-note{margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.25);color:#C4D2E6;font-size:.875rem;line-height:1.6}
 
 .waitlist-card{
   background:var(--off);border:1px solid var(--line);border-radius:8px;padding:38px 38px 42px;color:var(--text);
@@ -91,8 +96,7 @@ h3{font-size:1.15rem;margin-bottom:8px}
 .waitlist-card .intro{margin-bottom:18px}
 .time-note{font-size:.88rem;color:var(--muted);margin-bottom:8px}
 .application-form{
-  height:620px;margin-top:30px;padding-right:14px;overflow-y:auto;overflow-x:hidden;
-  overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-color:#9BA8BA transparent;
+  margin-top:24px;
 }
 .application-form::-webkit-scrollbar{width:9px}
 .application-form::-webkit-scrollbar-track{background:transparent}
@@ -163,17 +167,12 @@ h3{font-size:1.15rem;margin-bottom:8px}
 .hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}
 .first-in-line{margin-top:18px;font-size:.88rem;color:var(--muted);max-width:42ch;margin-inline:auto}
 .first-in-line b{color:var(--navy);font-weight:600}
-@media (max-width:1120px){
-  .hero{padding:64px 0 72px}
-  .hero-grid{grid-template-columns:1fr;gap:44px;max-width:820px;margin-inline:auto}
-  .hero-copy{padding-top:0}
-}
 @media (max-width:560px){
   .form-grid,.choice-grid{grid-template-columns:1fr}
   .verification-actions,.code-row{grid-template-columns:1fr}
   .verify-button{width:100%}
   .waitlist-card{padding:28px 22px 32px}
-  .application-form{height:560px;padding-right:9px}
+  .application-form{padding-right:0}
   .form-section{padding-top:26px}
 }
 
@@ -182,25 +181,8 @@ section{padding:96px 0}
 section .kicker{color:var(--navy-soft)}
 .lede{color:var(--muted);max-width:56ch}
 
-.perks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 48px;margin-top:48px}
-.perk h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;color:var(--navy)}
-.perk p{color:var(--muted);font-size:.96rem;margin-top:6px}
-@media (max-width:700px){.perks-grid{grid-template-columns:1fr;gap:26px}}
-
-.how{background:var(--off);border-block:1px solid var(--line)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
-.step{border-top:2px solid var(--navy);padding-top:24px}
-.step-num{font-family:var(--serif);font-size:2.6rem;font-weight:500;color:var(--navy-soft);margin-bottom:14px;line-height:1;font-variant-numeric:tabular-nums}
-.step p{color:var(--muted);font-size:.96rem}
-@media (max-width:760px){.steps{grid-template-columns:1fr;gap:32px}}
-
 .btn{display:inline-block;font-weight:600;font-size:1rem;text-align:center;padding:14px 30px;border-radius:6px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);background:var(--navy);color:var(--white);transition:background .2s ease,border-color .2s ease}
 .btn:hover{background:var(--navy-soft);border-color:var(--navy-soft)}
-.bottom-cta{text-align:center;padding-bottom:110px}
-.bottom-cta h2{max-width:24ch;margin-inline:auto}
-.bottom-cta .lede{margin-inline:auto}
-.bottom-cta .btn{margin-top:30px;padding:16px 36px}
-
 .site-footer{padding:56px 0 44px;font-size:.92rem;color:var(--muted);border-top:1px solid var(--line)}
 .footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
@@ -216,8 +198,6 @@ h1,h2{text-wrap:balance}
 :where(a,button):focus-visible{outline:2px solid var(--navy-soft);outline-offset:3px}
 .skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--navy);color:#fff;padding:10px 18px;border-radius:0 0 6px 0;text-decoration:none;font-weight:600}
 .skip:focus{left:0}
-.hero{background-image:radial-gradient(130% 100% at 85% 0%,rgba(255,255,255,.06),transparent 55%)}
-.waitlist-card{box-shadow:0 30px 60px -30px rgba(3,10,26,.55)}
 
 /* ---------- mobile spacing scale ---------- */
 @media (max-width:640px){
@@ -225,12 +205,7 @@ h1,h2{text-wrap:balance}
   .hero{padding:52px 0 56px}
   .hero-grid{gap:32px}
   .hero-sub{margin-top:16px;font-size:1.06rem}
-  .study-types{margin-top:30px;padding-top:20px}
-  .waitlist-card{padding:26px 20px}
-  .perks-grid{margin-top:32px}
-  .steps{margin-top:36px}
-  .bottom-cta{padding-bottom:64px}
-  .bottom-cta .btn{margin-top:24px}
+    .waitlist-card{padding:26px 20px}
   .site-footer{padding:44px 0 36px}
   .footer-legal{margin-top:24px;padding-top:20px}
 }
@@ -244,6 +219,108 @@ h1,h2{text-wrap:balance}
   .path .go{display:inline-block;padding-block:6px}
   .ev-n{font-size:.75rem}
 }
+
+.application-section{background:var(--off)}
+.application-wrap{max-width:808px}
+.application-heading{margin-bottom:30px}
+.application-heading h2{max-width:24ch}
+.application-heading p{max-width:62ch}
+.application-heading .form-note{margin-top:14px;font-size:.875rem;color:var(--muted)}
+.waitlist-card{background:var(--white);padding:32px;border-radius:8px}
+.application-form{height:auto;overflow:visible;padding:0;margin-top:0}
+.application-progress{margin-bottom:24px}
+.application-progress p{font-size:.9375rem;color:var(--navy);font-weight:650;margin-bottom:12px}
+.progress-track{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.progress-track span{height:4px;border-radius:2px;background:var(--line)}
+.progress-track .complete{background:var(--navy-soft)}
+.application-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:24px;padding-top:24px}
+.application-actions button{min-height:48px;padding:11px 22px;border:1px solid var(--navy);border-radius:6px;font:inherit;font-weight:600;cursor:pointer}
+.application-next{margin-left:auto;background:var(--navy);color:var(--white)}
+.application-next:hover{background:var(--navy-soft)}
+.application-back{background:var(--white);color:var(--navy)}
+.application-back:hover{background:var(--off)}
+.form-section{min-width:0;padding-top:24px}
+.form-section legend{font-size:1.5rem;line-height:1.25}
+.form-section legend:focus{outline:none}
+.form-field label,.question-label{font-size:.9375rem}
+.form-field input,.form-field select{font-size:1rem;min-height:48px}
+.field-help,.code-help,.verification-status,.field-error{font-size:.875rem;line-height:1.5}
+.field-error:empty{margin:0}
+.verify-button,.change-button{font-size:.9375rem;min-height:44px}
+.suggestion-option{font-size:1rem;min-height:48px}
+.choice{font-size:.9375rem!important;min-height:44px;line-height:1.5;padding-block:10px}
+.choice input{width:20px!important;height:20px!important;min-height:20px!important;margin-top:2px!important}
+.choice-description,.consent-copy{font-size:.875rem;line-height:1.5}
+.consent-box{padding:0;border:0}
+.consent-box .choice{padding-block:12px}
+.consent-copy{margin-left:29px}
+.bot-check{margin-top:0;min-height:0;margin-bottom:24px}
+.first-in-line{margin-top:24px;max-width:none;font-size:.875rem;text-align:left}
+.student-faq details{border-bottom:1px solid var(--line)}
+.student-faq summary{padding:20px 0;min-height:48px;font-weight:600;color:var(--navy);cursor:pointer;line-height:1.5}
+.student-faq details p{padding-bottom:22px;max-width:65ch}
+.student-help{margin-top:28px}
+.student-help a{color:var(--navy);text-underline-offset:3px;overflow-wrap:anywhere}
+.hero :focus-visible{outline-color:var(--white)}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;max-width:760px}
+  .student-overview{padding:32px 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.25)}
+}
+@media (max-width:640px){
+  .hero{padding:36px 0 40px}
+  .hero .kicker{font-size:.6875rem;letter-spacing:.09em}
+  .hero .kicker::before{display:none}
+  .hero h1{font-size:clamp(2.25rem,9.6vw,3.5rem)}
+  .hero-sub{font-size:1rem;line-height:1.6;margin-top:20px}
+  .hero .hero-apply{width:100%;margin-top:24px}
+  .hero-note{font-size:.8125rem;text-align:center}
+  .student-overview h2{font-size:1.5rem;margin-bottom:22px}
+  .overview-steps{gap:22px}
+  .overview-steps li{gap:12px}
+  .application-section{padding:40px 0}
+  .waitlist-card{padding:24px 16px}
+  .application-heading{margin-bottom:24px}
+  .form-grid{gap:22px}
+  .verification-block,.question-block{padding:14px 12px}
+  .question-block .choice{padding:10px}
+  .application-actions button{padding-inline:18px}
+  .student-faq{padding:44px 0}
+}
+@media (max-width:360px){
+  .application-section .waitlist-card{padding:22px 12px}
+  .verification-block,.question-block{padding:12px 10px}
+}
+
+/* Readable, touch-friendly layouts, including narrow phones. */
+[hidden]{display:none!important}
+html{scroll-padding-top:88px}
+input,select,textarea{scroll-margin-top:16px}
+.site-header .wrap{max-width:1244px;margin-inline:auto}
+.brand-name{white-space:nowrap}
+.site-nav a{display:flex;align-items:center;min-height:44px}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px}
+:where(a,button,input,select,textarea,summary){-webkit-tap-highlight-color:rgba(51,80,127,.15)}
+:where(a,button,summary):focus-visible{outline:3px solid var(--navy-soft);outline-offset:4px}
+.lede,.path p,.point p,.step p{color:var(--text)}
+@media (max-width:640px){
+  .wrap{padding-inline:20px}
+  .site-header .wrap{padding-inline:16px;gap:10px}
+  .brand{gap:6px}
+  .brand-name{font-size:1.0625rem}
+  .brand-logo{height:23px}
+  .site-nav{gap:12px}
+  .site-nav a{font-size:.875rem}
+  .footer-links{gap:0 20px}
+  .footer-legal{font-size:.8125rem;line-height:1.6}
+}
+@media (max-width:360px){
+  .site-header .wrap{padding-inline:12px;gap:8px}
+  .brand-name{font-size:1rem}
+  .brand-logo{height:20px}
+  .site-nav{gap:9px}
+  .site-nav a{font-size:.8125rem}
+  .wrap{padding-inline:16px}
+}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.campustakes.com/#organization","name":"Campus Takes","url":"https://www.campustakes.com/","logo":"https://www.campustakes.com/icon-512.png","email":"hello@campustakes.com","description":"College student participant recruitment for interviews, usability tests, focus groups, and surveys."},{"@type":"WebSite","@id":"https://www.campustakes.com/#website","url":"https://www.campustakes.com/","name":"Campus Takes","publisher":{"@id":"https://www.campustakes.com/#organization"}},{"@type":"WebPage","@id":"https://www.campustakes.com/students#webpage","url":"https://www.campustakes.com/students","name":"Paid Research Studies for College Students | Campus Takes","description":"Join the Campus Takes student panel for paid interviews, usability tests, and surveys. Apply with your school email and choose the studies that fit you.","isPartOf":{"@id":"https://www.campustakes.com/#website"},"about":{"@id":"https://www.campustakes.com/#organization"},"inLanguage":"en-US"}]}
@@ -251,7 +328,7 @@ h1,h2{text-wrap:balance}
 </head>
 <body>
 
-<a class="skip" href="#apply">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
@@ -268,33 +345,35 @@ h1,h2{text-wrap:balance}
 
 <!-- QR codes and club blasts should point straight at this page. -->
 <main id="main">
-<section class="hero" id="apply">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="kicker">Paid research for college students</span>
-        <h1>Get paid for your perspective</h1>
-        <p class="hero-sub">
-          Real incentives, not points or sweepstakes. Every invitation shows what
-          the study involves, how long it takes, and what it pays. You decide if it is worth your time.
-        </p>
-        <div class="study-types">
-          <span class="study-types-title">Studies may include</span>
-          <ul class="study-types-list">
-            <li><span class="study-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10M7 9h10M7 14h6M5 21h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2Z"/></svg></span>Online surveys</li>
-            <li><span class="study-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="2"/><path d="m16 10 5-3v10l-5-3Z"/></svg></span>One-on-one video calls</li>
-            <li><span class="study-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM16.5 11a3.5 3.5 0 1 0 0-7M2 21a6 6 0 0 1 12 0M14 15.5a5 5 0 0 1 8 4"/></svg></span>Group discussions</li>
-            <li><span class="study-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="16" rx="2"/><path d="M2 7h20M9 22h6M12 19v3M8 11l3 3 5-5"/></svg></span>Website and app tests</li>
-          </ul>
-        </div>
-      </div>
-      <div class="waitlist-card">
-        <h2>Apply to join</h2>
-        <p class="time-note">Have your school email and phone handy</p>
-        <p class="intro">Confirm your school email and phone, then tell us about yourself. Applications that pass our eligibility and consistency checks join automatically. We contact you only if something needs clarification.</p>
-        <p class="honesty">Please <b>answer honestly</b> so we can match you accurately.
-        Selecting more options will not increase your chances of receiving an invitation.</p>
-
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker">Paid research for college students</span>
+      <h1>Test apps<br>Answer questions<br>Get paid</h1>
+      <p class="hero-sub">Research teams pay students to try products and talk about their experiences. Campus Takes connects you with their studies.</p>
+      <a class="btn hero-apply" href="#apply">Apply to join</a>
+      <p class="hero-note">Free to join · For students 18+ at U.S. colleges</p>
+    </div>
+    <div class="student-overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">How it works</h2>
+      <ol class="overview-steps">
+        <li><span class="overview-number" aria-hidden="true">01</span><div><h3>Tell us about yourself</h3><p>Apply with your school email, then tell us what you study and which products you use.</p></div></li>
+        <li><span class="overview-number" aria-hidden="true">02</span><div><h3>Choose a study</h3><p>When a study could be a match, we send the details. See the time, pay, and requirements before deciding.</p></div></li>
+        <li><span class="overview-number" aria-hidden="true">03</span><div><h3>Take part and get paid</h3><p>If selected, complete the study and receive the payment described in your invitation.</p></div></li>
+      </ol>
+      <p class="overview-note">You might test an app, join a video interview, or answer a survey. Invitations depend on each study's needs.</p>
+    </div>
+  </div>
+</section>
+<section class="application-section" id="apply" aria-labelledby="apply-heading">
+  <div class="wrap application-wrap">
+    <div class="application-heading">
+      <span class="kicker">Join Campus Takes</span>
+      <h2 id="apply-heading">Apply for future study invitations</h2>
+      <p>Have your school email and phone nearby to receive verification codes. Your answers help us find studies that fit you.</p>
+      <p class="form-note">Fields marked <span class="required-mark">*</span> are required. Answer honestly and select only what applies to you.</p>
+    </div>
+    <div class="waitlist-card">
         <form class="application-form" id="student-application" novalidate>
             <div class="bot-check" aria-label="Security verification">
               <div id="turnstile-widget"></div>
@@ -307,7 +386,7 @@ h1,h2{text-wrap:balance}
           </div>
 
           <fieldset class="form-section">
-            <legend>Contact &amp; verification</legend>
+            <legend>Your contact details</legend>
             <div class="form-grid">
               <div class="form-field">
                 <label for="first-name">First name <span class="required-mark" aria-hidden="true">*</span></label>
@@ -326,7 +405,7 @@ h1,h2{text-wrap:balance}
                   <input id="school-email" name="schoolEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@school.edu" maxlength="254" required>
                   <button class="verify-button" type="button" data-action="send-code" data-channel="email">Send code</button>
                 </div>
-                <span class="field-help">Must end exactly in .edu. This confirms mailbox access. You declare your current enrollment below; we may ask for more evidence if needed.</span>
+                <span class="field-help">Use your college email ending in .edu. We will send a code to this inbox.</span>
                 <div class="code-row" data-code-row="email" hidden>
                   <input aria-label="School email verification code" data-code-input="email" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{4,10}" maxlength="10" placeholder="Verification code">
                   <button class="verify-button" type="button" data-action="check-code" data-channel="email">Verify code</button>
@@ -356,7 +435,7 @@ h1,h2{text-wrap:balance}
           </fieldset>
 
           <fieldset class="form-section">
-            <legend>Student profile</legend>
+            <legend>About your studies</legend>
             <div class="form-grid">
               <div class="form-field full">
                 <label for="university">University or college <span class="required-mark" aria-hidden="true">*</span></label>
@@ -445,7 +524,7 @@ h1,h2{text-wrap:balance}
           </fieldset>
 
           <fieldset class="form-section">
-            <legend>Research matching</legend>
+            <legend>Find studies that fit</legend>
             <div class="form-grid">
               <div class="form-field">
                 <label for="gender">Gender (optional)</label>
@@ -537,79 +616,23 @@ h1,h2{text-wrap:balance}
 
         <div class="success-card" id="application-success" tabindex="-1" hidden>
           <h3>Application received</h3>
-          <p>Your school email and phone are confirmed. Your application is now being checked automatically. If something needs clarification, we may contact you. Study invitations depend on eligibility and availability.</p>
+          <p>Thanks for applying. We will email you if we need anything else. If your application is approved, we will contact you when a study could fit your profile. Invitations are not guaranteed.</p>
         </div>
-        <p class="first-in-line">Applying does not guarantee approval or study invitations.
-        Opportunities depend on each study's requirements.</p>
-      </div>
+
+      <p class="first-in-line">Applying does not guarantee approval or study invitations.</p>
     </div>
   </div>
 </section>
-
-<section>
-  <div class="wrap">
-    <span class="kicker">What it's like</span>
-    <h2>Research that fits student life</h2>
-    <div class="perks-grid">
-      <div class="perk">
-        <h3>Know what you are joining</h3>
-        <p>Interviews, usability tests, and surveys. You talk, click through a
-        prototype, or answer questions. The invitation explains the work first.</p>
-      </div>
-      <div class="perk">
-        <h3>Clear payment details</h3>
-        <p>Every invitation tells you what the study pays before you accept it.
-        We send the stated incentive after you complete the study.</p>
-      </div>
-      <div class="perk">
-        <h3>Always your choice</h3>
-        <p>Take the studies that fit your week and skip the ones that don't.
-        Nothing is required, ever.</p>
-      </div>
-      <div class="perk">
-        <h3>Remote by default</h3>
-        <p>Join from your laptop wherever you study. Some sessions are as
-        simple as a 30-minute video call.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="how">
-  <div class="wrap">
-    <span class="kicker">How it works</span>
-    <h2>How participation works</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Apply to the panel</h3>
-        <p>Confirm your school email and phone, then submit your profile. Consistent,
-        eligible applications join automatically. A document or short phone screen
-        is requested only when a concern or a study requirement calls for it.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>We match you to studies</h3>
-        <p>When a study fits your profile, we reach out with the details:
-        what it involves, how long it takes, and what it pays.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Share your take, get paid</h3>
-        <p>Do the study, speak your mind honestly, and we send the payment
-        described in your invitation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="bottom-cta">
-  <div class="wrap">
-    <h2>Ready when the right study comes up?</h2>
-    <p class="lede">
-      Use your school email and phone to apply. Extra evidence is requested only when needed.
-    </p>
-    <a class="btn" href="#apply">Start your application</a>
+<section class="student-faq" aria-labelledby="student-questions">
+  <div class="wrap application-wrap">
+    <span class="kicker">Before you apply</span>
+    <h2 id="student-questions">A few things to know</h2>
+    <details><summary>What do I actually do in a study?</summary><p>You could try a website or app and explain what works, talk with a researcher about your daily routine, or answer a survey. Each invitation explains the activity and any equipment you need.</p></details>
+    <details><summary>How much will I earn, and how am I paid?</summary><p>Pay varies by study. Before you agree to take part, you will see the payment amount, method, and timing. Payment is for completing a study; joining the panel or answering screening questions is unpaid.</p></details>
+    <details><summary>When will I get my first invitation?</summary><p>There is no set wait time. Researchers look for different schools, experiences, and product users. We contact you when your profile could fit a study, and you may need to answer a few more questions to qualify.</p></details>
+    <details><summary>Do I have to accept every study?</summary><p>No. Choose the studies that fit your schedule. If you book a session, please attend or let us know as early as possible if your plans change.</p></details>
+    <details><summary>Who can join?</summary><p>You must be 18 or older and currently enrolled at a U.S. college or university. The application requires a school email ending in .edu and a phone number. We may ask for more information to confirm eligibility.</p></details>
+    <p class="student-help">Still have a question? Email <a href="mailto:hello@campustakes.com">hello@campustakes.com</a></p>
   </div>
 </section>
 
