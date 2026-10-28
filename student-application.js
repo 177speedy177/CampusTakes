@@ -220,8 +220,8 @@
       return;
     }
     emailInput.setCustomValidity("");
-    if (channel === "sms" && !contact) {
-      phoneInput.setCustomValidity("Please enter a valid phone number, including + and country code if outside the U.S.");
+    if (channel === "sms" && !/^\+1\d{10}$/.test(contact)) {
+      phoneInput.setCustomValidity("Please enter a valid U.S. or Canadian phone number.");
       phoneInput.reportValidity();
       return;
     }

@@ -24,6 +24,9 @@ module.exports = async function handler(req, res) {
   if (channel === "sms" && !contact) {
     return json(res, 400, { error: "Please enter a valid phone number." });
   }
+  if (channel === "sms" && !/^\+1\d{10}$/.test(contact)) {
+    return json(res, 400, { error: "Please use a U.S. or Canadian phone number." });
+  }
 
   // A verified school mailbox is required before the site can incur SMS costs.
   // This does not prove enrollment; the proof only confirms email control.

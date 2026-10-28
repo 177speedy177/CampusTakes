@@ -38,6 +38,7 @@ test('SMS requires a valid school-email proof and limits codes per verified mail
       { channel:'sms', value:'+12025550102', schoolEmail:email, emailVerificationToken:expired },
       { channel:'sms', value:'+12025550103', schoolEmail:'someone-else@psu.edu', emailVerificationToken:valid },
       { channel:'sms', value:'+12025550104', schoolEmail:email, emailVerificationToken:signVerification('sms',email) },
+      { channel:'sms', value:'+447700900123', schoolEmail:email, emailVerificationToken:valid },
     ];
     for (const body of invalidRequests) { const reply=res(); await handler(req(body),reply); assert.equal(reply.code,400); }
     assert.equal(sends,0);
