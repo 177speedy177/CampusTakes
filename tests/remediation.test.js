@@ -88,6 +88,45 @@ test('service-wide hourly and daily SMS ceilings apply across verified students'
   } finally { global.fetch=originalFetch; Date.now=originalNow; process.env=originalEnv; }
 });
 
+test('Twilio Verify prefers a restricted key and refuses incomplete key configuration', async () => {
+  const names = ['TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN', 'TWILIO_VERIFY_SERVICE_SID', 'TWILIO_API_KEY_SID', 'TWILIO_API_KEY_SECRET'];
+  const original = Object.fromEntries(names.map(name => [name, process.env[name]]));
+  const originalFetch = global.fetch;
+  const requests = [];
+  const { startVerification, checkVerification } = require('../api/_lib/twilio-verify');
+  global.fetch = async (url, options) => {
+    requests.push({ url, authorization: options.headers.Authorization });
+    return { ok: true, json: async () => ({ status: 'pending' }) };
+  };
+  try {
+    Object.assign(process.env, {
+      TWILIO_ACCOUNT_SID: 'test-account', TWILIO_AUTH_TOKEN: 'test-token',
+      TWILIO_VERIFY_SERVICE_SID: 'test-service', TWILIO_API_KEY_SID: 'test-key',
+      TWILIO_API_KEY_SECRET: 'test-key-secret'
+    });
+    await startVerification('sms', '+12025550100');
+    await checkVerification('+12025550100', '123456');
+    const keyAuthorization = `Basic ${Buffer.from('test-key:test-key-secret').toString('base64')}`;
+    assert.deepEqual(requests.map(request => request.authorization), [keyAuthorization, keyAuthorization]);
+    assert.match(requests[0].url, /\/Services\/test-service\/Verifications$/);
+    assert.match(requests[1].url, /\/Services\/test-service\/VerificationCheck$/);
+
+    delete process.env.TWILIO_API_KEY_SECRET;
+    await assert.rejects(startVerification('sms', '+12025550100'), /environment variables are missing/);
+    assert.equal(requests.length, 2);
+
+    delete process.env.TWILIO_API_KEY_SID;
+    await startVerification('sms', '+12025550100');
+    assert.equal(requests[2].authorization, `Basic ${Buffer.from('test-account:test-token').toString('base64')}`);
+  } finally {
+    global.fetch = originalFetch;
+    for (const name of names) {
+      if (original[name] === undefined) delete process.env[name];
+      else process.env[name] = original[name];
+    }
+  }
+});
+
 test('shared campus IP supports distinct students while contact resend budget remains enforced', async () => {
   const original = global.fetch;
   Object.assign(process.env, { TWILIO_ACCOUNT_SID:'test', TWILIO_AUTH_TOKEN:'test', TWILIO_VERIFY_SERVICE_SID:'test' });

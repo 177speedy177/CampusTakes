@@ -50,8 +50,10 @@ Turnstile/Upstash values to **Production first**:
 
 | Variable | Value |
 |---|---|
-| `TWILIO_ACCOUNT_SID` | Twilio Account SID |
-| `TWILIO_AUTH_TOKEN` | Twilio Auth Token |
+| `TWILIO_ACCOUNT_SID` | Twilio Account SID, when using an Auth Token |
+| `TWILIO_AUTH_TOKEN` | Twilio Auth Token, when not using a restricted API key |
+| `TWILIO_API_KEY_SID` | Optional restricted Twilio API key SID; configure with its secret |
+| `TWILIO_API_KEY_SECRET` | Optional restricted Twilio API key secret; configure with its SID |
 | `TWILIO_VERIFY_SERVICE_SID` | Verify Service SID beginning with `VA` |
 | `AIRTABLE_TOKEN` | Restricted Airtable personal access token |
 | `AIRTABLE_BASE_ID` | `appSfUlKrUVeUN7bG` |
@@ -63,6 +65,13 @@ Turnstile/Upstash values to **Production first**:
 | `UPSTASH_REDIS_REST_URL` | Upstash database REST URL |
 | `UPSTASH_REDIS_REST_TOKEN` | Upstash database REST token |
 | `ALLOWED_ORIGINS` | Optional comma-separated preview origins |
+
+For a restricted Twilio API key, grant only the Verify permissions
+`twilio/verify/verification/create` and `twilio/verify/verification-check/create`.
+The application uses the API key when both key variables are present, and fails closed if
+only one is set. If neither is set, it uses the Account SID and Auth Token. After deploying
+and successfully testing the restricted key, remove the full-access Auth Token from the
+application's environment and redeploy; check whether any other integrations need it first.
 
 Generate `VERIFICATION_TOKEN_SECRET` locally with:
 
