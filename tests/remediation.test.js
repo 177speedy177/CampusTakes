@@ -7,9 +7,85 @@ const studyHandler = require('../api/study-requests');
 const startHandler = require('../api/verification-start');
 const checkHandler = require('../api/verification-check');
 const { signBotProof } = require('../api/_lib/bot');
+const { signVerification } = require('../api/_lib/verification-token');
 
 const req = body => ({ method: 'POST', headers: { origin: 'https://campustakes.com', 'content-type': 'application/json', 'x-forwarded-for': '203.0.113.201' }, body });
 const res = () => ({ headers: {}, setHeader(k,v) { this.headers[k]=v; }, status(n) { this.code=n; return this; }, json(body) { this.body=body; return this; } });
+
+// A fresh in-memory limiter keeps these tests independent; production uses Redis.
+function freshStartHandler() {
+  delete require.cache[require.resolve('../api/_lib/limit')];
+  delete require.cache[require.resolve('../api/verification-start')];
+  return require('../api/verification-start');
+}
+
+test('SMS requires a valid school-email proof and limits codes per verified mailbox', async () => {
+  const originalFetch = global.fetch;
+  const originalEnv = { ...process.env };
+  Object.assign(process.env, { TWILIO_ACCOUNT_SID:'test', TWILIO_AUTH_TOKEN:'test', TWILIO_VERIFY_SERVICE_SID:'test', VERIFICATION_TOKEN_SECRET:'a-test-secret-that-is-at-least-thirty-two-characters' });
+  delete process.env.TURNSTILE_SITE_KEY; delete process.env.TURNSTILE_SECRET_KEY;
+  delete process.env.UPSTASH_REDIS_REST_URL; delete process.env.UPSTASH_REDIS_REST_TOKEN;
+  const handler = freshStartHandler();
+  let sends = 0;
+  global.fetch = async () => { sends++; return { ok:true, json:async()=>({status:'pending'}) }; };
+  try {
+    const email = 'student@psu.edu';
+    const valid = signVerification('email', email);
+    const expired = signVerification('email', email, Math.floor(Date.now()/1000) - 1801);
+    const invalidRequests = [
+      { channel:'sms', value:'+12025550100' },
+      { channel:'sms', value:'+12025550101', schoolEmail:email, emailVerificationToken:'forged' },
+      { channel:'sms', value:'+12025550102', schoolEmail:email, emailVerificationToken:expired },
+      { channel:'sms', value:'+12025550103', schoolEmail:'someone-else@psu.edu', emailVerificationToken:valid },
+      { channel:'sms', value:'+12025550104', schoolEmail:email, emailVerificationToken:signVerification('sms',email) },
+    ];
+    for (const body of invalidRequests) { const reply=res(); await handler(req(body),reply); assert.equal(reply.code,400); }
+    assert.equal(sends,0);
+    for (let i=0;i<5;i++) {
+      const reply=res();
+      await handler(req({channel:'sms',value:`+1202555020${i}`,schoolEmail:email,emailVerificationToken:valid}),reply);
+      assert.equal(reply.code,i<4?200:429);
+    }
+    assert.equal(sends,4);
+  } finally { global.fetch=originalFetch; process.env=originalEnv; }
+});
+
+test('service-wide hourly and daily SMS ceilings apply across verified students', async () => {
+  const originalFetch = global.fetch;
+  const originalNow = Date.now;
+  const originalEnv = { ...process.env };
+  Object.assign(process.env, { TWILIO_ACCOUNT_SID:'test', TWILIO_AUTH_TOKEN:'test', TWILIO_VERIFY_SERVICE_SID:'test', VERIFICATION_TOKEN_SECRET:'a-test-secret-that-is-at-least-thirty-two-characters' });
+  delete process.env.TURNSTILE_SITE_KEY; delete process.env.TURNSTILE_SECRET_KEY;
+  delete process.env.UPSTASH_REDIS_REST_URL; delete process.env.UPSTASH_REDIS_REST_TOKEN;
+  const handler = freshStartHandler();
+  let sends = 0;
+  global.fetch = async () => { sends++; return { ok:true, json:async()=>({status:'pending'}) }; };
+  const base = originalNow();
+  try {
+    for (let hour=0; hour<3; hour++) {
+      Date.now = () => base + hour * (60*60*1000 + 1);
+      for (let i=0; i<20; i++) {
+        const number=hour*20+i;
+        const email=`student${number}@psu.edu`;
+        const reply=res();
+        const request=req({channel:'sms',value:`+1202555${String(number).padStart(4,'0')}`,schoolEmail:email,emailVerificationToken:signVerification('email',email)});
+        request.headers['x-forwarded-for']=`203.0.113.${number+1}`;
+        await handler(request,reply);
+        assert.equal(reply.code,200,`request ${number}`);
+      }
+      if (hour === 0) {
+        const reply=res();
+        await handler(req({channel:'sms',value:'+12025559999',schoolEmail:'extra@psu.edu',emailVerificationToken:signVerification('email','extra@psu.edu')}),reply);
+        assert.equal(reply.code,429);
+      }
+    }
+    Date.now = () => base + 3 * (60*60*1000 + 1);
+    const reply=res();
+    await handler(req({channel:'sms',value:'+12025559888',schoolEmail:'daily@psu.edu',emailVerificationToken:signVerification('email','daily@psu.edu')}),reply);
+    assert.equal(reply.code,429);
+    assert.equal(sends,60);
+  } finally { global.fetch=originalFetch; Date.now=originalNow; process.env=originalEnv; }
+});
 
 test('shared campus IP supports distinct students while contact resend budget remains enforced', async () => {
   const original = global.fetch;

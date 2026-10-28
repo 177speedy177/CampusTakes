@@ -207,6 +207,12 @@
   }
 
   async function sendCode(channel, button) {
+    expireProofs();
+    if (channel === "sms" && !state.email.token) {
+      setStatus("sms", "error", "First verify your school email above, then request your text code.");
+      focusField(emailInput);
+      return;
+    }
     const contact = verificationContact(channel);
     if (channel === "email" && !isEduEmail(contact)) {
       emailInput.setCustomValidity("Please enter a valid U.S. college or university email ending in .edu.");
@@ -229,6 +235,10 @@
       const data = await post("/api/verification-start", {
         channel,
         value: contact,
+        ...(channel === "sms" ? {
+          schoolEmail: normalizeEmail(emailInput.value),
+          emailVerificationToken: state.email.token,
+        } : {}),
         website: form.elements.website.value,
         botProof: state.botProof,
         botChallenge: state.botChallenge,
